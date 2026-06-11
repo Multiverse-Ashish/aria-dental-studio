@@ -1,0 +1,3704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadOS — Premium Sales CRM</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+:root {
+  --bg-primary: #070B14;
+  --bg-secondary: #0D1525;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-border-hover: rgba(255,255,255,0.15);
+  --accent: #4F8EF7;
+  --accent-glow: rgba(79,142,247,0.3);
+  --accent-2: #7C5CFC;
+  --accent-green: #22D3A5;
+  --accent-orange: #FF8C42;
+  --accent-red: #FF4E6A;
+  --accent-yellow: #FFD166;
+  --text-primary: #F0F4FF;
+  --text-secondary: #8B9DC3;
+  --text-muted: #4A5A7A;
+  --sidebar-width: 240px;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 40px rgba(79,142,247,0.12);
+}
+
+.light-mode {
+  --bg-primary: #F0F4FF;
+  --bg-secondary: #E2E8F8;
+  --bg-card: rgba(255,255,255,0.8);
+  --bg-card-hover: rgba(255,255,255,0.95);
+  --glass: rgba(255,255,255,0.7);
+  --glass-border: rgba(79,142,247,0.15);
+  --glass-border-hover: rgba(79,142,247,0.3);
+  --text-primary: #0D1525;
+  --text-secondary: #4A5A7A;
+  --text-muted: #8B9DC3;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── LAYOUT ── */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 100;
+  transition: width 0.3s ease;
+}
+
+.sidebar-logo {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.logo-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.logo-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 1px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.nav-section-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  padding: 8px 8px 4px;
+  margin-top: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all 0.18s ease;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, rgba(79,142,247,0.15), rgba(124,92,252,0.1));
+  color: var(--accent);
+  border: 1px solid rgba(79,142,247,0.2);
+}
+
+.nav-item.active .nav-icon { color: var(--accent); }
+
+.nav-icon {
+  width: 16px;
+  text-align: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.nav-badge {
+  margin-left: auto;
+  background: var(--accent-red);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.nav-badge.green { background: var(--accent-green); color: #000; }
+
+.sidebar-footer {
+  padding: 16px 12px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.sidebar-footer .nav-item { margin-bottom: 0; }
+
+/* ── MAIN CONTENT ── */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  padding: 0 28px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(13,21,37,0.8);
+  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+  z-index: 50;
+}
+
+.topbar-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 0 0 auto;
+}
+
+.topbar-search {
+  flex: 1;
+  max-width: 360px;
+  position: relative;
+}
+
+.topbar-search input {
+  width: 100%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 7px 14px 7px 36px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.topbar-search input:focus { border-color: var(--accent); }
+.topbar-search input::placeholder { color: var(--text-muted); }
+
+.search-icon {
+  position: absolute;
+  left: 11px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.topbar-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.18s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px var(--accent-glow);
+}
+
+.btn-ghost {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  border-color: var(--glass-border-hover);
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 11.5px;
+}
+
+.btn-danger { background: var(--accent-red); color: white; }
+.btn-success { background: var(--accent-green); color: #000; font-weight: 700; }
+.btn-warning { background: var(--accent-orange); color: white; }
+
+/* ── CONTENT AREA ── */
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 28px;
+}
+
+.content-area::-webkit-scrollbar { width: 5px; }
+.content-area::-webkit-scrollbar-track { background: transparent; }
+.content-area::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+
+/* ── TABS ── */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.25s ease; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ── STAT CARDS ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 18px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--card-accent, transparent);
+}
+
+.stat-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.stat-card .stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.stat-card .stat-value {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-card .stat-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.stat-icon {
+  position: absolute;
+  right: 16px; top: 16px;
+  font-size: 18px;
+  opacity: 0.4;
+}
+
+/* ── CHARTS GRID ── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.charts-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.chart-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.chart-canvas-wrap {
+  position: relative;
+  height: 200px;
+}
+
+/* ── TABLE ── */
+.table-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.table-toolbar {
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--glass-border);
+  flex-wrap: wrap;
+}
+
+.table-toolbar-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(0,0,0,0.15);
+}
+
+select.filter-select, input.filter-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 7px;
+  padding: 6px 10px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+select.filter-select:focus, input.filter-input:focus {
+  border-color: var(--accent);
+}
+
+.table-scroll { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--glass-border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(0,0,0,0.1);
+}
+
+thead th:hover { color: var(--text-secondary); }
+
+tbody tr {
+  border-bottom: 1px solid var(--glass-border);
+  transition: background 0.15s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg-card-hover); }
+
+tbody td {
+  padding: 10px 14px;
+  color: var(--text-secondary);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.td-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── BADGES ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.badge-blue { background: rgba(79,142,247,0.15); color: #6BA3FF; border: 1px solid rgba(79,142,247,0.25); }
+.badge-green { background: rgba(34,211,165,0.15); color: #22D3A5; border: 1px solid rgba(34,211,165,0.25); }
+.badge-red { background: rgba(255,78,106,0.15); color: #FF4E6A; border: 1px solid rgba(255,78,106,0.25); }
+.badge-orange { background: rgba(255,140,66,0.15); color: #FF8C42; border: 1px solid rgba(255,140,66,0.25); }
+.badge-purple { background: rgba(124,92,252,0.15); color: #9B7BFF; border: 1px solid rgba(124,92,252,0.25); }
+.badge-yellow { background: rgba(255,209,102,0.15); color: #FFD166; border: 1px solid rgba(255,209,102,0.25); }
+.badge-gray { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid var(--glass-border); }
+
+/* ── QUALITY STARS ── */
+.stars { color: var(--accent-yellow); font-size: 11px; letter-spacing: 1px; }
+
+/* ── TODAY'S LEADS ── */
+.today-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.today-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.today-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+.today-stat-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.today-stat-lbl {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.leads-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.lead-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lead-card:hover {
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.lead-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.lead-card-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  flex: 1;
+  margin-right: 8px;
+}
+
+.lead-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.lead-card-phone {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lead-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.lead-card-status-row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.call-status-select {
+  flex: 1;
+  min-width: 140px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 7px;
+  padding: 6px 10px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  cursor: pointer;
+}
+
+.notes-input {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 7px;
+  padding: 8px 10px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  resize: none;
+  margin-top: 8px;
+  transition: border-color 0.2s;
+  min-height: 56px;
+}
+
+.notes-input:focus { border-color: var(--accent); }
+.notes-input::placeholder { color: var(--text-muted); }
+
+/* ── KANBAN ── */
+.kanban-board {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  min-height: calc(100vh - 200px);
+}
+
+.kanban-board::-webkit-scrollbar { height: 5px; }
+.kanban-board::-webkit-scrollbar-track { background: transparent; }
+.kanban-board::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+
+.kanban-col {
+  flex: 0 0 260px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 180px);
+}
+
+.kanban-col-header {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+
+.kanban-col-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.kanban-col-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.kanban-col-count {
+  font-size: 11px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2px 7px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.kanban-cards {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kanban-cards::-webkit-scrollbar { width: 3px; }
+.kanban-cards::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+
+.kanban-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 12px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.kanban-card:hover {
+  border-color: var(--glass-border-hover);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow);
+}
+
+.kanban-card.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.kanban-card-name {
+  font-weight: 600;
+  font-size: 12.5px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.kanban-card-meta {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.kanban-card-price {
+  font-size: 12px;
+  color: var(--accent-green);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ── FOLLOW-UP ── */
+.followup-section {
+  margin-bottom: 24px;
+}
+
+.followup-section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.followup-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+.followup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.followup-item {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.15s;
+}
+
+.followup-item:hover { border-color: var(--glass-border-hover); }
+
+.followup-item.overdue { border-color: rgba(255,78,106,0.3); background: rgba(255,78,106,0.04); }
+
+.followup-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.followup-info { flex: 1; }
+
+.followup-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.followup-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── MODAL ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.25s ease;
+}
+
+.modal-backdrop.open .modal {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.modal-close {
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: all 0.15s;
+}
+
+.modal-close:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+.modal-body { padding: 20px 24px; }
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ── FORM ELEMENTS ── */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,142,247,0.1); }
+.form-input::placeholder { color: var(--text-muted); }
+
+.price-input-wrap {
+  position: relative;
+}
+
+.price-input-wrap::before {
+  content: '₹';
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.price-input-wrap .form-input { padding-left: 24px; }
+
+/* ── TOAST ── */
+.toast-container {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  box-shadow: var(--shadow);
+  animation: slideInToast 0.3s ease forwards;
+  max-width: 320px;
+}
+
+.toast.success { border-color: rgba(34,211,165,0.3); }
+.toast.error { border-color: rgba(255,78,106,0.3); }
+.toast.info { border-color: rgba(79,142,247,0.3); }
+
+@keyframes slideInToast {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+/* ── DROP ZONE ── */
+.drop-zone {
+  border: 2px dashed var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: var(--accent);
+  background: rgba(79,142,247,0.04);
+}
+
+.drop-zone-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.5; }
+.drop-zone-title { font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 6px; }
+.drop-zone-sub { font-size: 12px; color: var(--text-muted); }
+.drop-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.empty-state-icon { font-size: 48px; opacity: 0.3; margin-bottom: 12px; }
+.empty-state-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.empty-state-sub { font-size: 13px; color: var(--text-muted); }
+
+/* ── PAGINATION ── */
+.pagination {
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--glass-border);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.pagination-info { flex: 1; }
+
+.page-btn {
+  width: 30px; height: 30px;
+  border-radius: 7px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+
+.page-btn:hover, .page-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(79,142,247,0.1);
+}
+
+/* ── SETTINGS ── */
+.settings-section {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.settings-section-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--glass-border);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-row {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 13px;
+}
+
+.settings-row:last-child { border-bottom: none; }
+
+.settings-label { color: var(--text-secondary); }
+.settings-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* Toggle */
+.toggle {
+  width: 40px; height: 22px;
+  background: var(--glass-border);
+  border-radius: 11px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.toggle.on { background: var(--accent); }
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 16px; height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.toggle.on::after { transform: translateX(18px); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .sidebar { width: 52px; }
+  .logo-text, .logo-sub, .nav-item span, .nav-badge { display: none; }
+  .nav-item { justify-content: center; padding: 9px; }
+  .nav-icon { width: auto; }
+  .sidebar-logo { justify-content: center; padding: 20px 10px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .charts-grid { grid-template-columns: 1fr; }
+  .charts-grid-3 { grid-template-columns: 1fr 1fr; }
+  .content-area { padding: 16px; }
+  .topbar { padding: 0 16px; }
+}
+
+@media (max-width: 600px) {
+  :root { --sidebar-width: 0px; }
+  .sidebar { display: none; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .charts-grid-3 { grid-template-columns: 1fr; }
+  .leads-cards-grid { grid-template-columns: 1fr; }
+}
+
+/* ── GLOW DECORATION ── */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-1 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(79,142,247,0.06) 0%, transparent 70%);
+  top: -100px; right: -100px;
+}
+
+.glow-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(124,92,252,0.05) 0%, transparent 70%);
+  bottom: 0; left: 200px;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar-wrap {
+  height: 4px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.6s ease;
+}
+
+/* ── LOADING ── */
+.loading-spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--glass-border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── CHECKBOX ── */
+.cb-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.cb-wrap input[type=checkbox] { display: none; }
+
+.cb-box {
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--glass-border);
+  border-radius: 4px;
+  background: var(--glass);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.cb-wrap input:checked + .cb-box {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cb-wrap input:checked + .cb-box::after {
+  content: '✓';
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Scrollbar for modal */
+.modal::-webkit-scrollbar { width: 5px; }
+.modal::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- Background orbs -->
+<div class="glow-orb glow-1"></div>
+<div class="glow-orb glow-2"></div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ── APP LAYOUT ── -->
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">⚡</div>
+      <div>
+        <div class="logo-text">LeadOS</div>
+        <span class="logo-sub">Sales CRM</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item active" data-tab="overview">
+        <span class="nav-icon">◉</span>
+        <span>Overview</span>
+      </div>
+      <div class="nav-item" data-tab="leads">
+        <span class="nav-icon">☰</span>
+        <span>Leads CRM</span>
+      </div>
+      <div class="nav-item" data-tab="today">
+        <span class="nav-icon">🎯</span>
+        <span>Today's Leads</span>
+        <span class="nav-badge green" id="nav-today-badge" style="display:none"></span>
+      </div>
+
+      <div class="nav-section-label">Sales</div>
+      <div class="nav-item" data-tab="pipeline">
+        <span class="nav-icon">⬡</span>
+        <span>Pipeline</span>
+      </div>
+      <div class="nav-item" data-tab="analytics">
+        <span class="nav-icon">◈</span>
+        <span>Analytics</span>
+      </div>
+      <div class="nav-item" data-tab="followups">
+        <span class="nav-icon">🔔</span>
+        <span>Follow-ups</span>
+        <span class="nav-badge" id="nav-fu-badge" style="display:none"></span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="nav-item" data-tab="settings">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-title" id="topbar-title">Dashboard Overview</div>
+      <div class="topbar-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search leads..." id="global-search" oninput="LeadsCRM.render(); if(this.value) Nav.go('leads');">
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.exportLeads()">⬇ Export</button>
+        <button class="btn btn-primary btn-sm" onclick="Nav.go('leads'); document.getElementById('import-section').style.display=''">⬆ Import</button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content-area">
+
+      <!-- ══════════════════════════════════════════
+           TAB: OVERVIEW
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel active" id="tab-overview">
+
+        <div class="stats-grid">
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent), var(--accent-2))">
+            <div class="stat-icon">📋</div>
+            <div class="stat-label">Total Leads</div>
+            <div class="stat-value" id="stat-total">0</div>
+            <div class="stat-sub">In database</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-orange), #FF6B35)">
+            <div class="stat-icon">⚡</div>
+            <div class="stat-label">No Website</div>
+            <div class="stat-value" id="stat-nowebsite">0</div>
+            <div class="stat-sub">High opportunity</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-green), #0EA5E9)">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-label">High Quality</div>
+            <div class="stat-value" id="stat-highquality">0</div>
+            <div class="stat-sub">Hot + High</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-2), var(--accent))">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-label">Today's Leads</div>
+            <div class="stat-value" id="stat-today">0</div>
+            <div class="stat-sub">Selected</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, #06B6D4, var(--accent-2))">
+            <div class="stat-icon">📞</div>
+            <div class="stat-label">Called Today</div>
+            <div class="stat-value" id="stat-called">0</div>
+            <div class="stat-sub">Completed</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-green), #10B981)">
+            <div class="stat-icon">✅</div>
+            <div class="stat-label">Approved</div>
+            <div class="stat-value" id="stat-approved">0</div>
+            <div class="stat-sub">Total deals</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-red), #DC2626)">
+            <div class="stat-icon">❌</div>
+            <div class="stat-label">Rejected</div>
+            <div class="stat-value" id="stat-rejected">0</div>
+            <div class="stat-sub">All time</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, #F59E0B, var(--accent-orange))">
+            <div class="stat-icon">💰</div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value" id="stat-revenue">₹0</div>
+            <div class="stat-sub">Closed deals</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-yellow), #F59E0B)">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-label">Pending Rev.</div>
+            <div class="stat-value" id="stat-pending">₹0</div>
+            <div class="stat-sub">Balance due</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent), #06B6D4)">
+            <div class="stat-icon">📊</div>
+            <div class="stat-label">Avg Deal Size</div>
+            <div class="stat-value" id="stat-avgdeal">₹0</div>
+            <div class="stat-sub">Per closed deal</div>
+          </div>
+          <div class="stat-card" style="--card-accent: linear-gradient(90deg, var(--accent-2), #8B5CF6)">
+            <div class="stat-icon">📈</div>
+            <div class="stat-label">Conversion Rate</div>
+            <div class="stat-value" id="stat-convrate">0%</div>
+            <div class="stat-sub">Approved / Called</div>
+          </div>
+        </div>
+
+        <!-- Charts row 1 -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">Revenue Over Time</div>
+            <div class="chart-sub">Monthly closed deal revenue</div>
+            <div class="chart-canvas-wrap"><canvas id="chartRevenue"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Lead Quality</div>
+            <div class="chart-sub">Distribution by tier</div>
+            <div class="chart-canvas-wrap"><canvas id="chartQuality"></canvas></div>
+          </div>
+        </div>
+
+        <!-- Charts row 2 -->
+        <div class="charts-grid-3">
+          <div class="chart-card">
+            <div class="chart-title">Sales Funnel</div>
+            <div class="chart-sub">Pipeline stage breakdown</div>
+            <div class="chart-canvas-wrap"><canvas id="chartFunnel"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Approval vs Rejection</div>
+            <div class="chart-sub">Overall outcomes</div>
+            <div class="chart-canvas-wrap"><canvas id="chartApproval"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Daily Calls</div>
+            <div class="chart-sub">Last 7 days activity</div>
+            <div class="chart-canvas-wrap"><canvas id="chartDailyCalls"></canvas></div>
+          </div>
+        </div>
+
+        <!-- Category chart -->
+        <div class="chart-card" style="margin-bottom:0">
+          <div class="chart-title">Category Distribution</div>
+          <div class="chart-sub">Leads by business category</div>
+          <div class="chart-canvas-wrap" style="height:180px"><canvas id="chartCategory"></canvas></div>
+        </div>
+
+      </div><!-- /overview -->
+
+
+      <!-- ══════════════════════════════════════════
+           TAB: LEADS CRM
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel" id="tab-leads">
+
+        <!-- Import Section -->
+        <div id="import-section">
+          <div class="drop-zone" id="drop-zone">
+            <input type="file" id="csv-input" accept=".csv,.txt,.tsv">
+            <div class="drop-zone-icon">📂</div>
+            <div class="drop-zone-title">Import Your Leads</div>
+            <div class="drop-zone-sub">Drop a CSV file here or click to browse<br>
+              <span style="color:var(--text-muted);margin-top:6px;display:block">Supported: CSV, TSV — columns auto-detected</span>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;background:var(--bg-card);border:1px solid var(--glass-border);border-radius:12px;padding:18px">
+            <div style="font-size:12px;font-weight:700;color:var(--text-secondary);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.07em">📋 Expected Columns (any order, auto-mapped)</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px" id="csv-columns-hint"></div>
+          </div>
+        </div>
+
+        <!-- Leads Table Section -->
+        <div id="leads-table-section" style="display:none">
+          <div class="table-wrap">
+            <div class="table-toolbar">
+              <span class="table-toolbar-title">All Leads</span>
+              <button class="btn btn-primary btn-sm" onclick="LeadsCRM.selectTopLeads()">🎯 Auto-Select Today's 15</button>
+              <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.clearTodayLeads()">✕ Clear Today</button>
+              <button class="btn btn-ghost btn-sm" onclick="document.getElementById('import-section').style.display=''; document.getElementById('csv-input').click()">⬆ Import More</button>
+              <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.exportLeads()" style="margin-left:auto">⬇ Export CSV</button>
+            </div>
+
+            <div class="filter-row">
+              <input class="filter-input" id="f-search" placeholder="🔍 Search name, city, phone..." style="min-width:200px">
+              <select class="filter-select" id="f-category"><option value="">All Categories</option></select>
+              <input class="filter-input" id="f-city" placeholder="City...">
+              <select class="filter-select" id="f-website">
+                <option value="">Website: All</option>
+                <option value="yes">Has Website</option>
+                <option value="no">No Website</option>
+              </select>
+              <select class="filter-select" id="f-quality">
+                <option value="">All Quality</option>
+                <option>Hot</option><option>High</option><option>Medium</option><option>Low</option>
+              </select>
+              <select class="filter-select" id="f-status">
+                <option value="">All Statuses</option>
+                <option>Not Called</option><option>No Answer</option><option>Busy</option>
+                <option>Interested</option><option>Rejected</option><option>Follow-up Needed</option><option>Approved</option>
+              </select>
+              <select class="filter-select" id="f-pipeline">
+                <option value="">All Pipeline</option>
+                <option>NEW</option><option>CONTACTED</option><option>INTERESTED</option>
+                <option>FOLLOW-UP</option><option>PROPOSAL SENT</option><option>APPROVED</option>
+                <option>REJECTED</option><option>CLOSED</option>
+              </select>
+              <input class="filter-input" id="f-rating" type="number" placeholder="Min rating" min="0" max="5" step="0.5" style="width:110px">
+            </div>
+
+            <div class="table-scroll">
+              <table id="leads-table">
+                <thead>
+                  <tr>
+                    <th style="width:30px"></th>
+                    <th data-col="businessName">Business Name ↕</th>
+                    <th data-col="category">Category</th>
+                    <th data-col="city">City</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                    <th data-col="hasWebsite">Has Web</th>
+                    <th data-col="rating">Rating</th>
+                    <th data-col="reviews">Reviews</th>
+                    <th data-col="quality">Quality</th>
+                    <th>Call Status</th>
+                    <th>Pipeline</th>
+                    <th>Deal Price</th>
+                    <th>Notes</th>
+                    <th>Follow-up</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-tbody"></tbody>
+              </table>
+            </div>
+
+            <div id="leads-pagination" class="pagination"></div>
+          </div>
+        </div>
+      </div><!-- /leads -->
+
+
+      <!-- ══════════════════════════════════════════
+           TAB: TODAY'S LEADS
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel" id="tab-today">
+        <div class="today-header">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:4px">Today's Outreach</div>
+            <div style="font-size:12px;color:var(--text-muted)" id="today-date"></div>
+          </div>
+          <div class="today-stats">
+            <div class="today-stat">
+              <div class="today-stat-val" id="today-stat-total">0</div>
+              <div class="today-stat-lbl">Selected</div>
+            </div>
+            <div class="today-stat">
+              <div class="today-stat-val" style="color:var(--accent)" id="today-stat-called">0</div>
+              <div class="today-stat-lbl">Called</div>
+            </div>
+            <div class="today-stat">
+              <div class="today-stat-val" style="color:var(--accent-green)" id="today-stat-approved">0</div>
+              <div class="today-stat-lbl">Approved</div>
+            </div>
+            <div class="today-stat">
+              <div class="today-stat-val" style="color:var(--accent-red)" id="today-stat-rejected">0</div>
+              <div class="today-stat-lbl">Rejected</div>
+            </div>
+            <div class="today-stat">
+              <div class="today-stat-val" style="color:var(--accent-yellow)" id="today-stat-remaining">0</div>
+              <div class="today-stat-lbl">Remaining</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-primary" onclick="Nav.go('leads'); LeadsCRM.render()">+ Add Leads</button>
+            <button class="btn btn-ghost" onclick="LeadsCRM.selectTopLeads()">🎯 Auto-Select</button>
+          </div>
+        </div>
+
+        <div id="today-empty" style="display:none">
+          <div class="empty-state">
+            <div class="empty-state-icon">🎯</div>
+            <div class="empty-state-title">No leads selected for today</div>
+            <div class="empty-state-sub">Go to Leads CRM and check the boxes to select up to 15 leads,<br>or use Auto-Select to pick the best ones automatically.</div>
+            <div style="margin-top:16px;display:flex;gap:8px;justify-content:center">
+              <button class="btn btn-primary" onclick="Nav.go('leads')">Go to Leads CRM</button>
+              <button class="btn btn-ghost" onclick="LeadsCRM.selectTopLeads(); Nav.go('today')">🎯 Auto-Select Now</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="leads-cards-grid" id="today-cards"></div>
+      </div><!-- /today -->
+
+
+      <!-- ══════════════════════════════════════════
+           TAB: PIPELINE
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel" id="tab-pipeline">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700">Sales Pipeline</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Drag and drop leads between stages</div>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="Pipeline.render()">↻ Refresh</button>
+        </div>
+        <div class="kanban-board" id="kanban-board"></div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════════
+           TAB: ANALYTICS
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel" id="tab-analytics">
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:4px">Analytics</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:24px">Business performance at a glance</div>
+
+        <div class="stats-grid" style="grid-template-columns:repeat(auto-fill, minmax(150px,1fr))">
+          <div class="stat-card"><div class="stat-label">Total Leads</div><div class="stat-value" id="a-stat-total">0</div></div>
+          <div class="stat-card"><div class="stat-label">High Quality</div><div class="stat-value" id="a-stat-highquality">0</div></div>
+          <div class="stat-card"><div class="stat-label">Approved</div><div class="stat-value" id="a-stat-approved">0</div></div>
+          <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="a-stat-revenue">₹0</div></div>
+          <div class="stat-card"><div class="stat-label">Conversion</div><div class="stat-value" id="a-stat-convrate">0%</div></div>
+          <div class="stat-card"><div class="stat-label">Avg Deal</div><div class="stat-value" id="a-stat-avgdeal">₹0</div></div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-title">Revenue Over Time</div>
+            <div class="chart-sub">Monthly closed revenue</div>
+            <div class="chart-canvas-wrap" style="height:220px"><canvas id="a-chartRevenue"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Lead Quality Breakdown</div>
+            <div class="chart-sub">Distribution of lead tiers</div>
+            <div class="chart-canvas-wrap" style="height:220px"><canvas id="a-chartQuality"></canvas></div>
+          </div>
+        </div>
+
+        <div class="charts-grid-3">
+          <div class="chart-card">
+            <div class="chart-title">Conversion Funnel</div>
+            <div class="chart-canvas-wrap" style="height:200px"><canvas id="a-chartFunnel"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Approval Rate</div>
+            <div class="chart-canvas-wrap" style="height:200px"><canvas id="a-chartApproval"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Daily Activity</div>
+            <div class="chart-canvas-wrap" style="height:200px"><canvas id="a-chartDailyCalls"></canvas></div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-title">Category Performance</div>
+          <div class="chart-sub">Lead count by business category</div>
+          <div class="chart-canvas-wrap" style="height:200px"><canvas id="a-chartCategory"></canvas></div>
+        </div>
+      </div><!-- /analytics -->
+
+
+      <!-- ══════════════════════════════════════════
+           TAB: FOLLOW-UPS
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel" id="tab-followups">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700">Follow-ups</div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Track and manage your scheduled callbacks</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="Modal.open('add-followup-modal')">+ Schedule Follow-up</button>
+        </div>
+
+        <div class="followup-section">
+          <div class="followup-section-title" style="color:var(--accent-red)">🔴 Overdue</div>
+          <div class="followup-list" id="followup-overdue"></div>
+        </div>
+        <div class="followup-section">
+          <div class="followup-section-title" style="color:var(--accent)">🔵 Today</div>
+          <div class="followup-list" id="followup-today"></div>
+        </div>
+        <div class="followup-section">
+          <div class="followup-section-title" style="color:var(--accent-yellow)">🟡 Tomorrow</div>
+          <div class="followup-list" id="followup-tomorrow"></div>
+        </div>
+        <div class="followup-section">
+          <div class="followup-section-title">📅 Upcoming</div>
+          <div class="followup-list" id="followup-upcoming"></div>
+        </div>
+      </div><!-- /followups -->
+
+
+      <!-- ══════════════════════════════════════════
+           TAB: SETTINGS
+      ══════════════════════════════════════════ -->
+      <div class="tab-panel" id="tab-settings">
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:20px">Settings</div>
+
+        <div class="settings-section">
+          <div class="settings-section-header">🎨 Appearance</div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Dark Mode</div>
+              <div class="settings-desc">Toggle between dark and light interface</div>
+            </div>
+            <div class="toggle on" id="setting-darkmode"></div>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-header">🎯 CRM Preferences</div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Daily Lead Target</div>
+              <div class="settings-desc">How many leads to contact per day</div>
+            </div>
+            <input type="number" class="form-input" id="setting-daily-target" value="15" min="1" max="50" style="width:80px;text-align:center">
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-header">💾 Data Management</div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Import Leads</div>
+              <div class="settings-desc">Upload a new CSV file</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="Nav.go('leads'); document.getElementById('import-section').style.display=''; document.getElementById('csv-input').click()">Import CSV</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Export Leads</div>
+              <div class="settings-desc">Download all leads as CSV</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.exportLeads()">Export CSV</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Backup Data</div>
+              <div class="settings-desc">Download full JSON backup of all CRM data</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="Settings.backupData()">💾 Backup</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Restore Backup</div>
+              <div class="settings-desc">Restore from a JSON backup file</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="Settings.restoreData()">↑ Restore</button>
+          </div>
+          <div class="settings-row">
+            <div>
+              <div class="settings-label" style="color:var(--accent-red)">Reset Dashboard</div>
+              <div class="settings-desc">Delete all data. This cannot be undone.</div>
+            </div>
+            <button class="btn btn-danger btn-sm" onclick="Settings.resetDashboard()">Reset All</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-header">ℹ️ About</div>
+          <div class="settings-row">
+            <div class="settings-label">LeadOS CRM</div>
+            <div style="font-size:12px;color:var(--text-muted)">v1.0.0 · Premium Sales OS</div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-label">Storage</div>
+            <div style="font-size:12px;color:var(--text-muted)" id="storage-info">—</div>
+          </div>
+        </div>
+      </div><!-- /settings -->
+
+    </main><!-- /content-area -->
+  </div><!-- /main-content -->
+</div><!-- /app-layout -->
+
+
+<!-- ════════════════════════════════════
+     MODALS
+════════════════════════════════════ -->
+
+<!-- Edit Lead Modal -->
+<div class="modal-backdrop" id="edit-lead-modal" onclick="if(event.target===this) Modal.close('edit-lead-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Edit Lead</div>
+      <button class="modal-close" onclick="Modal.close('edit-lead-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="edit-lead-id">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="form-group">
+          <label class="form-label">Business Name</label>
+          <input class="form-input" id="edit-name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <input class="form-input" id="edit-category">
+        </div>
+        <div class="form-group">
+          <label class="form-label">City</label>
+          <input class="form-input" id="edit-city">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input class="form-input" id="edit-phone">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label class="form-label">Website</label>
+          <input class="form-input" id="edit-website" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Lead Quality</label>
+          <select class="form-input" id="edit-quality">
+            <option>Hot</option><option>High</option><option>Medium</option><option>Low</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Call Result</label>
+          <select class="form-input" id="edit-call-result">
+            <option>Not Called</option><option>No Answer</option><option>Busy</option>
+            <option>Interested</option><option>Rejected</option><option>Follow-up Needed</option><option>Approved</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pipeline Stage</label>
+          <select class="form-input" id="edit-pipeline">
+            <option>NEW</option><option>CONTACTED</option><option>INTERESTED</option>
+            <option>FOLLOW-UP</option><option>PROPOSAL SENT</option><option>APPROVED</option>
+            <option>REJECTED</option><option>CLOSED</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Deal Price (₹)</label>
+          <input class="form-input" id="edit-deal-price" type="number" placeholder="0">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label class="form-label">Demo URL</label>
+          <input class="form-input" id="edit-demo-url" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Follow-up Date</label>
+          <input class="form-input" id="edit-followup" type="date">
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label class="form-label">Notes</label>
+          <textarea class="form-input" id="edit-notes" rows="3" style="resize:vertical"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="Modal.close('edit-lead-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="LeadsCRM.saveEditModal()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Deal Price Modal -->
+<div class="modal-backdrop" id="deal-modal" onclick="if(event.target===this) Modal.close('deal-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">🎉 Deal Approved!</div>
+      <button class="modal-close" onclick="Modal.close('deal-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="text-align:center;margin-bottom:20px">
+        <div style="font-size:32px;margin-bottom:8px">🎊</div>
+        <div style="font-size:14px;color:var(--text-secondary)">Enter deal details for</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--accent-green)" id="deal-lead-name"></div>
+      </div>
+      <input type="hidden" id="deal-lead-id">
+      <div class="form-group">
+        <label class="form-label">Total Project Price (₹)</label>
+        <div class="price-input-wrap">
+          <input class="form-input" id="deal-total" type="number" placeholder="0" oninput="
+            const t = parseFloat(this.value)||0;
+            const a = parseFloat(document.getElementById('deal-advance').value)||0;
+            document.getElementById('deal-pending').value = Math.max(0, t-a).toFixed(0);
+          ">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Advance Paid (₹)</label>
+        <div class="price-input-wrap">
+          <input class="form-input" id="deal-advance" type="number" placeholder="0" oninput="
+            const t = parseFloat(document.getElementById('deal-total').value)||0;
+            const a = parseFloat(this.value)||0;
+            document.getElementById('deal-pending').value = Math.max(0, t-a).toFixed(0);
+          ">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Pending Balance (₹)</label>
+        <div class="price-input-wrap">
+          <input class="form-input" id="deal-pending" type="number" placeholder="Auto-calculated">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="Modal.close('deal-modal')">Skip</button>
+      <button class="btn btn-success" onclick="TodayLeads.saveDeal()">💰 Save Deal</button>
+    </div>
+  </div>
+</div>
+
+<!-- Follow-up Modal (from Today's Leads) -->
+<div class="modal-backdrop" id="followup-modal" onclick="if(event.target===this) Modal.close('followup-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">📅 Schedule Follow-up</div>
+      <button class="modal-close" onclick="Modal.close('followup-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="followup-lead-id">
+      <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:16px;color:var(--accent)" id="followup-lead-name"></div>
+      <div class="form-group">
+        <label class="form-label">Follow-up Date</label>
+        <input class="form-input" id="followup-date-input" type="date">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes / Reason</label>
+        <textarea class="form-input" id="followup-notes-input" rows="3" placeholder="What to discuss..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="Modal.close('followup-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="Followups.saveFromModal()">Schedule</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add Follow-up Modal (manual) -->
+<div class="modal-backdrop" id="add-followup-modal" onclick="if(event.target===this) Modal.close('add-followup-modal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">📅 Add Follow-up</div>
+      <button class="modal-close" onclick="Modal.close('add-followup-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Business Name</label>
+        <input class="form-input" id="manual-fu-name" placeholder="Enter business name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Follow-up Date</label>
+        <input class="form-input" id="manual-fu-date" type="date">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea class="form-input" id="manual-fu-notes" rows="2" placeholder="What to discuss..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="Modal.close('add-followup-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="
+        const n = document.getElementById('manual-fu-name').value;
+        const d = document.getElementById('manual-fu-date').value;
+        const note = document.getElementById('manual-fu-notes').value;
+        if (!n || !d) { Toast.show('Name and date required','warning'); return; }
+        Store.addFollowup({ name: n, date: d, note });
+        Modal.close('add-followup-modal');
+        Followups.render();
+        Toast.show('Follow-up scheduled', 'success', '📅');
+      ">Schedule</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal-backdrop" id="confirm-modal" onclick="if(event.target===this) Modal.close('confirm-modal')">
+  <div class="modal" style="max-width:360px">
+    <div class="modal-header">
+      <div class="modal-title">⚠️ Confirm</div>
+      <button class="modal-close" onclick="Modal.close('confirm-modal')">×</button>
+    </div>
+    <div class="modal-body">
+      <p id="confirm-msg" style="color:var(--text-secondary);font-size:13px;line-height:1.6"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="Modal.close('confirm-modal')">Cancel</button>
+      <button class="btn btn-danger" id="confirm-ok">Confirm</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════ -->
+<script>// ── STORE ──────────────────────────────────────────────────────
+window.Store = {
+  _listeners: {},
+
+  get: (key) => {
+    try {
+      const raw = localStorage.getItem('crm_' + key);
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  },
+
+  set: (key, val) => {
+    try {
+      localStorage.setItem('crm_' + key, JSON.stringify(val));
+      Store._emit(key, val);
+    } catch(e) { console.error('Store error', e); }
+  },
+
+  _emit: (key, val) => {
+    (Store._listeners[key] || []).forEach(fn => fn(val));
+  },
+
+  on: (key, fn) => {
+    Store._listeners[key] = Store._listeners[key] || [];
+    Store._listeners[key].push(fn);
+  },
+
+  // ── Lead helpers ──
+  getLeads: () => Store.get('leads') || [],
+  setLeads: (leads) => Store.set('leads', leads),
+
+  getTodayLeads: () => Store.get('today_leads') || [],
+  setTodayLeads: (ids) => Store.set('today_leads', ids),
+
+  getLeadStatus: (id) => {
+    const map = Store.get('lead_status') || {};
+    return map[id] || {};
+  },
+
+  setLeadStatus: (id, status) => {
+    const map = Store.get('lead_status') || {};
+    map[id] = { ...(map[id] || {}), ...status };
+    Store.set('lead_status', map);
+  },
+
+  getPipelineStage: (id) => {
+    const map = Store.get('pipeline') || {};
+    return map[id] || 'NEW';
+  },
+
+  setPipelineStage: (id, stage) => {
+    const map = Store.get('pipeline') || {};
+    map[id] = stage;
+    Store.set('pipeline', map);
+  },
+
+  getFollowups: () => Store.get('followups') || [],
+  setFollowups: (arr) => Store.set('followups', arr),
+
+  addFollowup: (item) => {
+    const arr = Store.getFollowups();
+    arr.push({ ...item, id: 'fu_' + Date.now() });
+    Store.setFollowups(arr);
+  },
+
+  getSettings: () => Store.get('settings') || { darkMode: true, dailyTarget: 15 },
+  setSettings: (s) => Store.set('settings', s),
+};
+
+// ── UTILS ──────────────────────────────────────────────────────
+window.Utils = {
+  fmtCurrency: (n) => {
+    if (!n) return '—';
+    n = parseFloat(n);
+    if (n >= 100000) return '₹' + (n/100000).toFixed(1) + 'L';
+    if (n >= 1000) return '₹' + (n/1000).toFixed(1) + 'K';
+    return '₹' + n.toLocaleString('en-IN');
+  },
+
+  fmtDate: (d) => {
+    if (!d) return '—';
+    const dt = new Date(d);
+    if (isNaN(dt)) return d;
+    return dt.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  },
+
+  today: () => new Date().toISOString().slice(0, 10),
+
+  isPast: (d) => d && d < Utils.today(),
+
+  isToday: (d) => d === Utils.today(),
+
+  isTomorrow: (d) => {
+    const t = new Date(); t.setDate(t.getDate() + 1);
+    return d === t.toISOString().slice(0, 10);
+  },
+
+  uid: () => Math.random().toString(36).slice(2, 10),
+
+  debounce: (fn, ms) => {
+    let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+  },
+
+  stars: (n) => {
+    if (!n) return '';
+    const full = Math.round(n);
+    return '★'.repeat(full) + '☆'.repeat(Math.max(0, 5 - full));
+  },
+
+  qualityBadge: (q) => {
+    const map = {
+      'High': 'badge-green',
+      'Medium': 'badge-yellow',
+      'Low': 'badge-red',
+      'Hot': 'badge-orange',
+    };
+    return `<span class="badge ${map[q] || 'badge-gray'}">${q || 'Unknown'}</span>`;
+  },
+
+  statusBadge: (s) => {
+    const map = {
+      'Interested': 'badge-green',
+      'Approved': 'badge-green',
+      'Rejected': 'badge-red',
+      'Not Called': 'badge-gray',
+      'No Answer': 'badge-yellow',
+      'Busy': 'badge-orange',
+      'Follow-up Needed': 'badge-blue',
+      'Closed': 'badge-purple',
+    };
+    return `<span class="badge ${map[s] || 'badge-gray'}">${s || 'Not Called'}</span>`;
+  },
+
+  pipelineBadge: (s) => {
+    const map = {
+      'NEW': 'badge-gray',
+      'CONTACTED': 'badge-blue',
+      'INTERESTED': 'badge-green',
+      'FOLLOW-UP': 'badge-yellow',
+      'PROPOSAL SENT': 'badge-purple',
+      'APPROVED': 'badge-green',
+      'REJECTED': 'badge-red',
+      'CLOSED': 'badge-orange',
+    };
+    return `<span class="badge ${map[s] || 'badge-gray'}">${s || 'NEW'}</span>`;
+  },
+
+  sanitize: (str) => {
+    const d = document.createElement('div');
+    d.textContent = str || '';
+    return d.innerHTML;
+  },
+
+  downloadJSON: (data, filename) => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = filename; a.click();
+  },
+
+  downloadCSV: (rows, filename) => {
+    if (!rows.length) return;
+    const headers = Object.keys(rows[0]);
+    const csv = [headers.join(','), ...rows.map(r =>
+      headers.map(h => JSON.stringify(r[h] ?? '')).join(',')
+    )].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = filename; a.click();
+  },
+};
+
+// ── TOAST ──────────────────────────────────────────────────────
+window.Toast = {
+  container: null,
+  init() {
+    this.container = document.getElementById('toast-container');
+  },
+  show(msg, type = 'info', icon = '') {
+    if (!this.container) return;
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
+    el.innerHTML = `<span>${icon || icons[type]}</span><span>${msg}</span>`;
+    this.container.appendChild(el);
+    setTimeout(() => el.remove(), 3500);
+  }
+};
+
+// ── CSV PARSER ─────────────────────────────────────────────────
+window.CSVParser = {
+  // Parse CSV string to array of objects
+  parse(text) {
+    const lines = text.split(/\r?\n/).filter(l => l.trim());
+    if (!lines.length) return [];
+
+    const headers = CSVParser._splitLine(lines[0]).map(h => h.trim());
+    const rows = [];
+
+    for (let i = 1; i < lines.length; i++) {
+      const vals = CSVParser._splitLine(lines[i]);
+      const row = {};
+      headers.forEach((h, j) => { row[h] = (vals[j] || '').trim(); });
+      rows.push(row);
+    }
+    return rows;
+  },
+
+  _splitLine(line) {
+    const result = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (inQ && line[i+1] === '"') { cur += '"'; i++; }
+        else inQ = !inQ;
+      } else if (c === ',' && !inQ) {
+        result.push(cur); cur = '';
+      } else {
+        cur += c;
+      }
+    }
+    result.push(cur);
+    return result;
+  },
+
+  // Normalize raw CSV rows to our lead format
+  normalizeLeads(rows) {
+    return rows.map((r, idx) => {
+      // Try to intelligently map various column names
+      const get = (...keys) => {
+        for (const k of keys) {
+          const found = Object.keys(r).find(rk => rk.toLowerCase().replace(/[\s_-]/g, '') === k.toLowerCase().replace(/[\s_-]/g, ''));
+          if (found && r[found]) return r[found];
+        }
+        return '';
+      };
+
+      const name = get('businessname', 'business_name', 'name', 'company', 'shopname', 'shop_name', 'storename');
+      const phone = get('phone', 'phonenumber', 'phone_number', 'mobile', 'contact', 'tel');
+      const website = get('website', 'url', 'websiteurl', 'web', 'siteurl');
+      const category = get('category', 'type', 'businesstype', 'niche', 'industry');
+      const city = get('city', 'location', 'area', 'town', 'place');
+      const rating = get('rating', 'googlerating', 'google_rating', 'stars', 'score');
+      const reviews = get('reviews', 'reviewscount', 'reviews_count', 'totalreviews', 'reviewcount');
+      const quality = get('quality', 'leadquality', 'lead_quality', 'grade', 'tier');
+      const hasWeb = get('haswebsite', 'has_website', 'website_status') || (website ? 'Yes' : 'No');
+
+      return {
+        id: 'lead_' + Date.now() + '_' + idx,
+        businessName: name || get(Object.keys(r)[0]) || 'Unknown',
+        category: category || 'Unknown',
+        city: city || '',
+        phone: phone || '',
+        website: website || '',
+        hasWebsite: hasWeb === 'Yes' || hasWeb === 'true' || hasWeb === '1' ? 'Yes' : 'No',
+        rating: parseFloat(rating) || 0,
+        reviews: parseInt(reviews) || 0,
+        quality: quality || CSVParser._autoQuality(parseFloat(rating), parseInt(reviews)),
+        notes: '',
+        demoUrl: '',
+        deployUrl: '',
+        dealPrice: '',
+        advancePaid: '',
+        pendingAmount: '',
+        importedAt: new Date().toISOString(),
+        // preserve raw fields
+        _raw: r
+      };
+    }).filter(l => l.businessName && l.businessName !== 'Unknown' || l.phone);
+  },
+
+  _autoQuality(rating, reviews) {
+    if (rating >= 4.5 && reviews >= 100) return 'Hot';
+    if (rating >= 4.0 && reviews >= 50) return 'High';
+    if (rating >= 3.5) return 'Medium';
+    return 'Low';
+  }
+};
+</script>
+<script>// ── CHARTS MODULE ─────────────────────────────────────────────
+window.Charts = {
+  instances: {},
+
+  destroy(id) {
+    if (this.instances[id]) {
+      this.instances[id].destroy();
+      delete this.instances[id];
+    }
+  },
+
+  defaults: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: {
+          color: '#8B9DC3',
+          font: { family: 'DM Sans', size: 11 },
+          boxWidth: 10,
+          boxHeight: 10,
+          padding: 12,
+        }
+      },
+      tooltip: {
+        backgroundColor: '#0D1525',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        titleColor: '#F0F4FF',
+        bodyColor: '#8B9DC3',
+        titleFont: { family: 'Syne', size: 12, weight: '700' },
+        bodyFont: { family: 'DM Sans', size: 12 },
+        padding: 12,
+        cornerRadius: 8,
+      }
+    }
+  },
+
+  // Revenue line chart
+  renderRevenue(leads, statuses) {
+    const ctx = document.getElementById('chartRevenue');
+    if (!ctx) return;
+    this.destroy('revenue');
+
+    // Group by month
+    const monthMap = {};
+    leads.forEach(l => {
+      const st = statuses[l.id] || {};
+      if (st.dealPrice) {
+        const d = new Date(l.importedAt || Date.now());
+        const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+        monthMap[key] = (monthMap[key] || 0) + parseFloat(st.dealPrice || 0);
+      }
+    });
+
+    const labels = Object.keys(monthMap);
+    const data = Object.values(monthMap);
+
+    // Add some placeholder months if empty
+    const today = new Date();
+    if (!labels.length) {
+      for (let i = 5; i >= 0; i--) {
+        const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
+        labels.push(d.toLocaleString('default', { month: 'short', year: '2-digit' }));
+        data.push(0);
+      }
+    }
+
+    this.instances.revenue = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Revenue',
+          data,
+          borderColor: '#4F8EF7',
+          backgroundColor: 'rgba(79,142,247,0.08)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#4F8EF7',
+          pointRadius: 4,
+          pointHoverRadius: 6,
+        }]
+      },
+      options: {
+        ...this.defaults,
+        scales: {
+          x: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: {
+            ticks: {
+              color: '#4A5A7A', font: { size: 10 },
+              callback: v => Utils.fmtCurrency(v)
+            },
+            grid: { color: 'rgba(255,255,255,0.04)' }
+          }
+        }
+      }
+    });
+  },
+
+  // Lead quality donut
+  renderQuality(leads) {
+    const ctx = document.getElementById('chartQuality');
+    if (!ctx) return;
+    this.destroy('quality');
+
+    const counts = { Hot: 0, High: 0, Medium: 0, Low: 0 };
+    leads.forEach(l => { if (counts[l.quality] !== undefined) counts[l.quality]++; });
+
+    this.instances.quality = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: Object.keys(counts),
+        datasets: [{
+          data: Object.values(counts),
+          backgroundColor: ['#FF8C42', '#22D3A5', '#FFD166', '#FF4E6A'],
+          borderWidth: 0,
+          hoverOffset: 6,
+        }]
+      },
+      options: {
+        ...this.defaults,
+        cutout: '68%',
+      }
+    });
+  },
+
+  // Funnel / Approval bar
+  renderFunnel(leads, statuses) {
+    const ctx = document.getElementById('chartFunnel');
+    if (!ctx) return;
+    this.destroy('funnel');
+
+    const stages = ['NEW', 'CONTACTED', 'INTERESTED', 'PROPOSAL SENT', 'APPROVED'];
+    const pipeline = Store.get('pipeline') || {};
+    const counts = stages.map(s => leads.filter(l => (pipeline[l.id] || 'NEW') === s).length);
+
+    this.instances.funnel = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: stages,
+        datasets: [{
+          label: 'Leads',
+          data: counts,
+          backgroundColor: ['#4A5A7A', '#4F8EF7', '#22D3A5', '#7C5CFC', '#22D3A5'],
+          borderRadius: 6,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        ...this.defaults,
+        indexAxis: 'y',
+        scales: {
+          x: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: { ticks: { color: '#8B9DC3', font: { size: 10 } }, grid: { display: false } }
+        }
+      }
+    });
+  },
+
+  // Approval vs rejection pie
+  renderApproval(leads, statuses) {
+    const ctx = document.getElementById('chartApproval');
+    if (!ctx) return;
+    this.destroy('approval');
+
+    let approved = 0, rejected = 0, pending = 0;
+    leads.forEach(l => {
+      const s = (statuses[l.id] || {}).callResult || 'Not Called';
+      if (s === 'Approved') approved++;
+      else if (s === 'Rejected') rejected++;
+      else pending++;
+    });
+
+    this.instances.approval = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Approved', 'Rejected', 'Pending'],
+        datasets: [{
+          data: [approved, rejected, pending],
+          backgroundColor: ['#22D3A5', '#FF4E6A', '#4A5A7A'],
+          borderWidth: 0,
+          hoverOffset: 4,
+        }]
+      },
+      options: { ...this.defaults }
+    });
+  },
+
+  // Category distribution
+  renderCategory(leads) {
+    const ctx = document.getElementById('chartCategory');
+    if (!ctx) return;
+    this.destroy('category');
+
+    const counts = {};
+    leads.forEach(l => {
+      const c = l.category || 'Unknown';
+      counts[c] = (counts[c] || 0) + 1;
+    });
+
+    // Top 8 categories
+    const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0, 8);
+    const palette = ['#4F8EF7','#7C5CFC','#22D3A5','#FF8C42','#FFD166','#FF4E6A','#06B6D4','#10B981'];
+
+    this.instances.category = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: sorted.map(x => x[0]),
+        datasets: [{
+          label: 'Leads',
+          data: sorted.map(x => x[1]),
+          backgroundColor: palette,
+          borderRadius: 6,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        ...this.defaults,
+        scales: {
+          x: {
+            ticks: { color: '#4A5A7A', font: { size: 9 }, maxRotation: 30 },
+            grid: { display: false }
+          },
+          y: {
+            ticks: { color: '#4A5A7A', font: { size: 10 } },
+            grid: { color: 'rgba(255,255,255,0.04)' }
+          }
+        }
+      }
+    });
+  },
+
+  // Daily calls
+  renderDailyCalls(leads, statuses) {
+    const ctx = document.getElementById('chartDailyCalls');
+    if (!ctx) return;
+    this.destroy('dailyCalls');
+
+    // Last 7 days
+    const days = [];
+    const called = [];
+    const approved = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(); d.setDate(d.getDate() - i);
+      const dk = d.toISOString().slice(0, 10);
+      days.push(d.toLocaleDateString('en', { weekday: 'short' }));
+      let c = 0, a = 0;
+      leads.forEach(l => {
+        const st = statuses[l.id] || {};
+        if (st.calledDate === dk) c++;
+        if (st.approvedDate === dk) a++;
+      });
+      called.push(c);
+      approved.push(a);
+    }
+
+    this.instances.dailyCalls = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: days,
+        datasets: [
+          {
+            label: 'Called',
+            data: called,
+            backgroundColor: 'rgba(79,142,247,0.7)',
+            borderRadius: 5,
+            borderSkipped: false,
+          },
+          {
+            label: 'Approved',
+            data: approved,
+            backgroundColor: 'rgba(34,211,165,0.7)',
+            borderRadius: 5,
+            borderSkipped: false,
+          }
+        ]
+      },
+      options: {
+        ...this.defaults,
+        scales: {
+          x: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { display: false } },
+          y: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } }
+        }
+      }
+    });
+  },
+
+  renderAll() {
+    const leads = Store.getLeads();
+    const statusMap = Store.get('lead_status') || {};
+    this.renderRevenue(leads, statusMap);
+    this.renderQuality(leads);
+    this.renderFunnel(leads, statusMap);
+    this.renderApproval(leads, statusMap);
+    this.renderCategory(leads);
+    this.renderDailyCalls(leads, statusMap);
+    // Also render analytics tab charts
+    this.renderForTab('a-', leads, statusMap);
+  },
+
+  renderForTab(prefix, leads, statusMap) {
+    const makeChart = (id, type, data, options) => {
+      const ctx = document.getElementById(prefix + id);
+      if (!ctx) return;
+      const key = prefix + id;
+      this.destroy(key);
+      this.instances[key] = new Chart(ctx, { type, data, options });
+    };
+
+    // Revenue
+    const monthMap = {};
+    leads.forEach(l => {
+      const st = statusMap[l.id] || {};
+      if (st.dealPrice) {
+        const d = new Date(l.importedAt || Date.now());
+        const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+        monthMap[key] = (monthMap[key] || 0) + parseFloat(st.dealPrice || 0);
+      }
+    });
+    let rLabels = Object.keys(monthMap), rData = Object.values(monthMap);
+    if (!rLabels.length) {
+      const today = new Date();
+      for (let i = 5; i >= 0; i--) {
+        const d = new Date(today.getFullYear(), today.getMonth() - i, 1);
+        rLabels.push(d.toLocaleString('default', { month: 'short', year: '2-digit' }));
+        rData.push(0);
+      }
+    }
+    makeChart('chartRevenue', 'line', {
+      labels: rLabels,
+      datasets: [{ label: 'Revenue', data: rData, borderColor: '#4F8EF7', backgroundColor: 'rgba(79,142,247,0.08)', borderWidth: 2, fill: true, tension: 0.4, pointBackgroundColor: '#4F8EF7', pointRadius: 4 }]
+    }, { ...this.defaults, scales: { x: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } }, y: { ticks: { color: '#4A5A7A', font: { size: 10 }, callback: v => Utils.fmtCurrency(v) }, grid: { color: 'rgba(255,255,255,0.04)' } } } });
+
+    // Quality
+    const qCounts = { Hot: 0, High: 0, Medium: 0, Low: 0 };
+    leads.forEach(l => { if (qCounts[l.quality] !== undefined) qCounts[l.quality]++; });
+    makeChart('chartQuality', 'doughnut', {
+      labels: Object.keys(qCounts),
+      datasets: [{ data: Object.values(qCounts), backgroundColor: ['#FF8C42','#22D3A5','#FFD166','#FF4E6A'], borderWidth: 0, hoverOffset: 6 }]
+    }, { ...this.defaults, cutout: '68%' });
+
+    // Funnel
+    const stages = ['NEW','CONTACTED','INTERESTED','PROPOSAL SENT','APPROVED'];
+    const pipeline = Store.get('pipeline') || {};
+    makeChart('chartFunnel', 'bar', {
+      labels: stages,
+      datasets: [{ label: 'Leads', data: stages.map(s => leads.filter(l => (pipeline[l.id] || 'NEW') === s).length), backgroundColor: ['#4A5A7A','#4F8EF7','#22D3A5','#7C5CFC','#22D3A5'], borderRadius: 6, borderSkipped: false }]
+    }, { ...this.defaults, indexAxis: 'y', scales: { x: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } }, y: { ticks: { color: '#8B9DC3', font: { size: 10 } }, grid: { display: false } } } });
+
+    // Approval
+    let aApp = 0, aRej = 0, aPend = 0;
+    leads.forEach(l => { const s = (statusMap[l.id] || {}).callResult || 'Not Called'; if (s === 'Approved') aApp++; else if (s === 'Rejected') aRej++; else aPend++; });
+    makeChart('chartApproval', 'pie', {
+      labels: ['Approved','Rejected','Pending'],
+      datasets: [{ data: [aApp, aRej, aPend], backgroundColor: ['#22D3A5','#FF4E6A','#4A5A7A'], borderWidth: 0, hoverOffset: 4 }]
+    }, { ...this.defaults });
+
+    // Daily calls
+    const days = [], called = [], approved = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(); d.setDate(d.getDate() - i);
+      const dk = d.toISOString().slice(0, 10);
+      days.push(d.toLocaleDateString('en', { weekday: 'short' }));
+      let c = 0, a = 0;
+      leads.forEach(l => { const st = statusMap[l.id] || {}; if (st.calledDate === dk) c++; if (st.approvedDate === dk) a++; });
+      called.push(c); approved.push(a);
+    }
+    makeChart('chartDailyCalls', 'bar', {
+      labels: days,
+      datasets: [
+        { label: 'Called', data: called, backgroundColor: 'rgba(79,142,247,0.7)', borderRadius: 5, borderSkipped: false },
+        { label: 'Approved', data: approved, backgroundColor: 'rgba(34,211,165,0.7)', borderRadius: 5, borderSkipped: false }
+      ]
+    }, { ...this.defaults, scales: { x: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { display: false } }, y: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } } } });
+
+    // Category
+    const cCounts = {};
+    leads.forEach(l => { const c = l.category || 'Unknown'; cCounts[c] = (cCounts[c] || 0) + 1; });
+    const sorted = Object.entries(cCounts).sort((a,b) => b[1]-a[1]).slice(0,8);
+    const palette = ['#4F8EF7','#7C5CFC','#22D3A5','#FF8C42','#FFD166','#FF4E6A','#06B6D4','#10B981'];
+    makeChart('chartCategory', 'bar', {
+      labels: sorted.map(x => x[0]),
+      datasets: [{ label: 'Leads', data: sorted.map(x => x[1]), backgroundColor: palette, borderRadius: 6, borderSkipped: false }]
+    }, { ...this.defaults, scales: { x: { ticks: { color: '#4A5A7A', font: { size: 9 }, maxRotation: 30 }, grid: { display: false } }, y: { ticks: { color: '#4A5A7A', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.04)' } } } });
+  }
+};
+</script>
+<script>// ── LEADS CRM MODULE ───────────────────────────────────────────
+window.LeadsCRM = {
+  page: 1,
+  perPage: 25,
+  sortCol: '',
+  sortDir: 1,
+  filtered: [],
+
+  init() {
+    this.bindImport();
+    this.bindFilters();
+    this.render();
+  },
+
+  bindImport() {
+    const dz = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('csv-input');
+
+    if (!dz) return;
+
+    dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
+    dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+    dz.addEventListener('drop', e => {
+      e.preventDefault();
+      dz.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file) this.processFile(file);
+    });
+
+    fileInput?.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (file) this.processFile(file);
+      e.target.value = '';
+    });
+  },
+
+  processFile(file) {
+    const name = file.name.toLowerCase();
+    if (!name.endsWith('.csv') && !name.endsWith('.txt') && !name.endsWith('.tsv')) {
+      Toast.show('Please upload a CSV file', 'error');
+      return;
+    }
+
+    Toast.show('Importing leads...', 'info', '📂');
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const rows = CSVParser.parse(e.target.result);
+        const leads = CSVParser.normalizeLeads(rows);
+
+        if (!leads.length) {
+          Toast.show('No valid leads found in file', 'error');
+          return;
+        }
+
+        // Merge with existing (avoid duplicates by phone)
+        const existing = Store.getLeads();
+        const existingPhones = new Set(existing.map(l => l.phone).filter(Boolean));
+        const newLeads = leads.filter(l => !l.phone || !existingPhones.has(l.phone));
+        const merged = [...existing, ...newLeads];
+
+        Store.setLeads(merged);
+        Toast.show(`Imported ${newLeads.length} new leads (${leads.length - newLeads.length} duplicates skipped)`, 'success');
+
+        // Hide drop zone, show table
+        document.getElementById('import-section').style.display = 'none';
+        this.render();
+        Dashboard.refreshStats();
+      } catch (err) {
+        Toast.show('Failed to parse file: ' + err.message, 'error');
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
+  },
+
+  getFilters() {
+    return {
+      search: document.getElementById('f-search')?.value?.toLowerCase() || '',
+      category: document.getElementById('f-category')?.value || '',
+      city: document.getElementById('f-city')?.value?.toLowerCase() || '',
+      hasWebsite: document.getElementById('f-website')?.value || '',
+      quality: document.getElementById('f-quality')?.value || '',
+      status: document.getElementById('f-status')?.value || '',
+      pipeline: document.getElementById('f-pipeline')?.value || '',
+      minRating: parseFloat(document.getElementById('f-rating')?.value) || 0,
+    };
+  },
+
+  applyFilters(leads) {
+    const f = this.getFilters();
+    const statusMap = Store.get('lead_status') || {};
+    const pipelineMap = Store.get('pipeline') || {};
+
+    return leads.filter(l => {
+      const st = statusMap[l.id] || {};
+      if (f.search && !`${l.businessName} ${l.city} ${l.phone} ${l.category}`.toLowerCase().includes(f.search)) return false;
+      if (f.category && l.category !== f.category) return false;
+      if (f.city && !l.city.toLowerCase().includes(f.city)) return false;
+      if (f.hasWebsite === 'yes' && l.hasWebsite !== 'Yes') return false;
+      if (f.hasWebsite === 'no' && l.hasWebsite !== 'No') return false;
+      if (f.quality && l.quality !== f.quality) return false;
+      if (f.status && (st.callResult || 'Not Called') !== f.status) return false;
+      if (f.pipeline && (pipelineMap[l.id] || 'NEW') !== f.pipeline) return false;
+      if (f.minRating && l.rating < f.minRating) return false;
+      return true;
+    });
+  },
+
+  bindFilters() {
+    const debounced = Utils.debounce(() => { this.page = 1; this.render(); }, 250);
+    ['f-search','f-category','f-city','f-website','f-quality','f-status','f-pipeline','f-rating'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', debounced);
+      document.getElementById(id)?.addEventListener('change', debounced);
+    });
+  },
+
+  populateFilterOptions(leads) {
+    const cats = [...new Set(leads.map(l => l.category).filter(Boolean))].sort();
+    const catSel = document.getElementById('f-category');
+    if (catSel && catSel.options.length <= 1) {
+      cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c; opt.textContent = c;
+        catSel.appendChild(opt);
+      });
+    }
+  },
+
+  sort(leads) {
+    if (!this.sortCol) return leads;
+    return [...leads].sort((a, b) => {
+      let av = a[this.sortCol] || '';
+      let bv = b[this.sortCol] || '';
+      if (typeof av === 'number') return (av - bv) * this.sortDir;
+      return av.toString().localeCompare(bv.toString()) * this.sortDir;
+    });
+  },
+
+  render() {
+    const leads = Store.getLeads();
+    const importSection = document.getElementById('import-section');
+    const tableSection = document.getElementById('leads-table-section');
+
+    if (!leads.length) {
+      if (importSection) importSection.style.display = '';
+      if (tableSection) tableSection.style.display = 'none';
+      return;
+    }
+
+    if (importSection) importSection.style.display = 'none';
+    if (tableSection) tableSection.style.display = '';
+
+    this.populateFilterOptions(leads);
+    this.filtered = this.sort(this.applyFilters(leads));
+
+    const total = this.filtered.length;
+    const start = (this.page - 1) * this.perPage;
+    const page = this.filtered.slice(start, start + this.perPage);
+
+    this.renderTable(page);
+    this.renderPagination(total);
+  },
+
+  renderTable(leads) {
+    const tbody = document.getElementById('leads-tbody');
+    if (!tbody) return;
+
+    const statusMap = Store.get('lead_status') || {};
+    const pipelineMap = Store.get('pipeline') || {};
+    const todayIds = new Set(Store.getTodayLeads());
+
+    if (!leads.length) {
+      tbody.innerHTML = `<tr><td colspan="16"><div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-title">No leads match your filters</div><div class="empty-state-sub">Try adjusting your search or filters</div></div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = leads.map(l => {
+      const st = statusMap[l.id] || {};
+      const stage = pipelineMap[l.id] || 'NEW';
+      const isToday = todayIds.has(l.id);
+
+      return `<tr data-id="${l.id}">
+        <td>
+          <label class="cb-wrap" onclick="event.stopPropagation()">
+            <input type="checkbox" class="lead-checkbox" value="${l.id}" ${isToday ? 'checked' : ''} onchange="LeadsCRM.toggleTodayLead('${l.id}', this.checked)">
+            <span class="cb-box"></span>
+          </label>
+        </td>
+        <td class="td-name" title="${Utils.sanitize(l.businessName)}">${Utils.sanitize(l.businessName)}</td>
+        <td>${Utils.sanitize(l.category)}</td>
+        <td>${Utils.sanitize(l.city)}</td>
+        <td><a href="tel:${l.phone}" style="color:var(--accent);text-decoration:none">${Utils.sanitize(l.phone)}</a></td>
+        <td>${l.website ? `<a href="${Utils.sanitize(l.website)}" target="_blank" style="color:var(--accent-2);font-size:11px">🔗 Visit</a>` : '—'}</td>
+        <td><span class="badge ${l.hasWebsite === 'Yes' ? 'badge-green' : 'badge-red'}">${l.hasWebsite}</span></td>
+        <td><span class="stars">${Utils.stars(l.rating)}</span> <span style="font-size:11px;color:var(--text-muted)">${l.rating || ''}</span></td>
+        <td style="color:var(--text-muted)">${l.reviews || ''}</td>
+        <td>${Utils.qualityBadge(l.quality)}</td>
+        <td>${Utils.statusBadge(st.callResult || 'Not Called')}</td>
+        <td>${Utils.pipelineBadge(stage)}</td>
+        <td style="color:var(--accent-green);font-weight:600">${st.dealPrice ? Utils.fmtCurrency(st.dealPrice) : '—'}</td>
+        <td>${st.notes ? `<span title="${Utils.sanitize(st.notes)}" style="cursor:help">📝</span>` : '—'}</td>
+        <td>${st.followupDate ? Utils.fmtDate(st.followupDate) : '—'}</td>
+        <td>
+          <div style="display:flex;gap:4px">
+            <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.openEditModal('${l.id}')" title="Edit">✏️</button>
+            <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.deleteLead('${l.id}')" title="Delete">🗑️</button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+
+    // Sort headers
+    document.querySelectorAll('#leads-table thead th[data-col]').forEach(th => {
+      th.onclick = () => {
+        const col = th.dataset.col;
+        if (this.sortCol === col) this.sortDir *= -1;
+        else { this.sortCol = col; this.sortDir = 1; }
+        this.render();
+      };
+    });
+  },
+
+  renderPagination(total) {
+    const el = document.getElementById('leads-pagination');
+    if (!el) return;
+    const pages = Math.ceil(total / this.perPage);
+    const start = (this.page - 1) * this.perPage + 1;
+    const end = Math.min(this.page * this.perPage, total);
+
+    el.innerHTML = `
+      <span class="pagination-info">Showing ${start}–${end} of ${total} leads</span>
+      <button class="page-btn" onclick="LeadsCRM.goPage(${this.page - 1})" ${this.page <= 1 ? 'disabled' : ''}>‹</button>
+      ${Array.from({length: Math.min(pages, 7)}, (_, i) => {
+        const p = i + 1;
+        return `<button class="page-btn ${p === this.page ? 'active' : ''}" onclick="LeadsCRM.goPage(${p})">${p}</button>`;
+      }).join('')}
+      <button class="page-btn" onclick="LeadsCRM.goPage(${this.page + 1})" ${this.page >= pages ? 'disabled' : ''}>›</button>
+    `;
+  },
+
+  goPage(p) {
+    const total = this.filtered.length;
+    const pages = Math.ceil(total / this.perPage);
+    this.page = Math.max(1, Math.min(p, pages));
+    this.render();
+  },
+
+  toggleTodayLead(id, checked) {
+    const ids = Store.getTodayLeads();
+    const settings = Store.getSettings();
+    const max = settings.dailyTarget || 15;
+
+    if (checked) {
+      if (ids.length >= max) {
+        Toast.show(`Daily limit is ${max} leads. Deselect another first.`, 'warning', '⚠️');
+        // uncheck the box
+        document.querySelector(`.lead-checkbox[value="${id}"]`).checked = false;
+        return;
+      }
+      if (!ids.includes(id)) ids.push(id);
+    } else {
+      const idx = ids.indexOf(id);
+      if (idx > -1) ids.splice(idx, 1);
+    }
+
+    Store.setTodayLeads(ids);
+    Dashboard.refreshStats();
+    TodayLeads.render();
+    Toast.show(checked ? 'Added to Today\'s Leads' : 'Removed from Today\'s Leads', checked ? 'success' : 'info');
+  },
+
+  selectTopLeads() {
+    const leads = this.filtered;
+    const settings = Store.getSettings();
+    const max = settings.dailyTarget || 15;
+    const statusMap = Store.get('lead_status') || {};
+
+    // Score leads: hot > high > medium, no website preferred (more opportunity), no prior contact
+    const scored = leads
+      .filter(l => {
+        const st = statusMap[l.id] || {};
+        return !st.callResult || st.callResult === 'Not Called';
+      })
+      .map(l => {
+        let score = 0;
+        if (l.quality === 'Hot') score += 40;
+        else if (l.quality === 'High') score += 30;
+        else if (l.quality === 'Medium') score += 20;
+        if (l.hasWebsite === 'No') score += 10;
+        score += Math.min(l.rating * 5, 25);
+        return { ...l, _score: score };
+      })
+      .sort((a, b) => b._score - a._score)
+      .slice(0, max);
+
+    const ids = scored.map(l => l.id);
+    Store.setTodayLeads(ids);
+    Dashboard.refreshStats();
+    TodayLeads.render();
+    this.render();
+    Toast.show(`Selected top ${ids.length} leads for today`, 'success', '🎯');
+  },
+
+  clearTodayLeads() {
+    Store.setTodayLeads([]);
+    this.render();
+    TodayLeads.render();
+    Dashboard.refreshStats();
+    Toast.show('Today\'s leads cleared', 'info');
+  },
+
+  openEditModal(id) {
+    const leads = Store.getLeads();
+    const lead = leads.find(l => l.id === id);
+    if (!lead) return;
+
+    const st = Store.getLeadStatus(id);
+    const stage = Store.getPipelineStage(id);
+
+    Modal.open('edit-lead-modal');
+    document.getElementById('edit-lead-id').value = id;
+    document.getElementById('edit-name').value = lead.businessName || '';
+    document.getElementById('edit-category').value = lead.category || '';
+    document.getElementById('edit-city').value = lead.city || '';
+    document.getElementById('edit-phone').value = lead.phone || '';
+    document.getElementById('edit-website').value = lead.website || '';
+    document.getElementById('edit-quality').value = lead.quality || 'Medium';
+    document.getElementById('edit-call-result').value = st.callResult || 'Not Called';
+    document.getElementById('edit-pipeline').value = stage;
+    document.getElementById('edit-deal-price').value = st.dealPrice || '';
+    document.getElementById('edit-demo-url').value = lead.demoUrl || '';
+    document.getElementById('edit-notes').value = st.notes || '';
+    document.getElementById('edit-followup').value = st.followupDate || '';
+  },
+
+  saveEditModal() {
+    const id = document.getElementById('edit-lead-id').value;
+    const leads = Store.getLeads();
+    const idx = leads.findIndex(l => l.id === id);
+    if (idx === -1) return;
+
+    leads[idx].businessName = document.getElementById('edit-name').value;
+    leads[idx].category = document.getElementById('edit-category').value;
+    leads[idx].city = document.getElementById('edit-city').value;
+    leads[idx].phone = document.getElementById('edit-phone').value;
+    leads[idx].website = document.getElementById('edit-website').value;
+    leads[idx].quality = document.getElementById('edit-quality').value;
+    leads[idx].demoUrl = document.getElementById('edit-demo-url').value;
+    Store.setLeads(leads);
+
+    const callResult = document.getElementById('edit-call-result').value;
+    const stage = document.getElementById('edit-pipeline').value;
+    Store.setLeadStatus(id, {
+      callResult,
+      dealPrice: document.getElementById('edit-deal-price').value,
+      notes: document.getElementById('edit-notes').value,
+      followupDate: document.getElementById('edit-followup').value,
+    });
+    Store.setPipelineStage(id, stage);
+
+    Modal.close('edit-lead-modal');
+    this.render();
+    Dashboard.refreshStats();
+    Pipeline.render();
+    Toast.show('Lead updated', 'success');
+  },
+
+  deleteLead(id) {
+    Modal.confirm('Delete this lead? This cannot be undone.', () => {
+      const leads = Store.getLeads().filter(l => l.id !== id);
+      Store.setLeads(leads);
+      // remove from today too
+      const today = Store.getTodayLeads().filter(x => x !== id);
+      Store.setTodayLeads(today);
+      this.render();
+      Dashboard.refreshStats();
+      Pipeline.render();
+      TodayLeads.render();
+      Toast.show('Lead deleted', 'info');
+    });
+  },
+
+  exportLeads() {
+    const leads = Store.getLeads();
+    const statusMap = Store.get('lead_status') || {};
+    const pipelineMap = Store.get('pipeline') || {};
+
+    const rows = leads.map(l => {
+      const st = statusMap[l.id] || {};
+      return {
+        'Business Name': l.businessName,
+        'Category': l.category,
+        'City': l.city,
+        'Phone': l.phone,
+        'Website': l.website,
+        'Has Website': l.hasWebsite,
+        'Rating': l.rating,
+        'Reviews': l.reviews,
+        'Quality': l.quality,
+        'Call Result': st.callResult || '',
+        'Pipeline Stage': pipelineMap[l.id] || 'NEW',
+        'Deal Price': st.dealPrice || '',
+        'Notes': st.notes || '',
+        'Follow-up Date': st.followupDate || '',
+      };
+    });
+
+    Utils.downloadCSV(rows, 'leads_export_' + Utils.today() + '.csv');
+    Toast.show('Leads exported to CSV', 'success');
+  },
+};
+</script>
+<script>// ── TODAY'S LEADS ─────────────────────────────────────────────
+window.TodayLeads = {
+  init() { this.render(); },
+
+  render() {
+    const ids = Store.getTodayLeads();
+    const leads = Store.getLeads();
+    const todayLeads = ids.map(id => leads.find(l => l.id === id)).filter(Boolean);
+    const statusMap = Store.get('lead_status') || {};
+
+    const container = document.getElementById('today-cards');
+    const emptyState = document.getElementById('today-empty');
+
+    if (!todayLeads.length) {
+      if (container) container.innerHTML = '';
+      if (emptyState) emptyState.style.display = '';
+      this.updateStats(todayLeads, statusMap);
+      return;
+    }
+
+    if (emptyState) emptyState.style.display = 'none';
+
+    if (container) {
+      container.innerHTML = todayLeads.map(l => {
+        const st = statusMap[l.id] || {};
+        const result = st.callResult || 'Not Called';
+        const cardColor = result === 'Approved' ? 'rgba(34,211,165,0.08)' :
+                          result === 'Rejected' ? 'rgba(255,78,106,0.08)' :
+                          result === 'Interested' ? 'rgba(79,142,247,0.08)' : '';
+        return `
+        <div class="lead-card" id="card-${l.id}" style="${cardColor ? 'background:' + cardColor + ';border-color:' + cardColor.replace('0.08','0.3') : ''}">
+          <div class="lead-card-top">
+            <div class="lead-card-name">${Utils.sanitize(l.businessName)}</div>
+            <span class="badge ${result === 'Approved' ? 'badge-green' : result === 'Rejected' ? 'badge-red' : 'badge-gray'}" style="font-size:10px">${result}</span>
+          </div>
+          <div class="lead-card-meta">
+            ${l.category ? `<span class="badge badge-purple">${Utils.sanitize(l.category)}</span>` : ''}
+            ${l.city ? `<span class="badge badge-gray">📍 ${Utils.sanitize(l.city)}</span>` : ''}
+            ${Utils.qualityBadge(l.quality)}
+            <span class="badge ${l.hasWebsite === 'Yes' ? 'badge-blue' : 'badge-orange'}">${l.hasWebsite === 'Yes' ? '🌐 Has Website' : '⚡ No Website'}</span>
+          </div>
+          ${l.phone ? `<div class="lead-card-phone">📞 <span>${Utils.sanitize(l.phone)}</span></div>` : ''}
+          <div class="lead-card-status-row">
+            <select class="call-status-select" onchange="TodayLeads.updateStatus('${l.id}', this.value)">
+              ${['Not Called','No Answer','Busy','Interested','Rejected','Follow-up Needed','Approved']
+                .map(s => `<option value="${s}" ${result === s ? 'selected' : ''}>${s}</option>`).join('')}
+            </select>
+          </div>
+          <textarea class="notes-input" placeholder="Add notes..." onchange="TodayLeads.saveNote('${l.id}', this.value)">${Utils.sanitize(st.notes || '')}</textarea>
+          <div class="lead-card-actions">
+            ${l.phone ? `<a href="tel:${l.phone}" class="btn btn-primary btn-sm">📞 Call</a>` : ''}
+            ${l.phone ? `<a href="https://wa.me/${l.phone.replace(/\D/g,'')}" target="_blank" class="btn btn-success btn-sm">💬 WhatsApp</a>` : ''}
+            <button class="btn btn-ghost btn-sm" onclick="TodayLeads.scheduleFollowup('${l.id}')">📅 Follow-up</button>
+            <button class="btn btn-ghost btn-sm" onclick="LeadsCRM.toggleTodayLead('${l.id}', false)">✕ Remove</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    this.updateStats(todayLeads, statusMap);
+  },
+
+  updateStats(todayLeads, statusMap) {
+    const called = todayLeads.filter(l => {
+      const r = (statusMap[l.id] || {}).callResult;
+      return r && r !== 'Not Called';
+    }).length;
+    const approved = todayLeads.filter(l => (statusMap[l.id] || {}).callResult === 'Approved').length;
+    const rejected = todayLeads.filter(l => (statusMap[l.id] || {}).callResult === 'Rejected').length;
+
+    const el = id => document.getElementById(id);
+    if (el('today-stat-total')) el('today-stat-total').textContent = todayLeads.length;
+    if (el('today-stat-called')) el('today-stat-called').textContent = called;
+    if (el('today-stat-approved')) el('today-stat-approved').textContent = approved;
+    if (el('today-stat-rejected')) el('today-stat-rejected').textContent = rejected;
+    if (el('today-stat-remaining')) el('today-stat-remaining').textContent = todayLeads.length - called;
+  },
+
+  updateStatus(id, result) {
+    const prev = Store.getLeadStatus(id);
+    Store.setLeadStatus(id, { callResult: result, calledDate: Utils.today() });
+
+    // Update pipeline stage
+    const stageMap = {
+      'Interested': 'INTERESTED',
+      'Approved': 'APPROVED',
+      'Rejected': 'REJECTED',
+      'Follow-up Needed': 'FOLLOW-UP',
+      'No Answer': 'CONTACTED',
+      'Busy': 'CONTACTED',
+    };
+    if (stageMap[result]) Store.setPipelineStage(id, stageMap[result]);
+
+    if (result === 'Approved') {
+      // Show deal price modal
+      setTimeout(() => this.showDealModal(id), 100);
+    }
+
+    this.render();
+    Pipeline.render();
+    Dashboard.refreshStats();
+    Toast.show(`Status updated: ${result}`, 'success');
+  },
+
+  saveNote(id, note) {
+    Store.setLeadStatus(id, { notes: note });
+  },
+
+  scheduleFollowup(id) {
+    const leads = Store.getLeads();
+    const lead = leads.find(l => l.id === id);
+    Modal.open('followup-modal');
+    document.getElementById('followup-lead-id').value = id;
+    document.getElementById('followup-lead-name').textContent = lead?.businessName || '';
+    document.getElementById('followup-date-input').value = Utils.today();
+    document.getElementById('followup-notes-input').value = '';
+  },
+
+  showDealModal(id) {
+    const leads = Store.getLeads();
+    const lead = leads.find(l => l.id === id);
+    const st = Store.getLeadStatus(id);
+
+    Modal.open('deal-modal');
+    document.getElementById('deal-lead-id').value = id;
+    document.getElementById('deal-lead-name').textContent = lead?.businessName || '';
+    document.getElementById('deal-total').value = st.dealPrice || '';
+    document.getElementById('deal-advance').value = st.advancePaid || '';
+    document.getElementById('deal-pending').value = st.pendingAmount || '';
+  },
+
+  saveDeal() {
+    const id = document.getElementById('deal-lead-id').value;
+    const total = document.getElementById('deal-total').value;
+    const advance = document.getElementById('deal-advance').value;
+    const pending = document.getElementById('deal-pending').value || (total - advance);
+
+    Store.setLeadStatus(id, {
+      dealPrice: total,
+      advancePaid: advance,
+      pendingAmount: pending,
+      approvedDate: Utils.today(),
+      callResult: 'Approved',
+    });
+    Store.setPipelineStage(id, 'APPROVED');
+
+    Modal.close('deal-modal');
+    this.render();
+    Dashboard.refreshStats();
+    Pipeline.render();
+    Toast.show(`Deal saved: ${Utils.fmtCurrency(total)}`, 'success', '🎉');
+  },
+};
+
+// ── PIPELINE (KANBAN) ─────────────────────────────────────────
+window.Pipeline = {
+  stages: [
+    { id: 'NEW', label: 'New', color: '#4A5A7A' },
+    { id: 'CONTACTED', label: 'Contacted', color: '#4F8EF7' },
+    { id: 'INTERESTED', label: 'Interested', color: '#22D3A5' },
+    { id: 'FOLLOW-UP', label: 'Follow-Up', color: '#FFD166' },
+    { id: 'PROPOSAL SENT', label: 'Proposal Sent', color: '#7C5CFC' },
+    { id: 'APPROVED', label: 'Approved', color: '#22D3A5' },
+    { id: 'REJECTED', label: 'Rejected', color: '#FF4E6A' },
+    { id: 'CLOSED', label: 'Closed', color: '#FF8C42' },
+  ],
+
+  init() { this.render(); },
+
+  render() {
+    const board = document.getElementById('kanban-board');
+    if (!board) return;
+
+    const leads = Store.getLeads();
+    const pipelineMap = Store.get('pipeline') || {};
+    const statusMap = Store.get('lead_status') || {};
+
+    board.innerHTML = this.stages.map(stage => {
+      const stageLeads = leads.filter(l => (pipelineMap[l.id] || 'NEW') === stage.id);
+
+      const cards = stageLeads.map(l => {
+        const st = statusMap[l.id] || {};
+        return `
+        <div class="kanban-card" draggable="true" data-id="${l.id}"
+          ondragstart="Pipeline.dragStart(event, '${l.id}')"
+          ondragend="Pipeline.dragEnd(event)">
+          <div class="kanban-card-name">${Utils.sanitize(l.businessName)}</div>
+          <div class="kanban-card-meta">
+            ${l.city ? `<span class="badge badge-gray" style="font-size:9px">📍 ${Utils.sanitize(l.city)}</span>` : ''}
+            ${Utils.qualityBadge(l.quality)}
+          </div>
+          ${st.dealPrice ? `<div class="kanban-card-price">💰 ${Utils.fmtCurrency(st.dealPrice)}</div>` : ''}
+          ${st.followupDate ? `<div style="font-size:10px;color:var(--text-muted);margin-top:4px">📅 ${Utils.fmtDate(st.followupDate)}</div>` : ''}
+        </div>`;
+      }).join('');
+
+      return `
+      <div class="kanban-col" data-stage="${stage.id}"
+        ondragover="Pipeline.dragOver(event)"
+        ondrop="Pipeline.drop(event, '${stage.id}')">
+        <div class="kanban-col-header">
+          <span class="kanban-col-dot" style="background:${stage.color}"></span>
+          <span class="kanban-col-name">${stage.label}</span>
+          <span class="kanban-col-count">${stageLeads.length}</span>
+        </div>
+        <div class="kanban-cards">${cards || '<div style="padding:12px;text-align:center;font-size:11px;color:var(--text-muted)">Empty</div>'}</div>
+      </div>`;
+    }).join('');
+  },
+
+  _dragging: null,
+
+  dragStart(e, id) {
+    this._dragging = id;
+    e.currentTarget.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  },
+
+  dragEnd(e) {
+    e.currentTarget.classList.remove('dragging');
+    this._dragging = null;
+  },
+
+  dragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  },
+
+  drop(e, stage) {
+    e.preventDefault();
+    if (!this._dragging) return;
+    Store.setPipelineStage(this._dragging, stage);
+    this.render();
+    Dashboard.refreshStats();
+    Toast.show(`Moved to ${stage}`, 'info');
+  },
+};
+
+// ── FOLLOW-UPS ────────────────────────────────────────────────
+window.Followups = {
+  init() { this.render(); },
+
+  render() {
+    const followups = Store.getFollowups();
+    const leads = Store.getLeads();
+
+    const overdue = followups.filter(f => Utils.isPast(f.date));
+    const today = followups.filter(f => Utils.isToday(f.date));
+    const tomorrow = followups.filter(f => Utils.isTomorrow(f.date));
+    const upcoming = followups.filter(f => f.date > Utils.today() && !Utils.isTomorrow(f.date));
+
+    // Also get leads with followup dates set
+    const statusMap = Store.get('lead_status') || {};
+    leads.forEach(l => {
+      const st = statusMap[l.id] || {};
+      if (st.followupDate) {
+        const existing = followups.find(f => f.leadId === l.id);
+        if (!existing) {
+          const item = { id: 'auto_' + l.id, leadId: l.id, name: l.businessName, date: st.followupDate, note: st.notes || '' };
+          if (Utils.isPast(st.followupDate)) overdue.push(item);
+          else if (Utils.isToday(st.followupDate)) today.push(item);
+          else if (Utils.isTomorrow(st.followupDate)) tomorrow.push(item);
+          else if (st.followupDate > Utils.today()) upcoming.push(item);
+        }
+      }
+    });
+
+    this.renderSection('followup-overdue', overdue, true);
+    this.renderSection('followup-today', today, false);
+    this.renderSection('followup-tomorrow', tomorrow, false);
+    this.renderSection('followup-upcoming', upcoming, false);
+
+    const el = id => document.getElementById(id);
+    if (el('fu-badge')) el('fu-badge').textContent = overdue.length + today.length;
+  },
+
+  renderSection(containerId, items, isOverdue) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    if (!items.length) {
+      el.innerHTML = `<div style="text-align:center;padding:16px;font-size:12px;color:var(--text-muted)">None</div>`;
+      return;
+    }
+
+    el.innerHTML = items.map(item => `
+    <div class="followup-item ${isOverdue ? 'overdue' : ''}" data-fid="${item.id}">
+      <span class="followup-dot" style="background:${isOverdue ? 'var(--accent-red)' : 'var(--accent)'}"></span>
+      <div class="followup-info">
+        <div class="followup-name">${Utils.sanitize(item.name || item.leadId)}</div>
+        <div class="followup-date">${Utils.fmtDate(item.date)}${item.note ? ' · ' + Utils.sanitize(item.note) : ''}</div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-ghost btn-sm" onclick="Followups.complete('${item.id}')">✓ Done</button>
+        <button class="btn btn-ghost btn-sm" onclick="Followups.snooze('${item.id}')">⏰ Snooze</button>
+      </div>
+    </div>`).join('');
+  },
+
+  complete(id) {
+    const arr = Store.getFollowups().filter(f => f.id !== id);
+    Store.setFollowups(arr);
+    this.render();
+    Toast.show('Follow-up marked complete', 'success');
+  },
+
+  snooze(id) {
+    const arr = Store.getFollowups();
+    const item = arr.find(f => f.id === id);
+    if (item) {
+      const d = new Date(item.date); d.setDate(d.getDate() + 1);
+      item.date = d.toISOString().slice(0, 10);
+      Store.setFollowups(arr);
+    }
+    this.render();
+    Toast.show('Snoozed to tomorrow', 'info');
+  },
+
+  saveFromModal() {
+    const id = document.getElementById('followup-lead-id').value;
+    const date = document.getElementById('followup-date-input').value;
+    const notes = document.getElementById('followup-notes-input').value;
+    const leads = Store.getLeads();
+    const lead = leads.find(l => l.id === id);
+
+    if (!date) { Toast.show('Please select a date', 'warning'); return; }
+
+    Store.setLeadStatus(id, { followupDate: date, notes });
+    Store.addFollowup({ leadId: id, name: lead?.businessName || id, date, note: notes });
+
+    Modal.close('followup-modal');
+    this.render();
+    Toast.show('Follow-up scheduled for ' + Utils.fmtDate(date), 'success', '📅');
+  },
+};
+
+// ── DASHBOARD ─────────────────────────────────────────────────
+window.Dashboard = {
+  init() { this.refreshStats(); },
+
+  refreshStats() {
+    const leads = Store.getLeads();
+    const statusMap = Store.get('lead_status') || {};
+    const todayIds = Store.getTodayLeads();
+
+    const noWebsite = leads.filter(l => l.hasWebsite === 'No').length;
+    const highQuality = leads.filter(l => l.quality === 'High' || l.quality === 'Hot').length;
+    const approved = leads.filter(l => (statusMap[l.id] || {}).callResult === 'Approved').length;
+    const rejected = leads.filter(l => (statusMap[l.id] || {}).callResult === 'Rejected').length;
+
+    const todayLeads = todayIds.map(id => leads.find(l => l.id === id)).filter(Boolean);
+    const calledToday = todayLeads.filter(l => {
+      const st = statusMap[l.id] || {};
+      return st.calledDate === Utils.today() && st.callResult && st.callResult !== 'Not Called';
+    }).length;
+
+    let totalRev = 0, pendingRev = 0;
+    const dealsArr = [];
+    leads.forEach(l => {
+      const st = statusMap[l.id] || {};
+      if (st.dealPrice) {
+        totalRev += parseFloat(st.dealPrice) || 0;
+        pendingRev += parseFloat(st.pendingAmount) || 0;
+        dealsArr.push(parseFloat(st.dealPrice));
+      }
+    });
+
+    const avgDeal = dealsArr.length ? totalRev / dealsArr.length : 0;
+    const contacted = leads.filter(l => {
+      const r = (statusMap[l.id] || {}).callResult;
+      return r && r !== 'Not Called';
+    }).length;
+    const convRate = contacted ? Math.round((approved / contacted) * 100) : 0;
+
+    const set = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    };
+
+    set('stat-total', leads.length);
+    set('stat-nowebsite', noWebsite);
+    set('stat-highquality', highQuality);
+    set('stat-today', todayIds.length);
+    set('stat-called', calledToday);
+    set('stat-approved', approved);
+    set('stat-rejected', rejected);
+    set('stat-revenue', Utils.fmtCurrency(totalRev));
+    set('stat-pending', Utils.fmtCurrency(pendingRev));
+    set('stat-avgdeal', Utils.fmtCurrency(avgDeal));
+    set('stat-convrate', convRate + '%');
+
+    // Analytics tab duplicates
+    set('a-stat-total', leads.length);
+    set('a-stat-highquality', highQuality);
+    set('a-stat-approved', approved);
+    set('a-stat-revenue', Utils.fmtCurrency(totalRev));
+    set('a-stat-convrate', convRate + '%');
+    set('a-stat-avgdeal', Utils.fmtCurrency(avgDeal));
+
+    // Update follow-up badge
+    const fu = Store.getFollowups();
+    const fuOverdue = fu.filter(f => Utils.isPast(f.date) || Utils.isToday(f.date)).length;
+    const fuBadge = document.getElementById('nav-fu-badge');
+    if (fuBadge) fuBadge.textContent = fuOverdue || '';
+    if (fuBadge) fuBadge.style.display = fuOverdue ? '' : 'none';
+  },
+};
+
+// ── SETTINGS ─────────────────────────────────────────────────
+window.Settings = {
+  init() {
+    this.render();
+  },
+
+  render() {
+    const s = Store.getSettings();
+    const toggle = document.getElementById('setting-darkmode');
+    if (toggle) {
+      toggle.classList.toggle('on', s.darkMode !== false);
+      toggle.onclick = () => {
+        s.darkMode = !s.darkMode;
+        Store.setSettings(s);
+        document.body.classList.toggle('light-mode', !s.darkMode);
+        toggle.classList.toggle('on', s.darkMode);
+        Toast.show(`Switched to ${s.darkMode ? 'Dark' : 'Light'} mode`, 'info');
+      };
+    }
+
+    const dailyInput = document.getElementById('setting-daily-target');
+    if (dailyInput) {
+      dailyInput.value = s.dailyTarget || 15;
+      dailyInput.onchange = () => {
+        s.dailyTarget = parseInt(dailyInput.value) || 15;
+        Store.setSettings(s);
+        Toast.show('Settings saved', 'success');
+      };
+    }
+  },
+
+  backupData() {
+    const data = {
+      leads: Store.getLeads(),
+      leadStatus: Store.get('lead_status'),
+      pipeline: Store.get('pipeline'),
+      followups: Store.getFollowups(),
+      todayLeads: Store.getTodayLeads(),
+      settings: Store.getSettings(),
+      exportedAt: new Date().toISOString(),
+    };
+    Utils.downloadJSON(data, 'crm_backup_' + Utils.today() + '.json');
+    Toast.show('Backup downloaded', 'success', '💾');
+  },
+
+  restoreData() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.leads) Store.setLeads(data.leads);
+          if (data.leadStatus) Store.set('lead_status', data.leadStatus);
+          if (data.pipeline) Store.set('pipeline', data.pipeline);
+          if (data.followups) Store.setFollowups(data.followups);
+          if (data.todayLeads) Store.setTodayLeads(data.todayLeads);
+          if (data.settings) Store.setSettings(data.settings);
+          Toast.show('Data restored successfully', 'success', '✅');
+          location.reload();
+        } catch { Toast.show('Invalid backup file', 'error'); }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  },
+
+  resetDashboard() {
+    Modal.confirm('This will DELETE all your data. This cannot be undone. Are you sure?', () => {
+      ['leads','lead_status','pipeline','followups','today_leads','settings'].forEach(k => {
+        localStorage.removeItem('crm_' + k);
+      });
+      Toast.show('Dashboard reset', 'info');
+      location.reload();
+    });
+  },
+};
+
+// ── MODAL MANAGER ────────────────────────────────────────────
+window.Modal = {
+  open(id) {
+    document.getElementById(id)?.classList.add('open');
+  },
+  close(id) {
+    document.getElementById(id)?.classList.remove('open');
+  },
+  confirm(msg, onConfirm) {
+    const modal = document.getElementById('confirm-modal');
+    document.getElementById('confirm-msg').textContent = msg;
+    document.getElementById('confirm-ok').onclick = () => {
+      Modal.close('confirm-modal');
+      onConfirm();
+    };
+    Modal.open('confirm-modal');
+  }
+};
+
+// ── NAVIGATION ────────────────────────────────────────────────
+window.Nav = {
+  current: 'overview',
+
+  init() {
+    document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
+      item.addEventListener('click', () => this.go(item.dataset.tab));
+    });
+    // Check hash
+    const hash = location.hash.replace('#', '');
+    if (hash) this.go(hash);
+  },
+
+  go(tab) {
+    this.current = tab;
+    location.hash = tab;
+
+    document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
+      item.classList.toggle('active', item.dataset.tab === tab);
+    });
+
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.classList.toggle('active', p.id === 'tab-' + tab);
+    });
+
+    // Tab titles
+    const titles = {
+      overview: 'Dashboard Overview',
+      leads: 'Leads CRM',
+      today: "Today's Leads",
+      pipeline: 'Sales Pipeline',
+      analytics: 'Analytics',
+      followups: 'Follow-ups',
+      settings: 'Settings',
+    };
+    const el = document.getElementById('topbar-title');
+    if (el) el.textContent = titles[tab] || '';
+
+    // Lazy render
+    if (tab === 'overview') Dashboard.refreshStats();
+    if (tab === 'leads') LeadsCRM.render();
+    if (tab === 'today') TodayLeads.render();
+    if (tab === 'pipeline') Pipeline.render();
+    if (tab === 'analytics') { Dashboard.refreshStats(); setTimeout(() => { Charts.renderAll(); Charts.renderForTab('a-', Store.getLeads(), Store.get('lead_status') || {}); }, 50); }
+    if (tab === 'followups') Followups.render();
+    if (tab === 'settings') Settings.render();
+  },
+};
+</script>
+
+<script>
+// ── BOOT ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Populate CSV column hints
+  const hintsEl = document.getElementById('csv-columns-hint');
+  if (hintsEl) {
+    ['Business Name','Category','City','Phone','Website','Has Website','Google Rating','Reviews Count','Lead Quality'].forEach(c => {
+      const span = document.createElement('span');
+      span.style.cssText = 'background:var(--glass);border:1px solid var(--glass-border);border-radius:6px;padding:3px 10px;font-size:11px;color:var(--text-muted)';
+      span.textContent = c;
+      hintsEl.appendChild(span);
+    });
+  }
+
+  Toast.init();
+
+  // Apply saved settings
+  const settings = Store.getSettings();
+  if (settings.darkMode === false) document.body.classList.add('light-mode');
+
+  // Set today date
+  const todayEl = document.getElementById('today-date');
+  if (todayEl) todayEl.textContent = new Date().toLocaleDateString('en-IN', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  // Global search sync
+  const globalSearch = document.getElementById('global-search');
+  if (globalSearch) {
+    globalSearch.addEventListener('input', () => {
+      const fSearch = document.getElementById('f-search');
+      if (fSearch) fSearch.value = globalSearch.value;
+    });
+  }
+
+  // Init modules
+  Nav.init();
+  Dashboard.init();
+  LeadsCRM.init();
+  TodayLeads.init();
+  Pipeline.init();
+  Followups.init();
+  Settings.init();
+
+  // Storage info
+  const storageEl = document.getElementById('storage-info');
+  if (storageEl) {
+    try {
+      let total = 0;
+      for (const k in localStorage) {
+        if (k.startsWith('crm_')) total += localStorage[k].length;
+      }
+      storageEl.textContent = `${(total / 1024).toFixed(1)} KB used`;
+    } catch {}
+  }
+
+  // Render overview charts on load
+  setTimeout(() => Charts.renderAll(), 100);
+
+  // Update today badge
+  const updateTodayBadge = () => {
+    const ids = Store.getTodayLeads();
+    const badge = document.getElementById('nav-today-badge');
+    if (badge) {
+      badge.textContent = ids.length;
+      badge.style.display = ids.length ? '' : 'none';
+    }
+  };
+  updateTodayBadge();
+  Store.on('today_leads', updateTodayBadge);
+});
+</script>
+
+</body>
+</html>

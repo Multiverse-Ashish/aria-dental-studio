@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ASHISH UNLOCK — 22 DAY BRUTAL TRANSFORMATION</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050710;
+  --bg2:#080d1a;
+  --bg3:#0d1427;
+  --card:#0f1628;
+  --card2:#141e35;
+  --blue:#00d4ff;
+  --blue2:#0080ff;
+  --purple:#a855f7;
+  --purple2:#7c3aed;
+  --green:#00ff88;
+  --red:#ff3366;
+  --yellow:#ffd700;
+  --orange:#ff6b35;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --border:rgba(0,212,255,0.12);
+  --glow-b:0 0 20px rgba(0,212,255,0.3);
+  --glow-p:0 0 20px rgba(168,85,247,0.3);
+  --glow-g:0 0 20px rgba(0,255,136,0.3);
+}
+*{margin:0;padding:0;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:var(--blue) var(--bg2)}
+*::-webkit-scrollbar{width:5px}
+*::-webkit-scrollbar-track{background:var(--bg2)}
+*::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden}
+.orbitron{font-family:'Orbitron',monospace}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* PARTICLES */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:floatUp linear infinite;opacity:0}
+@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:0.5}100%{transform:translateY(-10vh) scale(1.5);opacity:0}}
+
+/* GRID BG */
+.grid-bg{background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px}
+
+/* GLASSMORPHISM */
+.glass{background:rgba(15,22,40,0.7);backdrop-filter:blur(20px);border:1px solid var(--border)}
+.glass-b{background:rgba(0,212,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(0,212,255,0.2)}
+.glass-p{background:rgba(168,85,247,0.05);backdrop-filter:blur(20px);border:1px solid rgba(168,85,247,0.2)}
+.glass-g{background:rgba(0,255,136,0.05);backdrop-filter:blur(20px);border:1px solid rgba(0,255,136,0.2)}
+
+/* GLOW TEXT */
+.glow-b{text-shadow:0 0 20px var(--blue),0 0 40px rgba(0,212,255,0.5)}
+.glow-p{text-shadow:0 0 20px var(--purple),0 0 40px rgba(168,85,247,0.5)}
+.glow-g{text-shadow:0 0 20px var(--green),0 0 40px rgba(0,255,136,0.5)}
+
+/* NEON BORDER */
+.neon-b{box-shadow:0 0 15px rgba(0,212,255,0.3),inset 0 0 15px rgba(0,212,255,0.05)}
+.neon-p{box-shadow:0 0 15px rgba(168,85,247,0.3),inset 0 0 15px rgba(168,85,247,0.05)}
+.neon-g{box-shadow:0 0 15px rgba(0,255,136,0.3),inset 0 0 15px rgba(0,255,136,0.05)}
+
+/* BUTTONS */
+.btn-war{background:linear-gradient(135deg,var(--blue2),var(--purple2));border:none;color:#fff;font-family:'Orbitron',monospace;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.btn-war::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:.5s}
+.btn-war:hover::before{left:100%}
+.btn-war:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,128,255,0.4)}
+
+/* PROGRESS BARS */
+.progress-track{background:rgba(255,255,255,0.05);border-radius:9999px;overflow:hidden;position:relative}
+.progress-fill{height:100%;border-radius:9999px;transition:width 1s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.progress-fill::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+/* CIRCULAR PROGRESS */
+.ring-container{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.ring-svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,0.05)}
+.ring-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1)}
+
+/* TASK ITEMS */
+.task-item{border-left:3px solid transparent;transition:all .3s;cursor:pointer}
+.task-item:hover{background:rgba(0,212,255,0.03);border-left-color:var(--blue)}
+.task-item.done{opacity:0.5}
+.task-item.done .task-label{text-decoration:line-through}
+.custom-cb{width:20px;height:20px;border:2px solid var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;cursor:pointer}
+.custom-cb.checked{background:var(--blue);box-shadow:0 0 10px var(--blue)}
+
+/* NAV */
+.nav-item{transition:all .3s;cursor:pointer;white-space:nowrap}
+.nav-item:hover,.nav-item.active{color:var(--blue);text-shadow:0 0 10px var(--blue)}
+
+/* CALENDAR DAY */
+.cal-day{transition:all .3s;cursor:pointer;border:1px solid rgba(255,255,255,0.05)}
+.cal-day:hover{transform:scale(1.05);border-color:var(--blue)}
+.cal-day.complete{background:rgba(0,255,136,0.1);border-color:var(--green)}
+.cal-day.partial{background:rgba(255,215,0,0.1);border-color:var(--yellow)}
+.cal-day.failed{background:rgba(255,51,102,0.1);border-color:var(--red)}
+.cal-day.today{border-color:var(--blue);box-shadow:0 0 15px rgba(0,212,255,0.3)}
+
+/* RANK BADGE */
+.rank-badge{background:linear-gradient(135deg,var(--purple2),var(--blue2));padding:4px 12px;border-radius:20px;font-size:11px;font-family:'Orbitron',monospace;letter-spacing:1px}
+
+/* XP BAR */
+.xp-bar{height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;position:relative}
+.xp-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:4px;position:relative;overflow:hidden}
+.xp-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shimmer 1.5s infinite}
+
+/* SECTION TITLES */
+.section-title{font-family:'Orbitron',monospace;font-size:clamp(16px,3vw,24px);font-weight:700;letter-spacing:3px;text-transform:uppercase}
+
+/* TIMER */
+.timer-display{font-family:'Orbitron',monospace;font-size:clamp(32px,8vw,64px);font-weight:900;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:4px}
+
+/* STAT CARD */
+.stat-card{transition:all .3s}
+.stat-card:hover{transform:translateY(-4px)}
+
+/* LOADING SCREEN */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s}
+.loader-ring{width:80px;height:80px;border:3px solid transparent;border-top-color:var(--blue);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{100%{transform:rotate(360deg)}}
+
+/* ROADMAP NODE */
+.roadmap-node{position:relative;transition:all .3s;cursor:pointer}
+.roadmap-node:hover{transform:translateX(8px)}
+.roadmap-node::before{content:'';position:absolute;left:-20px;top:50%;width:15px;height:2px;background:var(--blue);transform:translateY(-50%)}
+.roadmap-line{position:absolute;left:-14px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--blue),var(--purple))}
+
+/* ACHIEVEMENT BADGE */
+.achievement{transition:all .3s;cursor:pointer}
+.achievement:hover{transform:scale(1.1)}
+.achievement.locked{filter:grayscale(1);opacity:0.3}
+.achievement.unlocked{animation:pulse-glow 2s infinite}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 5px rgba(0,212,255,0.3)}50%{box-shadow:0 0 20px rgba(0,212,255,0.8)}}
+
+/* MOBILE NAV */
+#mobile-nav{display:none}
+@media(max-width:768px){
+  #mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(8,13,26,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:8px 0;overflow-x:auto}
+  #sidebar{display:none}
+  .main-content{margin-left:0!important;padding-bottom:80px}
+}
+
+/* ANIMATED COUNTER */
+.counter{font-family:'Orbitron',monospace;font-weight:700}
+
+/* MONEY TICKER */
+.money-display{font-family:'Orbitron',monospace;font-size:clamp(28px,5vw,48px);font-weight:900;color:var(--green)}
+
+/* TABS */
+.tab-btn{transition:all .3s;cursor:pointer;border-bottom:2px solid transparent}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+/* FOOD CHIP */
+.food-chip{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.3);border-radius:20px;padding:4px 12px;font-size:13px;transition:all .3s;cursor:pointer}
+.food-chip:hover{background:rgba(0,255,136,0.2);transform:scale(1.05)}
+
+/* PLATFORM CARD */
+.platform-card{transition:all .3s}
+.platform-card:hover{transform:translateY(-4px)}
+
+/* POMODORO */
+.pomo-ring{transition:stroke-dashoffset 1s linear}
+
+/* VISION CARD */
+.vision-card{transition:all .4s;cursor:pointer;overflow:hidden}
+.vision-card:hover{transform:translateY(-8px)}
+.vision-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--blue2),var(--purple2));opacity:0;transition:.3s}
+.vision-card:hover::before{opacity:0.1}
+
+/* STREAK FIRE */
+@keyframes flicker{0%,100%{transform:scaleY(1) scaleX(1)}25%{transform:scaleY(1.1) scaleX(0.95)}75%{transform:scaleY(0.95) scaleX(1.05)}}
+.fire{display:inline-block;animation:flicker .5s ease-in-out infinite}
+
+/* QUOTE ANIM */
+@keyframes fadeSlide{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
+.quote-anim{animation:fadeSlide .6s ease}
+
+/* SECTION REVEAL */
+.section-reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.section-reveal.visible{opacity:1;transform:translateY(0)}
+
+/* HERO SCAN LINE */
+@keyframes scanline{0%{top:-10%}100%{top:110%}}
+.scanline{position:absolute;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:0.3;animation:scanline 4s linear infinite;pointer-events:none}
+
+/* INPUT FIELDS */
+.input-field{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text);font-family:'Rajdhani',sans-serif;outline:none;transition:border-color .3s}
+.input-field:focus{border-color:var(--blue);box-shadow:0 0 10px rgba(0,212,255,0.15)}
+
+/* HEATMAP */
+.heat-cell{transition:all .3s;border-radius:3px;cursor:pointer}
+.heat-cell:hover{transform:scale(1.4)}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="orbitron text-blue-400 text-2xl mb-6 glow-b tracking-widest">ASHISH UNLOCK</div>
+  <div class="loader-ring mb-4"></div>
+  <div id="load-text" class="mono text-sm text-slate-400">INITIALIZING SYSTEM...</div>
+  <div class="mt-4 w-48 h-1 bg-gray-800 rounded overflow-hidden">
+    <div id="load-bar" class="h-full rounded" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width .1s"></div>
+  </div>
+</div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" style="position:fixed;left:0;top:0;bottom:0;width:64px;background:rgba(8,13,26,0.95);backdrop-filter:blur(20px);border-right:1px solid var(--border);z-index:50;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:4px">
+  <div class="orbitron text-xs glow-b mb-4" style="color:var(--blue);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:3px;font-size:9px">ASHISH</div>
+  <div class="w-full">
+    <div onclick="scrollTo2('hero')" class="nav-item active flex flex-col items-center gap-1 py-3 px-2" title="Hero">
+      <i class="fas fa-bolt" style="color:var(--blue);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('missions')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Missions">
+      <i class="fas fa-crosshairs" style="color:var(--purple);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('calendar')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Calendar">
+      <i class="fas fa-calendar" style="color:var(--blue);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('money')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Money">
+      <i class="fas fa-rupee-sign" style="color:var(--green);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('etsy')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Etsy">
+      <i class="fas fa-store" style="color:var(--orange);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('python')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Python">
+      <i class="fab fa-python" style="color:var(--blue);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('fitness')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Fitness">
+      <i class="fas fa-dumbbell" style="color:var(--purple);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('content')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Content">
+      <i class="fas fa-video" style="color:var(--blue);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('timer')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Timer">
+      <i class="fas fa-clock" style="color:var(--green);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('analytics')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Analytics">
+      <i class="fas fa-chart-line" style="color:var(--purple);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('gamify')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Gamify">
+      <i class="fas fa-trophy" style="color:var(--yellow);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('review')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Review">
+      <i class="fas fa-moon" style="color:var(--purple);font-size:16px"></i>
+    </div>
+    <div onclick="scrollTo2('vision')" class="nav-item flex flex-col items-center gap-1 py-3 px-2" title="Vision">
+      <i class="fas fa-eye" style="color:var(--blue);font-size:16px"></i>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+  <div class="flex items-center gap-1 px-2 w-full overflow-x-auto" style="gap:0">
+    <div onclick="scrollTo2('hero')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-bolt text-sm"></i><span style="font-size:8px">HOME</span></div>
+    <div onclick="scrollTo2('missions')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-crosshairs text-sm"></i><span style="font-size:8px">MISSIONS</span></div>
+    <div onclick="scrollTo2('money')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-rupee-sign text-sm"></i><span style="font-size:8px">MONEY</span></div>
+    <div onclick="scrollTo2('etsy')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-store text-sm"></i><span style="font-size:8px">ETSY</span></div>
+    <div onclick="scrollTo2('python')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fab fa-python text-sm"></i><span style="font-size:8px">PYTHON</span></div>
+    <div onclick="scrollTo2('fitness')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-dumbbell text-sm"></i><span style="font-size:8px">FIT</span></div>
+    <div onclick="scrollTo2('timer')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-clock text-sm"></i><span style="font-size:8px">TIMER</span></div>
+    <div onclick="scrollTo2('gamify')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-trophy text-sm"></i><span style="font-size:8px">XP</span></div>
+    <div onclick="scrollTo2('vision')" class="flex flex-col items-center gap-1 py-2 px-3 nav-item"><i class="fas fa-eye text-sm"></i><span style="font-size:8px">VISION</span></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" style="margin-left:64px">
+
+<!-- ==================== SECTION 1: HERO ==================== -->
+<section id="hero" class="relative min-h-screen grid-bg flex flex-col items-center justify-center overflow-hidden" style="padding:80px 24px 40px">
+  <div class="scanline"></div>
+
+  <!-- Top bar -->
+  <div class="absolute top-0 left-0 right-0 flex items-center justify-between px-6 py-4 z-10" style="border-bottom:1px solid var(--border);background:rgba(5,7,16,0.8);backdrop-filter:blur(10px)">
+    <div class="flex items-center gap-3">
+      <div class="orbitron font-black text-sm glow-b" style="color:var(--blue);letter-spacing:3px">ASHISH UNLOCK</div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div id="live-time" class="mono text-xs" style="color:var(--text2)">00:00:00</div>
+      <div class="flex items-center gap-2 glass px-3 py-1 rounded-full">
+        <div class="w-2 h-2 rounded-full bg-green-400" style="animation:pulse 1s infinite"></div>
+        <span class="text-xs mono" style="color:var(--green)">LIVE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="text-center z-10 max-w-4xl">
+    <div class="inline-block mb-4">
+      <span class="rank-badge text-white">⚡ SYSTEM ONLINE — DAY <span id="current-day-hero">1</span> OF 22</span>
+    </div>
+
+    <h1 class="orbitron font-black mb-4 leading-tight" style="font-size:clamp(28px,6vw,64px);background:linear-gradient(135deg,#fff 0%,var(--blue) 50%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+      22 DAY BRUTAL<br>TRANSFORMATION
+    </h1>
+
+    <p class="mb-8 font-semibold tracking-widest text-lg" style="color:var(--text2)">BUILD DISCIPLINE · SKILL · MUSCLE · MONEY · FREEDOM</p>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="glass-b rounded-xl p-4 neon-b stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">COUNTDOWN</div>
+        <div id="countdown" class="orbitron font-black text-xl" style="color:var(--blue)">22:00:00</div>
+        <div class="text-xs mt-1" style="color:var(--text2)">DAYS LEFT</div>
+      </div>
+      <div class="glass-g rounded-xl p-4 neon-g stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">STREAK</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--green)"><span class="fire">🔥</span> <span id="streak-num">0</span></div>
+        <div class="text-xs mt-1" style="color:var(--text2)">DAYS</div>
+      </div>
+      <div class="glass-p rounded-xl p-4 neon-p stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">TODAY XP</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--purple)">⚡ <span id="today-xp">0</span></div>
+        <div class="xp-bar mt-2"><div id="xp-fill-hero" class="xp-fill" style="width:0%"></div></div>
+      </div>
+      <div class="glass rounded-xl p-4 stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">COMPLETION</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--yellow)"><span id="completion-pct">0</span>%</div>
+        <div class="progress-track h-2 mt-2">
+          <div id="completion-bar" class="progress-fill h-2" style="width:0%;background:linear-gradient(90deg,var(--yellow),var(--orange))"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ring + Quote -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+      <div class="ring-container">
+        <svg class="ring-svg" width="160" height="160" viewBox="0 0 160 160">
+          <circle class="ring-bg" cx="80" cy="80" r="70" stroke-width="8"/>
+          <circle id="hero-ring" class="ring-fill" cx="80" cy="80" r="70" stroke-width="8" stroke="url(#ringGrad)" stroke-dasharray="440" stroke-dashoffset="440"/>
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--blue)"/>
+              <stop offset="100%" style="stop-color:var(--purple)"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="absolute text-center">
+          <div class="orbitron font-black text-2xl glow-b" style="color:var(--blue)" id="ring-pct">0%</div>
+          <div class="text-xs" style="color:var(--text2)">DAILY</div>
+        </div>
+      </div>
+
+      <div class="glass-b rounded-2xl p-6 max-w-sm text-left" id="quote-box">
+        <div class="text-xs tracking-widest mb-3" style="color:var(--blue)">⚡ DAILY SIGNAL</div>
+        <div id="daily-quote" class="text-lg font-semibold quote-anim" style="color:var(--text);line-height:1.6">"BUILD OR STAY BROKE. YOUR CHOICE."</div>
+        <div class="mt-3 text-xs" style="color:var(--text2)">— ASHISH UNLOCK SYSTEM</div>
+      </div>
+    </div>
+
+    <button onclick="enterWarMode()" class="btn-war px-10 py-4 rounded-xl text-lg tracking-widest neon-b" style="border:1px solid rgba(0,212,255,0.3)">
+      ⚔ ENTER WAR MODE
+    </button>
+  </div>
+</section>
+
+<!-- ==================== SECTION 2: DAILY MISSIONS ==================== -->
+<section id="missions" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--blue)"><i class="fas fa-crosshairs text-black text-sm"></i></div>
+      <h2 class="section-title glow-b" style="color:var(--blue)">DAILY MISSION CONTROL</h2>
+      <div class="ml-auto glass-b px-4 py-2 rounded-lg">
+        <span class="mono text-sm" style="color:var(--blue)"><span id="tasks-done">0</span>/15 COMPLETE</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Tasks List -->
+      <div class="lg:col-span-2 glass rounded-2xl p-6">
+        <div id="task-list" class="space-y-2"></div>
+      </div>
+
+      <!-- Mission Stats -->
+      <div class="space-y-4">
+        <div class="glass-b rounded-2xl p-5 neon-b">
+          <div class="text-xs tracking-widest mb-3" style="color:var(--blue)">MISSION STATS</div>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-sm mb-1"><span style="color:var(--text2)">Overall Progress</span><span id="prog-pct" style="color:var(--blue)">0%</span></div>
+              <div class="progress-track h-3">
+                <div id="prog-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--purple))"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1"><span style="color:var(--text2)">XP Earned Today</span><span style="color:var(--purple)"><span id="mission-xp">0</span> XP</span></div>
+              <div class="progress-track h-3">
+                <div id="xp-bar-m" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--purple),var(--blue))"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <div class="glass rounded-lg p-3 text-center">
+              <div class="text-2xl font-black orbitron" style="color:var(--green)"><span id="tasks-done2">0</span></div>
+              <div class="text-xs" style="color:var(--text2)">Done</div>
+            </div>
+            <div class="glass rounded-lg p-3 text-center">
+              <div class="text-2xl font-black orbitron" style="color:var(--red)"><span id="tasks-left">15</span></div>
+              <div class="text-xs" style="color:var(--text2)">Left</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-p rounded-2xl p-5 neon-p">
+          <div class="text-xs tracking-widest mb-3" style="color:var(--purple)">TODAY'S NOTE</div>
+          <textarea class="input-field w-full rounded-lg p-3 text-sm resize-none" rows="5" placeholder="Write your war notes here..." id="daily-note" style="color:var(--text)"></textarea>
+          <button onclick="saveNote()" class="mt-2 w-full py-2 rounded-lg text-sm font-semibold" style="background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.3);color:var(--purple)">SAVE NOTE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 3: CALENDAR ==================== -->
+<section id="calendar" class="section-reveal py-16 px-4 md:px-8" style="background:rgba(0,0,0,0.2)">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--purple)"><i class="fas fa-calendar text-black text-sm"></i></div>
+      <h2 class="section-title glow-p" style="color:var(--purple)">22 DAY BATTLE CALENDAR</h2>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-3 mb-6" id="cal-grid"></div>
+
+    <!-- Day Detail Modal -->
+    <div id="day-detail" class="glass-b rounded-2xl p-6 neon-b" style="display:none">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="orbitron text-lg" style="color:var(--blue)">DAY <span id="modal-day">1</span> STATS</h3>
+        <button onclick="document.getElementById('day-detail').style.display='none'" style="color:var(--text2)"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="glass rounded-xl p-3 text-center"><div class="text-lg font-black orbitron" style="color:var(--green)" id="d-score">0</div><div class="text-xs" style="color:var(--text2)">Score</div></div>
+        <div class="glass rounded-xl p-3 text-center"><div class="text-lg font-black orbitron" style="color:var(--purple)" id="d-xp">0</div><div class="text-xs" style="color:var(--text2)">XP</div></div>
+        <div class="glass rounded-xl p-3 text-center"><div class="text-lg font-black orbitron" style="color:var(--yellow)" id="d-money">₹0</div><div class="text-xs" style="color:var(--text2)">Earned</div></div>
+        <div class="glass rounded-xl p-3 text-center"><div class="text-lg font-black orbitron" style="color:var(--orange)" id="d-etsy">0</div><div class="text-xs" style="color:var(--text2)">Etsy</div></div>
+        <div class="glass rounded-xl p-3 text-center"><div class="text-lg font-black orbitron" style="color:var(--blue)" id="d-weight">56</div><div class="text-xs" style="color:var(--text2)">Weight kg</div></div>
+      </div>
+    </div>
+
+    <div class="flex gap-4 mt-4 flex-wrap">
+      <div class="flex items-center gap-2 text-sm"><div class="w-3 h-3 rounded" style="background:var(--green)"></div><span style="color:var(--text2)">Complete</span></div>
+      <div class="flex items-center gap-2 text-sm"><div class="w-3 h-3 rounded" style="background:var(--yellow)"></div><span style="color:var(--text2)">Partial</span></div>
+      <div class="flex items-center gap-2 text-sm"><div class="w-3 h-3 rounded" style="background:var(--red)"></div><span style="color:var(--text2)">Failed</span></div>
+      <div class="flex items-center gap-2 text-sm"><div class="w-3 h-3 rounded" style="background:var(--blue)"></div><span style="color:var(--text2)">Today</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 4: MONEY TRACKER ==================== -->
+<section id="money" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--green)"><i class="fas fa-rupee-sign text-black text-sm"></i></div>
+      <h2 class="section-title glow-g" style="color:var(--green)">MONEY COMMAND CENTER</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Main goal -->
+      <div class="lg:col-span-2">
+        <div class="glass-g rounded-2xl p-6 neon-g mb-6">
+          <div class="flex justify-between items-start mb-2">
+            <div>
+              <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">FINANCIAL TARGET</div>
+              <div class="text-sm font-semibold" style="color:var(--text2)">Current Earnings</div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs" style="color:var(--text2)">GOAL</div>
+              <div class="orbitron font-black text-xl" style="color:var(--green)">₹2,00,000</div>
+            </div>
+          </div>
+          <div class="money-display mb-3">₹<span id="money-earned" class="counter">0</span></div>
+          <div class="progress-track h-4 rounded-full mb-2">
+            <div id="money-bar" class="progress-fill h-4" style="width:0%;background:linear-gradient(90deg,var(--green),var(--blue))"></div>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:var(--text2)"><span id="money-pct">0</span>% achieved</span>
+            <span style="color:var(--text2)">₹<span id="money-left">2,00,000</span> to go</span>
+          </div>
+
+          <div class="mt-4 grid grid-cols-3 gap-3">
+            <div class="glass rounded-lg p-3 text-center">
+              <div class="text-sm font-black orbitron" style="color:var(--yellow)">₹<span id="daily-target">9091</span></div>
+              <div class="text-xs" style="color:var(--text2)">Daily Target</div>
+            </div>
+            <div class="glass rounded-lg p-3 text-center">
+              <div class="text-sm font-black orbitron" style="color:var(--orange)">₹<span id="today-earned">0</span></div>
+              <div class="text-xs" style="color:var(--text2)">Today Earned</div>
+            </div>
+            <div class="glass rounded-lg p-3 text-center">
+              <div class="text-sm font-black orbitron" style="color:var(--blue)"><span id="days-to-goal">22</span></div>
+              <div class="text-xs" style="color:var(--text2)">Days Left</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Income -->
+        <div class="glass rounded-2xl p-5">
+          <div class="text-xs tracking-widest mb-4" style="color:var(--green)">ADD INCOME</div>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+            <select id="income-source" class="input-field rounded-lg px-3 py-2 text-sm">
+              <option value="etsy">Etsy</option>
+              <option value="freelancing">Freelancing</option>
+              <option value="affiliate">Affiliate</option>
+              <option value="digital">Digital Products</option>
+              <option value="automation">Automation</option>
+              <option value="ai">AI Services</option>
+            </select>
+            <input type="number" id="income-amount" class="input-field rounded-lg px-3 py-2 text-sm" placeholder="₹ Amount"/>
+            <button onclick="addIncome()" class="py-2 rounded-lg font-semibold text-sm" style="background:rgba(0,255,136,0.2);border:1px solid rgba(0,255,136,0.3);color:var(--green)">+ ADD</button>
+          </div>
+          <div id="income-log" class="space-y-2 max-h-32 overflow-y-auto"></div>
+        </div>
+      </div>
+
+      <!-- Revenue Sources -->
+      <div class="space-y-4">
+        <div class="glass-b rounded-2xl p-5">
+          <div class="text-xs tracking-widest mb-4" style="color:var(--blue)">REVENUE BREAKDOWN</div>
+          <canvas id="revenue-chart" height="180"></canvas>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-xs tracking-widest mb-3" style="color:var(--text2)">INCOME STREAMS</div>
+          <div class="space-y-2" id="income-streams"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 5: ETSY ==================== -->
+<section id="etsy" class="section-reveal py-16 px-4 md:px-8" style="background:rgba(0,0,0,0.2)">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--orange)"><i class="fas fa-store text-black text-sm"></i></div>
+      <h2 class="section-title" style="color:var(--orange);text-shadow:0 0 20px rgba(255,107,53,0.5)">ETSY COMMAND CENTER</h2>
+      <div class="ml-auto flex items-center gap-2">
+        <div class="glass px-4 py-2 rounded-lg">
+          <span class="mono text-sm" style="color:var(--orange)"><span id="etsy-count">0</span>/200</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      <div class="glass rounded-xl p-4 stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">LISTINGS</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--orange)"><span id="etsy-listings">0</span></div>
+      </div>
+      <div class="glass rounded-xl p-4 stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">TARGET</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--blue)">200</div>
+      </div>
+      <div class="glass rounded-xl p-4 stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">TODAY</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--green)"><span id="etsy-today">0</span>/10</div>
+      </div>
+      <div class="glass rounded-xl p-4 stat-card">
+        <div class="text-xs tracking-widest mb-1" style="color:var(--text2)">STREAK</div>
+        <div class="orbitron font-black text-2xl" style="color:var(--purple)">🔥 <span id="etsy-streak">0</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Categories -->
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--orange)">PRODUCT CATEGORIES</div>
+        <div class="space-y-3" id="etsy-categories"></div>
+        <div class="mt-4 flex gap-2">
+          <input type="number" id="etsy-add-num" class="input-field rounded-lg px-3 py-2 text-sm flex-1" placeholder="Today's uploads"/>
+          <button onclick="addEtsyListings()" class="px-4 py-2 rounded-lg font-semibold text-sm" style="background:rgba(255,107,53,0.2);border:1px solid rgba(255,107,53,0.3);color:var(--orange)">+ ADD</button>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="glass-b rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--blue)">LISTING TOOLKIT</div>
+        <div class="space-y-4">
+          <div>
+            <div class="text-sm mb-2" style="color:var(--text2)">Listing Idea Generator</div>
+            <input type="text" id="niche-input" class="input-field w-full rounded-lg px-3 py-2 text-sm mb-2" placeholder="Enter niche (e.g. AI, fitness, business)..."/>
+            <button onclick="generateListingIdeas()" class="w-full py-2 rounded-lg text-sm font-semibold" style="background:rgba(0,128,255,0.2);border:1px solid rgba(0,128,255,0.3);color:var(--blue)">⚡ GENERATE IDEAS</button>
+          </div>
+          <div id="listing-ideas" class="space-y-1 max-h-40 overflow-y-auto"></div>
+          <div>
+            <div class="text-sm mb-2" style="color:var(--text2)">SEO Score Meter</div>
+            <div class="flex items-center gap-3">
+              <div class="flex-1 progress-track h-3"><div id="seo-bar" class="progress-fill h-3" style="width:65%;background:linear-gradient(90deg,var(--yellow),var(--green))"></div></div>
+              <span class="mono text-sm" style="color:var(--yellow)">65/100</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 6: PYTHON ROADMAP ==================== -->
+<section id="python" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--blue)"><i class="fab fa-python text-black text-sm"></i></div>
+      <h2 class="section-title glow-b" style="color:var(--blue)">PYTHON + AI MASTERY ROADMAP</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <div class="relative pl-6">
+          <div class="roadmap-line"></div>
+          <div id="roadmap-nodes" class="space-y-3"></div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="glass-b rounded-2xl p-5 neon-b">
+          <div class="text-xs tracking-widest mb-3" style="color:var(--blue)">LEARNING STATS</div>
+          <div class="space-y-3">
+            <div class="flex justify-between"><span class="text-sm" style="color:var(--text2)">Overall Mastery</span><span class="font-black" style="color:var(--blue)"><span id="py-mastery">0</span>%</span></div>
+            <div class="progress-track h-3"><div id="py-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--purple))"></div></div>
+            <div class="flex justify-between"><span class="text-sm" style="color:var(--text2)">Levels Unlocked</span><span class="font-black" style="color:var(--purple)"><span id="levels-done">0</span>/15</span></div>
+            <div class="flex justify-between"><span class="text-sm" style="color:var(--text2)">Code Streak</span><span class="font-black fire" style="color:var(--orange)">🔥 <span id="code-streak">0</span></span></div>
+          </div>
+        </div>
+        <div class="glass-p rounded-2xl p-5">
+          <div class="text-xs tracking-widest mb-3" style="color:var(--purple)">TODAY'S PROJECT</div>
+          <textarea class="input-field w-full rounded-lg p-3 text-sm resize-none" rows="4" id="todays-project" placeholder="What are you building today?" style="color:var(--text)"></textarea>
+          <div class="mt-3 space-y-2">
+            <div class="flex items-center gap-2 text-sm"><input type="checkbox" id="proj-gh" class="accent-blue-500"/><label for="proj-gh" style="color:var(--text2)">Pushed to GitHub</label></div>
+            <div class="flex items-center gap-2 text-sm"><input type="checkbox" id="proj-doc" class="accent-purple-500"/><label for="proj-doc" style="color:var(--text2)">Documented code</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 7: FITNESS ==================== -->
+<section id="fitness" class="section-reveal py-16 px-4 md:px-8" style="background:rgba(0,0,0,0.2)">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--purple)"><i class="fas fa-dumbbell text-black text-sm"></i></div>
+      <h2 class="section-title glow-p" style="color:var(--purple)">FITNESS TRANSFORMATION SYSTEM</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Weight Tracker -->
+      <div class="glass-p rounded-2xl p-5 neon-p">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--purple)">WEIGHT JOURNEY</div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-center">
+            <div class="text-xs" style="color:var(--text2)">Current</div>
+            <div class="orbitron text-3xl font-black" style="color:var(--purple)"><span id="weight-now">56</span>kg</div>
+          </div>
+          <div style="color:var(--text2);font-size:24px">→</div>
+          <div class="text-center">
+            <div class="text-xs" style="color:var(--text2)">Target</div>
+            <div class="orbitron text-3xl font-black" style="color:var(--green)">72kg</div>
+          </div>
+        </div>
+        <div class="progress-track h-4 mb-2">
+          <div id="weight-bar" class="progress-fill h-4" style="width:0%;background:linear-gradient(90deg,var(--purple),var(--blue))"></div>
+        </div>
+        <div class="text-center text-sm mb-3" style="color:var(--text2)"><span id="weight-pct">0</span>% of goal</div>
+        <div class="flex gap-2">
+          <input type="number" id="weight-input" class="input-field flex-1 rounded-lg px-3 py-2 text-sm" placeholder="Today's weight" value="56"/>
+          <button onclick="updateWeight()" class="px-4 py-2 rounded-lg text-sm font-semibold" style="background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.3);color:var(--purple)">LOG</button>
+        </div>
+      </div>
+
+      <!-- Daily Trackers -->
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--text2)">DAILY HEALTH TRACKING</div>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span style="color:var(--text2)">Calories</span><span style="color:var(--orange)"><span id="cal-val">0</span>/3500 kcal</span></div>
+            <div class="flex gap-2">
+              <div class="flex-1 progress-track h-3"><div id="cal-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--orange),var(--yellow))"></div></div>
+              <input type="number" id="cal-input" class="input-field w-20 rounded px-2 py-0.5 text-xs" placeholder="+kcal"/>
+              <button onclick="addCals()" class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,107,53,0.2);color:var(--orange)">+</button>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span style="color:var(--text2)">Water</span><span style="color:var(--blue)"><span id="water-val">0</span>/8 glasses</span></div>
+            <div class="flex gap-2 items-center">
+              <div class="flex-1 progress-track h-3"><div id="water-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--blue),var(--blue2))"></div></div>
+              <button onclick="addWater()" class="text-xs px-3 py-1 rounded" style="background:rgba(0,212,255,0.2);color:var(--blue)">+1</button>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span style="color:var(--text2)">Sleep</span><span style="color:var(--purple)"><span id="sleep-val">0</span>/8 hrs</span></div>
+            <div class="flex gap-2 items-center">
+              <div class="flex-1 progress-track h-3"><div id="sleep-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--purple),var(--purple2))"></div></div>
+              <input type="number" id="sleep-input" class="input-field w-16 rounded px-2 py-0.5 text-xs" placeholder="hrs" min="0" max="12"/>
+              <button onclick="logSleep()" class="text-xs px-2 py-0.5 rounded" style="background:rgba(168,85,247,0.2);color:var(--purple)">LOG</button>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span style="color:var(--text2)">Protein</span><span style="color:var(--green)"><span id="prot-val">0</span>/100g</span></div>
+            <div class="flex gap-2 items-center">
+              <div class="flex-1 progress-track h-3"><div id="prot-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--green),var(--blue))"></div></div>
+              <input type="number" id="prot-input" class="input-field w-16 rounded px-2 py-0.5 text-xs" placeholder="+g"/>
+              <button onclick="addProtein()" class="text-xs px-2 py-0.5 rounded" style="background:rgba(0,255,136,0.2);color:var(--green)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workout Plan -->
+      <div class="glass-b rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--blue)">WORKOUT PLAN</div>
+        <div class="space-y-2 mb-4" id="workout-tabs">
+          <div class="flex gap-2 flex-wrap">
+            <button onclick="setWorkout('push')" class="workout-tab-btn px-3 py-1.5 rounded text-sm font-semibold" style="background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.3);color:var(--blue)">PUSH</button>
+            <button onclick="setWorkout('pull')" class="workout-tab-btn px-3 py-1.5 rounded text-sm font-semibold" style="background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.3);color:var(--purple)">PULL</button>
+            <button onclick="setWorkout('legs')" class="workout-tab-btn px-3 py-1.5 rounded text-sm font-semibold" style="background:rgba(0,255,136,0.2);border:1px solid rgba(0,255,136,0.3);color:var(--green)">LEGS</button>
+            <button onclick="setWorkout('full')" class="workout-tab-btn px-3 py-1.5 rounded text-sm font-semibold" style="background:rgba(255,215,0,0.2);border:1px solid rgba(255,215,0,0.3);color:var(--yellow)">FULL</button>
+          </div>
+        </div>
+        <div id="workout-plan" class="space-y-1 text-sm mb-4"></div>
+        <div class="text-xs tracking-widest mb-2" style="color:var(--text2)">BULKING FOODS</div>
+        <div class="flex flex-wrap gap-2">
+          <span class="food-chip">🥣 Oats</span>
+          <span class="food-chip">🍌 Banana</span>
+          <span class="food-chip">🥜 Peanut Butter</span>
+          <span class="food-chip">🥛 Milk</span>
+          <span class="food-chip">🥚 Eggs</span>
+          <span class="food-chip">🍚 Rice</span>
+          <span class="food-chip">🫘 Dal</span>
+          <span class="food-chip">🥔 Potato</span>
+          <span class="food-chip">🧀 Paneer</span>
+          <span class="food-chip">💪 Soy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 8: CONTENT ENGINE ==================== -->
+<section id="content" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--blue)"><i class="fas fa-video text-black text-sm"></i></div>
+      <h2 class="section-title glow-b" style="color:var(--blue)">CONTENT CREATION ENGINE</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Platform Tracker -->
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--text2)">PLATFORM DASHBOARD</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="platforms"></div>
+      </div>
+
+      <!-- Content Generator -->
+      <div class="glass-p rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--purple)">CONTENT IDEA GENERATOR</div>
+        <div class="mb-3">
+          <select id="content-type" class="input-field w-full rounded-lg px-3 py-2 text-sm mb-2">
+            <option>AI Tools</option>
+            <option>Coding Journey</option>
+            <option>Business Lessons</option>
+            <option>Discipline</option>
+            <option>Transformation</option>
+            <option>Automation</option>
+            <option>Study Systems</option>
+          </select>
+          <button onclick="generateContent()" class="w-full py-2 rounded-lg text-sm font-semibold" style="background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.3);color:var(--purple)">⚡ GENERATE HOOK</button>
+        </div>
+        <div id="content-output" class="glass rounded-lg p-4 text-sm min-h-16" style="color:var(--text2)">Click generate to get viral hooks...</div>
+        <div class="mt-4">
+          <div class="text-xs tracking-widest mb-2" style="color:var(--text2)">CONTENT STREAK</div>
+          <div class="flex items-center gap-2">
+            <span class="fire text-2xl">🔥</span>
+            <div class="flex-1">
+              <div class="progress-track h-3"><div id="content-streak-bar" class="progress-fill h-3" style="width:0%;background:linear-gradient(90deg,var(--orange),var(--red))"></div></div>
+            </div>
+            <span class="orbitron font-black text-sm" style="color:var(--orange)"><span id="content-streak-num">0</span> days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 10: DEEP WORK TIMER ==================== -->
+<section id="timer" class="section-reveal py-16 px-4 md:px-8" style="background:rgba(0,0,0,0.2)">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--green)"><i class="fas fa-clock text-black text-sm"></i></div>
+      <h2 class="section-title glow-g" style="color:var(--green)">DEEP WORK COMMAND</h2>
+    </div>
+
+    <div class="glass-g rounded-3xl p-8 neon-g text-center">
+      <!-- Mode selector -->
+      <div class="flex justify-center gap-3 mb-8 flex-wrap">
+        <button onclick="setMode('study',25,5)" id="mode-study" class="pomo-mode-btn px-5 py-2 rounded-full text-sm font-semibold" style="background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.3);color:var(--blue)">📚 STUDY</button>
+        <button onclick="setMode('code',45,10)" id="mode-code" class="pomo-mode-btn px-5 py-2 rounded-full text-sm font-semibold" style="background:rgba(168,85,247,0.2);border:1px solid rgba(168,85,247,0.3);color:var(--purple)">💻 CODE</button>
+        <button onclick="setMode('biz',90,15)" id="mode-biz" class="pomo-mode-btn px-5 py-2 rounded-full text-sm font-semibold" style="background:rgba(0,255,136,0.2);border:1px solid rgba(0,255,136,0.3);color:var(--green)">🚀 BUSINESS</button>
+        <button onclick="setMode('content',30,5)" id="mode-content" class="pomo-mode-btn px-5 py-2 rounded-full text-sm font-semibold" style="background:rgba(255,215,0,0.2);border:1px solid rgba(255,215,0,0.3);color:var(--yellow)">📱 CONTENT</button>
+      </div>
+
+      <!-- Timer Ring -->
+      <div class="ring-container mb-6">
+        <svg class="ring-svg" width="220" height="220" viewBox="0 0 220 220">
+          <circle class="ring-bg" cx="110" cy="110" r="100" stroke-width="10"/>
+          <circle id="pomo-ring" class="ring-fill pomo-ring" cx="110" cy="110" r="100" stroke-width="10" stroke="url(#pomoGrad)" stroke-dasharray="628" stroke-dashoffset="0"/>
+          <defs>
+            <linearGradient id="pomoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:var(--green)"/>
+              <stop offset="100%" style="stop-color:var(--blue)"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="absolute text-center">
+          <div class="timer-display" id="timer-display">25:00</div>
+          <div class="text-sm" id="timer-phase" style="color:var(--text2)">FOCUS</div>
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-4 mb-6">
+        <button onclick="startTimer()" id="btn-start" class="btn-war px-8 py-3 rounded-xl text-base neon-g">▶ START</button>
+        <button onclick="pauseTimer()" id="btn-pause" class="px-8 py-3 rounded-xl text-base font-semibold" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2)">⏸ PAUSE</button>
+        <button onclick="resetTimer()" class="px-6 py-3 rounded-xl text-base font-semibold" style="background:rgba(255,51,102,0.2);border:1px solid rgba(255,51,102,0.3);color:var(--red)">↺ RESET</button>
+      </div>
+
+      <!-- Session Stats -->
+      <div class="grid grid-cols-3 gap-4">
+        <div class="glass rounded-xl p-3">
+          <div class="text-2xl font-black orbitron" style="color:var(--blue)" id="sessions-done">0</div>
+          <div class="text-xs" style="color:var(--text2)">Sessions Done</div>
+        </div>
+        <div class="glass rounded-xl p-3">
+          <div class="text-2xl font-black orbitron" style="color:var(--green)" id="focus-mins">0</div>
+          <div class="text-xs" style="color:var(--text2)">Focus Minutes</div>
+        </div>
+        <div class="glass rounded-xl p-3">
+          <div class="text-2xl font-black orbitron" style="color:var(--purple)" id="today-sessions">0</div>
+          <div class="text-xs" style="color:var(--text2)">Today Sessions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 11: ANALYTICS ==================== -->
+<section id="analytics" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--purple)"><i class="fas fa-chart-line text-black text-sm"></i></div>
+      <h2 class="section-title glow-p" style="color:var(--purple)">PERFORMANCE ANALYTICS</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--blue)">EARNINGS GRAPH (22 DAYS)</div>
+        <canvas id="earnings-chart" height="200"></canvas>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--purple)">PRODUCTIVITY SCORE</div>
+        <canvas id="productivity-chart" height="200"></canvas>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--green)">WEIGHT PROGRESSION</div>
+        <canvas id="weight-chart" height="180"></canvas>
+      </div>
+      <div class="glass rounded-2xl p-5">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--orange)">ETSY GROWTH</div>
+        <canvas id="etsy-chart" height="180"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 12: GAMIFICATION ==================== -->
+<section id="gamify" class="section-reveal py-16 px-4 md:px-8" style="background:rgba(0,0,0,0.2)">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--yellow)"><i class="fas fa-trophy text-black text-sm"></i></div>
+      <h2 class="section-title" style="color:var(--yellow);text-shadow:0 0 20px rgba(255,215,0,0.5)">XP & ACHIEVEMENT SYSTEM</h2>
+    </div>
+
+    <!-- Rank + XP -->
+    <div class="glass-b rounded-2xl p-6 neon-b mb-6">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div class="text-center">
+          <div class="text-6xl mb-2" id="rank-icon">😴</div>
+          <div class="rank-badge text-white" id="rank-title">DISTRACTED BEGINNER</div>
+        </div>
+        <div class="flex-1">
+          <div class="flex justify-between mb-2">
+            <span class="text-sm font-semibold" style="color:var(--text2)">Level <span id="level-num">1</span> → <span id="level-next">2</span></span>
+            <span class="mono text-sm" style="color:var(--blue)"><span id="total-xp">0</span> / <span id="xp-needed">500</span> XP</span>
+          </div>
+          <div class="xp-bar mb-3"><div id="main-xp-fill" class="xp-fill" style="width:0%"></div></div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="glass rounded-xl p-3 text-center"><div class="orbitron text-xl font-black" style="color:var(--yellow)" id="disp-xp">0</div><div class="text-xs" style="color:var(--text2)">Total XP</div></div>
+            <div class="glass rounded-xl p-3 text-center"><div class="orbitron text-xl font-black" style="color:var(--green)"><span id="disp-streak">0</span>🔥</div><div class="text-xs" style="color:var(--text2)">Streak</div></div>
+            <div class="glass rounded-xl p-3 text-center"><div class="orbitron text-xl font-black" style="color:var(--purple)" id="disp-rank">1</div><div class="text-xs" style="color:var(--text2)">Rank</div></div>
+            <div class="glass rounded-xl p-3 text-center"><div class="orbitron text-xl font-black" style="color:var(--blue)" id="disp-badges">0</div><div class="text-xs" style="color:var(--text2)">Badges</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="text-xs tracking-widest mb-4" style="color:var(--text2)">ACHIEVEMENT BADGES</div>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3" id="achievements"></div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 13: NIGHT REVIEW ==================== -->
+<section id="review" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--purple)"><i class="fas fa-moon text-black text-sm"></i></div>
+      <h2 class="section-title glow-p" style="color:var(--purple)">NIGHT REVIEW PROTOCOL</h2>
+    </div>
+
+    <div class="glass-p rounded-2xl p-6 neon-p">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label class="text-sm mb-2 block" style="color:var(--purple)">✅ What went WELL today?</label>
+          <textarea class="input-field w-full rounded-lg p-3 text-sm resize-none" rows="3" id="review-good" placeholder="Wins of today..." style="color:var(--text)"></textarea>
+        </div>
+        <div>
+          <label class="text-sm mb-2 block" style="color:var(--red)">❌ What FAILED today?</label>
+          <textarea class="input-field w-full rounded-lg p-3 text-sm resize-none" rows="3" id="review-bad" placeholder="Failures and mistakes..." style="color:var(--text)"></textarea>
+        </div>
+        <div>
+          <label class="text-sm mb-2 block" style="color:var(--yellow)">📌 Biggest DISTRACTION?</label>
+          <textarea class="input-field w-full rounded-lg p-3 text-sm resize-none" rows="3" id="review-distract" placeholder="What stole your focus?" style="color:var(--text)"></textarea>
+        </div>
+        <div>
+          <label class="text-sm mb-2 block" style="color:var(--green)">💡 LESSON learned?</label>
+          <textarea class="input-field w-full rounded-lg p-3 text-sm resize-none" rows="3" id="review-lesson" placeholder="Key insight of today..." style="color:var(--text)"></textarea>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label class="text-sm mb-2 block" style="color:var(--blue)">🎯 Tomorrow's TOP FOCUS?</label>
+        <input type="text" class="input-field w-full rounded-lg px-3 py-2 text-sm" id="review-tomorrow" placeholder="Most important action tomorrow..." style="color:var(--text)"/>
+      </div>
+
+      <!-- Mood + Rating -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div>
+          <div class="text-xs tracking-widest mb-2" style="color:var(--text2)">TODAY'S MOOD</div>
+          <div class="flex gap-3">
+            <span onclick="setMood(1)" class="mood-btn text-2xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity">😫</span>
+            <span onclick="setMood(2)" class="mood-btn text-2xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity">😕</span>
+            <span onclick="setMood(3)" class="mood-btn text-2xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity">😐</span>
+            <span onclick="setMood(4)" class="mood-btn text-2xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity">😊</span>
+            <span onclick="setMood(5)" class="mood-btn text-2xl cursor-pointer opacity-50 hover:opacity-100 transition-opacity">🔥</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-xs tracking-widest mb-2" style="color:var(--text2)">DISCIPLINE SCORE</div>
+          <input type="range" id="discipline-score" min="0" max="10" value="5" class="w-full accent-blue-500"/>
+          <div class="text-center text-sm" style="color:var(--blue)"><span id="disc-val">5</span>/10</div>
+        </div>
+        <div>
+          <div class="text-xs tracking-widest mb-2" style="color:var(--text2)">SELF RATING</div>
+          <input type="range" id="self-rating" min="0" max="10" value="5" class="w-full accent-purple-500"/>
+          <div class="text-center text-sm" style="color:var(--purple)"><span id="self-val">5</span>/10</div>
+        </div>
+      </div>
+
+      <button onclick="saveReview()" class="w-full btn-war py-3 rounded-xl tracking-widest">💾 SAVE NIGHT REVIEW</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 14: MOTIVATION ==================== -->
+<section id="motivation" class="section-reveal py-16 px-4 md:px-8" style="background:rgba(0,0,0,0.3)">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="glass-b rounded-3xl p-10 neon-b relative overflow-hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,212,255,0.05),transparent 70%)"></div>
+      <div class="relative z-10">
+        <div class="text-xs tracking-widest mb-4" style="color:var(--blue)">⚡ MOTIVATION ENGINE</div>
+        <div id="motive-quote" class="text-2xl md:text-3xl font-black mb-4 leading-tight glow-b" style="color:var(--blue);font-family:'Orbitron',monospace">"DISCIPLINE CREATES FREEDOM"</div>
+        <button onclick="nextMotivation()" class="mt-6 px-6 py-2 rounded-full text-sm font-semibold" style="background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);color:var(--blue)">NEXT SIGNAL →</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+      <div class="glass rounded-xl p-4" style="border:1px solid rgba(255,51,102,0.2)"><div class="text-2xl mb-1">💪</div><div class="text-xs font-black tracking-widest" style="color:var(--red)">NO EXCUSES</div></div>
+      <div class="glass rounded-xl p-4" style="border:1px solid rgba(0,255,136,0.2)"><div class="text-2xl mb-1">🏗️</div><div class="text-xs font-black tracking-widest" style="color:var(--green)">BUILD OR BROKE</div></div>
+      <div class="glass rounded-xl p-4" style="border:1px solid rgba(0,212,255,0.2)"><div class="text-2xl mb-1">🎯</div><div class="text-xs font-black tracking-widest" style="color:var(--blue)">FOCUS WINS</div></div>
+      <div class="glass rounded-xl p-4" style="border:1px solid rgba(255,215,0,0.2)"><div class="text-2xl mb-1">⚔️</div><div class="text-xs font-black tracking-widest" style="color:var(--yellow)">WAR MINDSET</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECTION 15: VISION ==================== -->
+<section id="vision" class="section-reveal py-16 px-4 md:px-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-8 h-8 rounded flex items-center justify-center" style="background:var(--blue)"><i class="fas fa-eye text-black text-sm"></i></div>
+      <h2 class="section-title glow-b" style="color:var(--blue)">FUTURE VISION PANEL</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="vision-card glass rounded-2xl p-6 relative" style="border:1px solid rgba(0,212,255,0.15)">
+        <div class="text-4xl mb-3">💪</div>
+        <div class="orbitron text-lg font-black mb-2" style="color:var(--blue)">BEAST PHYSIQUE</div>
+        <div class="text-sm" style="color:var(--text2)">72kg lean muscle. Ripped, focused, energetic. People ask "what happened to you?"</div>
+        <div class="mt-3 text-xs tracking-widest" style="color:var(--blue)">TARGET: +16KG MUSCLE</div>
+      </div>
+      <div class="vision-card glass rounded-2xl p-6 relative" style="border:1px solid rgba(0,255,136,0.15)">
+        <div class="text-4xl mb-3">💰</div>
+        <div class="orbitron text-lg font-black mb-2" style="color:var(--green)">₹2,00,000 EARNED</div>
+        <div class="text-sm" style="color:var(--text2)">Multiple income streams. Etsy passive income. Freelance clients. AI automation services.</div>
+        <div class="mt-3 text-xs tracking-widest" style="color:var(--green)">FINANCIAL FREEDOM</div>
+      </div>
+      <div class="vision-card glass rounded-2xl p-6 relative" style="border:1px solid rgba(168,85,247,0.15)">
+        <div class="text-4xl mb-3">🤖</div>
+        <div class="orbitron text-lg font-black mb-2" style="color:var(--purple)">AI ENTREPRENEUR</div>
+        <div class="text-sm" style="color:var(--text2)">Python expert. AI automation master. Building products that earn while you sleep.</div>
+        <div class="mt-3 text-xs tracking-widest" style="color:var(--purple)">SKILL: PYTHON + AI</div>
+      </div>
+      <div class="vision-card glass rounded-2xl p-6 relative" style="border:1px solid rgba(255,215,0,0.15)">
+        <div class="text-4xl mb-3">🏆</div>
+        <div class="orbitron text-lg font-black mb-2" style="color:var(--yellow)">PERSONAL BRAND</div>
+        <div class="text-sm" style="color:var(--text2)">Known for transformation, discipline, tech. Audience of 10K+ following the journey.</div>
+        <div class="mt-3 text-xs tracking-widest" style="color:var(--yellow)">CONTENT CREATOR</div>
+      </div>
+      <div class="vision-card glass rounded-2xl p-6 relative" style="border:1px solid rgba(255,107,53,0.15)">
+        <div class="text-4xl mb-3">🛒</div>
+        <div class="orbitron text-lg font-black mb-2" style="color:var(--orange)">ETSY EMPIRE</div>
+        <div class="text-sm" style="color:var(--text2)">200+ premium digital products. Passive income flowing daily. Top-rated Etsy seller.</div>
+        <div class="mt-3 text-xs tracking-widest" style="color:var(--orange)">200+ LISTINGS</div>
+      </div>
+      <div class="vision-card glass rounded-2xl p-6 relative" style="border:1px solid rgba(0,212,255,0.15)">
+        <div class="text-4xl mb-3">🧠</div>
+        <div class="orbitron text-lg font-black mb-2" style="color:var(--blue)">ELITE MINDSET</div>
+        <div class="text-sm" style="color:var(--text2)">No distractions. Zero procrastination. Pure discipline. The person you always wanted to be.</div>
+        <div class="mt-3 text-xs tracking-widest" style="color:var(--blue)">22 DAYS CHANGED EVERYTHING</div>
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <div class="text-center mt-12">
+      <div class="orbitron text-3xl md:text-5xl font-black mb-4" style="background:linear-gradient(135deg,var(--blue),var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+        THE GRIND NEVER STOPS
+      </div>
+      <p class="text-lg" style="color:var(--text2)">22 days. One mission. Total transformation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM PADDING -->
+<div class="h-16"></div>
+
+</div><!-- END MAIN CONTENT -->
+
+<!-- WAR MODE OVERLAY -->
+<div id="war-mode-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,7,16,0.97);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center">
+  <div class="orbitron text-5xl font-black glow-b mb-4" style="color:var(--blue);animation:pulse 1s infinite">⚔ WAR MODE</div>
+  <div class="timer-display" id="war-timer">25:00</div>
+  <div class="mt-4 text-sm" style="color:var(--text2)">ALL DISTRACTIONS ELIMINATED. FOCUS OR DIE.</div>
+  <button onclick="exitWarMode()" class="mt-8 px-8 py-3 rounded-xl" style="background:rgba(255,51,102,0.2);border:1px solid rgba(255,51,102,0.3);color:var(--red);font-family:'Orbitron',monospace;letter-spacing:2px">EXIT WAR MODE</button>
+</div>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;bottom:24px;right:24px;z-index:300;display:none;max-width:280px">
+  <div class="glass-b rounded-xl p-4 neon-b">
+    <div id="toast-msg" class="text-sm font-semibold" style="color:var(--blue)"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// STATE MANAGEMENT
+// ============================================================
+const defaultState = {
+  currentDay:1, streak:0, totalXP:0, todayXP:0, level:1,
+  tasksCompleted:[], money:0, etsyListings:0, etsyToday:0,
+  weight:56, calories:0, water:0, sleep:0, protein:0,
+  timerSessions:0, focusMinutes:0, contentStreak:0,
+  dailyNote:'', mood:0, disciplineScore:5, selfRating:5,
+  pythonLevels:{}, calendarData:{},
+  incomeSources:{etsy:0,freelancing:0,affiliate:0,digital:0,automation:0,ai:0},
+  incomeLog:[], reviews:{}, motivationIndex:0,
+  startDate: new Date().toDateString()
+};
+
+let state = JSON.parse(localStorage.getItem('ashishState')) || {...defaultState};
+let timerInterval = null, timerRunning = false;
+let pomoDuration = 25*60, pomoElapsed = 0, pomoPhase = 'focus';
+let pomoWork = 25, pomoBreak = 5;
+
+const save = () => localStorage.setItem('ashishState', JSON.stringify(state));
+
+// ============================================================
+// TASKS DATA
+// ============================================================
+const tasks = [
+  {id:'leads',label:'Connect 15 leads',xp:100,icon:'👥',priority:'HIGH'},
+  {id:'etsy10',label:'Upload 10 Etsy listings',xp:150,icon:'🛒',priority:'HIGH'},
+  {id:'workout',label:'Workout (30+ min)',xp:80,icon:'💪',priority:'HIGH'},
+  {id:'meditation',label:'Meditation (10 min)',xp:40,icon:'🧘',priority:'MED'},
+  {id:'deepwork',label:'Deep work session (2h)',xp:120,icon:'🎯',priority:'HIGH'},
+  {id:'calories',label:'High calorie intake (3500+)',xp:60,icon:'🍽️',priority:'HIGH'},
+  {id:'python',label:'Python learning (1h)',xp:100,icon:'🐍',priority:'HIGH'},
+  {id:'ai',label:'AI learning (1h)',xp:100,icon:'🤖',priority:'HIGH'},
+  {id:'analytics',label:'Data analytics practice',xp:80,icon:'📊',priority:'MED'},
+  {id:'project',label:'Build project',xp:120,icon:'🔨',priority:'HIGH'},
+  {id:'content',label:'Upload content',xp:60,icon:'📱',priority:'MED'},
+  {id:'notes',label:'Upload notes/resources',xp:40,icon:'📝',priority:'MED'},
+  {id:'nodistract',label:'No distraction mode',xp:80,icon:'🔕',priority:'HIGH'},
+  {id:'read',label:'Read 10 pages',xp:40,icon:'📖',priority:'MED'},
+  {id:'sleep',label:'8hr sleep tracking',xp:50,icon:'😴',priority:'MED'},
+];
+
+const priorityColor = {HIGH:'var(--red)',MED:'var(--yellow)',LOW:'var(--green)'};
+
+// ============================================================
+// INIT TASKS
+// ============================================================
+function initTasks(){
+  const list = document.getElementById('task-list');
+  list.innerHTML = '';
+  tasks.forEach(t => {
+    const done = state.tasksCompleted.includes(t.id);
+    const div = document.createElement('div');
+    div.className = `task-item p-3 rounded-xl ${done?'done':''}`;
+    div.innerHTML = `
+      <div class="flex items-center gap-3">
+        <div class="custom-cb ${done?'checked':''}" onclick="toggleTask('${t.id}')" id="cb-${t.id}">
+          ${done?'<i class="fas fa-check text-black text-xs"></i>':''}
+        </div>
+        <span class="text-lg">${t.icon}</span>
+        <span class="task-label flex-1 font-semibold text-sm">${t.label}</span>
+        <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.05);color:${priorityColor[t.priority]}">${t.priority}</span>
+        <span class="mono text-xs" style="color:var(--purple)">+${t.xp} XP</span>
+      </div>`;
+    list.appendChild(div);
+  });
+  updateTaskStats();
+}
+
+function toggleTask(id){
+  const idx = state.tasksCompleted.indexOf(id);
+  const task = tasks.find(t=>t.id===id);
+  if(idx===-1){
+    state.tasksCompleted.push(id);
+    state.todayXP += task.xp;
+    state.totalXP += task.xp;
+    showToast(`+${task.xp} XP — ${task.label}!`);
+  } else {
+    state.tasksCompleted.splice(idx,1);
+    state.todayXP = Math.max(0, state.todayXP - task.xp);
+    state.totalXP = Math.max(0, state.totalXP - task.xp);
+  }
+  save(); initTasks(); updateAll();
+}
+
+function updateTaskStats(){
+  const done = state.tasksCompleted.length;
+  const pct = Math.round(done/tasks.length*100);
+  document.getElementById('tasks-done').textContent = done;
+  document.getElementById('tasks-done2').textContent = done;
+  document.getElementById('tasks-left').textContent = tasks.length-done;
+  document.getElementById('prog-pct').textContent = pct+'%';
+  document.getElementById('prog-bar').style.width = pct+'%';
+  document.getElementById('completion-pct').textContent = pct;
+  document.getElementById('completion-bar').style.width = pct+'%';
+  document.getElementById('ring-pct').textContent = pct+'%';
+  document.getElementById('hero-ring').style.strokeDashoffset = 440 - (440*pct/100);
+  const xpMax = tasks.reduce((a,t)=>a+t.xp,0);
+  const xpPct = Math.round(state.todayXP/xpMax*100);
+  document.getElementById('mission-xp').textContent = state.todayXP;
+  document.getElementById('today-xp').textContent = state.todayXP;
+  document.getElementById('xp-bar-m').style.width = Math.min(xpPct,100)+'%';
+  document.getElementById('xp-fill-hero').style.width = Math.min(xpPct,100)+'%';
+}
+
+// ============================================================
+// CALENDAR
+// ============================================================
+function initCalendar(){
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+  for(let i=1;i<=22;i++){
+    const d = state.calendarData[i] || {};
+    const status = d.status || (i < state.currentDay ? 'empty' : i===state.currentDay ? 'today' : 'future');
+    const div = document.createElement('div');
+    div.className = `cal-day glass rounded-xl p-3 text-center ${i===state.currentDay?'today':status==='complete'?'complete':status==='partial'?'partial':status==='failed'?'failed':''}`;
+    div.style.cursor='pointer';
+    div.innerHTML = `
+      <div class="orbitron font-black text-lg" style="color:${i===state.currentDay?'var(--blue)':status==='complete'?'var(--green)':status==='partial'?'var(--yellow)':status==='failed'?'var(--red)':'var(--text2)'}">${i}</div>
+      <div class="text-xs mt-1" style="color:var(--text2)">${d.score||0}%</div>
+      <div class="text-xs" style="color:var(--purple)">₹${d.money||0}</div>
+    `;
+    div.onclick = () => showDayDetail(i);
+    grid.appendChild(div);
+  }
+}
+
+function showDayDetail(day){
+  const d = state.calendarData[day] || {};
+  document.getElementById('modal-day').textContent = day;
+  document.getElementById('d-score').textContent = (d.score||0)+'%';
+  document.getElementById('d-xp').textContent = d.xp||0;
+  document.getElementById('d-money').textContent = '₹'+(d.money||0);
+  document.getElementById('d-etsy').textContent = d.etsy||0;
+  document.getElementById('d-weight').textContent = d.weight||56;
+  const det = document.getElementById('day-detail');
+  det.style.display = det.style.display==='none' ? 'block' : 'none';
+}
+
+// ============================================================
+// MONEY TRACKER
+// ============================================================
+function initMoney(){
+  const streams = ['etsy','freelancing','affiliate','digital','automation','ai'];
+  const colors = ['var(--orange)','var(--blue)','var(--purple)','var(--green)','var(--yellow)','var(--red)'];
+  const icons = ['🛒','💼','🔗','📦','⚙️','🤖'];
+  const list = document.getElementById('income-streams');
+  list.innerHTML = '';
+  streams.forEach((s,i)=>{
+    const val = state.incomeSources[s]||0;
+    list.innerHTML += `<div class="flex justify-between items-center text-sm py-1">
+      <span>${icons[i]} ${s.charAt(0).toUpperCase()+s.slice(1)}</span>
+      <span style="color:${colors[i]}" class="mono font-black">₹${val.toLocaleString()}</span>
+    </div>`;
+  });
+  updateMoneyDisplay();
+
+  // Revenue Chart
+  const rCtx = document.getElementById('revenue-chart').getContext('2d');
+  if(window.revenueChart) window.revenueChart.destroy();
+  const vals = streams.map(s=>state.incomeSources[s]||0);
+  window.revenueChart = new Chart(rCtx,{
+    type:'doughnut',
+    data:{labels:streams.map(s=>s.charAt(0).toUpperCase()+s.slice(1)),datasets:[{data:vals.every(v=>v===0)?[1,1,1,1,1,1]:vals,backgroundColor:['rgba(255,107,53,0.7)','rgba(0,128,255,0.7)','rgba(168,85,247,0.7)','rgba(0,255,136,0.7)','rgba(255,215,0,0.7)','rgba(255,51,102,0.7)'],borderWidth:0}]},
+    options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:10}}}}}
+  });
+}
+
+function addIncome(){
+  const src = document.getElementById('income-source').value;
+  const amt = parseFloat(document.getElementById('income-amount').value)||0;
+  if(amt<=0) return;
+  state.incomeSources[src] = (state.incomeSources[src]||0)+amt;
+  state.money += amt;
+  const now = new Date();
+  state.incomeLog.unshift({src,amt,time:now.toLocaleTimeString()});
+  if(state.incomeLog.length>20) state.incomeLog.pop();
+  document.getElementById('income-amount').value='';
+  save(); initMoney(); updateMoneyDisplay();
+  showToast(`+₹${amt} from ${src}! 💰`);
+  updateAnalytics();
+}
+
+function updateMoneyDisplay(){
+  animateCounter('money-earned', state.money);
+  const pct = Math.min(100, Math.round(state.money/200000*100));
+  document.getElementById('money-bar').style.width = pct+'%';
+  document.getElementById('money-pct').textContent = pct;
+  document.getElementById('money-left').textContent = Math.max(0,200000-state.money).toLocaleString();
+  const log = document.getElementById('income-log');
+  log.innerHTML = state.incomeLog.slice(0,5).map(e=>`<div class="flex justify-between text-xs py-1" style="border-bottom:1px solid var(--border)"><span style="color:var(--text2)">${e.src} · ${e.time}</span><span style="color:var(--green)">+₹${e.amt}</span></div>`).join('');
+}
+
+// ============================================================
+// ETSY
+// ============================================================
+const etsyCategories = [
+  {name:'AI T-shirt Designs',icon:'👕',count:0,target:30},
+  {name:'Notion Templates',icon:'📋',count:0,target:25},
+  {name:'Planners',icon:'📅',count:0,target:20},
+  {name:'Prompt Packs',icon:'💡',count:0,target:25},
+  {name:'HTML Templates',icon:'🌐',count:0,target:20},
+  {name:'Resume Templates',icon:'📄',count:0,target:20},
+  {name:'Social Media Kits',icon:'📱',count:0,target:30},
+  {name:'AI Workflow Packs',icon:'⚙️',count:0,target:30},
+];
+
+function initEtsy(){
+  const list = document.getElementById('etsy-categories');
+  list.innerHTML = '';
+  etsyCategories.forEach(c=>{
+    const pct = Math.min(100,Math.round(c.count/c.target*100));
+    list.innerHTML += `<div class="flex items-center gap-3">
+      <span>${c.icon}</span>
+      <span class="text-sm flex-1" style="color:var(--text2)">${c.name}</span>
+      <div class="w-24 progress-track h-2"><div class="progress-fill h-2" style="width:${pct}%;background:linear-gradient(90deg,var(--orange),var(--yellow))"></div></div>
+      <span class="mono text-xs" style="color:var(--orange)">${c.count}/${c.target}</span>
+    </div>`;
+  });
+  document.getElementById('etsy-count').textContent = state.etsyListings;
+  document.getElementById('etsy-listings').textContent = state.etsyListings;
+  document.getElementById('etsy-today').textContent = state.etsyToday;
+}
+
+function addEtsyListings(){
+  const n = parseInt(document.getElementById('etsy-add-num').value)||0;
+  if(n<=0) return;
+  state.etsyListings += n;
+  state.etsyToday += n;
+  state.totalXP += n*10;
+  document.getElementById('etsy-add-num').value='';
+  save(); initEtsy(); updateGamification();
+  showToast(`+${n} Etsy listings! 🛒`);
+}
+
+const listingIdeas = {
+  'ai':['AI Prompts Mega Bundle 1000+','ChatGPT Workflow Templates','Midjourney Prompt Library','AI Content Calendar Template','ChatGPT Business Prompt Pack'],
+  'fitness':['Workout Planner PDF Bundle','Fitness Progress Tracker','Meal Prep Calendar Template','Home Workout Plan Printable','Macro Calculator Spreadsheet'],
+  'business':['Business Plan Template','Invoice Template Bundle','Social Media Strategy Kit','Brand Identity Checklist','Startup Notion Dashboard'],
+};
+
+function generateListingIdeas(){
+  const niche = document.getElementById('niche-input').value.toLowerCase().trim()||'ai';
+  const key = Object.keys(listingIdeas).find(k=>niche.includes(k)) || 'ai';
+  const ideas = listingIdeas[key];
+  document.getElementById('listing-ideas').innerHTML = ideas.map(i=>`
+    <div class="glass rounded-lg p-2 text-xs" style="color:var(--text2);border:1px solid var(--border)">${i}</div>
+  `).join('');
+}
+
+// ============================================================
+// PYTHON ROADMAP
+// ============================================================
+const roadmapLevels = [
+  {id:'py1',name:'Python Basics',days:2,icon:'🐍',difficulty:'Beginner',projects:['Calculator','To-do list','Number guesser']},
+  {id:'py2',name:'Advanced Python',days:3,icon:'⚡',difficulty:'Intermediate',projects:['File automator','Web scraper','Data parser']},
+  {id:'py3',name:'APIs',days:2,icon:'🔌',difficulty:'Intermediate',projects:['Weather API','REST client','API wrapper']},
+  {id:'py4',name:'Automation',days:2,icon:'⚙️',difficulty:'Intermediate',projects:['Email automator','Task scheduler','File organizer']},
+  {id:'py5',name:'Web Scraping',days:2,icon:'🕷️',difficulty:'Intermediate',projects:['Price tracker','News scraper','Product monitor']},
+  {id:'py6',name:'Data Analytics',days:3,icon:'📊',difficulty:'Advanced',projects:['Sales analysis','Student data','Stock tracker']},
+  {id:'py7',name:'Pandas',days:2,icon:'🐼',difficulty:'Advanced',projects:['CSV processor','Data cleaner','Report generator']},
+  {id:'py8',name:'NumPy',days:1,icon:'🔢',difficulty:'Advanced',projects:['Matrix ops','Signal processing','Stats calculator']},
+  {id:'py9',name:'Data Visualization',days:2,icon:'📈',difficulty:'Advanced',projects:['Dashboard','Chart builder','Visual report']},
+  {id:'py10',name:'AI APIs',days:2,icon:'🤖',difficulty:'Expert',projects:['ChatGPT bot','Image generator','AI assistant']},
+  {id:'py11',name:'AI Agents',days:3,icon:'🧠',difficulty:'Expert',projects:['Task agent','Research agent','Code agent']},
+  {id:'py12',name:'LangChain',days:3,icon:'🔗',difficulty:'Expert',projects:['RAG system','Chatbot','Document Q&A']},
+  {id:'py13',name:'Vector DBs',days:2,icon:'🗄️',difficulty:'Expert',projects:['Semantic search','Knowledge base','Memory system']},
+  {id:'py14',name:'Full Stack',days:4,icon:'🌐',difficulty:'Expert',projects:['SaaS app','API backend','Web service']},
+  {id:'py15',name:'App Development',days:3,icon:'📱',difficulty:'Expert',projects:['Desktop app','Mobile UI','CLI tool']},
+];
+
+function initRoadmap(){
+  const container = document.getElementById('roadmap-nodes');
+  container.innerHTML = '';
+  let completedLevels = 0;
+  roadmapLevels.forEach((lv,i)=>{
+    const done = state.pythonLevels[lv.id] || 0;
+    const unlocked = i===0 || state.pythonLevels[roadmapLevels[i-1].id]>=50;
+    if(done>=50) completedLevels++;
+    const diffColor = {Beginner:'var(--green)',Intermediate:'var(--yellow)',Advanced:'var(--orange)',Expert:'var(--red)'}[lv.difficulty];
+    const div = document.createElement('div');
+    div.className = 'roadmap-node glass rounded-xl p-4 mb-2';
+    div.style.opacity = unlocked?'1':'0.4';
+    div.innerHTML = `
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-xl">${lv.icon}</span>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="font-black text-sm">${lv.name}</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.05);color:${diffColor}">${lv.difficulty}</span>
+            <span class="text-xs" style="color:var(--text2)">${lv.days}d</span>
+          </div>
+          <div class="progress-track h-2 mt-1">
+            <div class="progress-fill h-2" style="width:${done}%;background:linear-gradient(90deg,var(--blue),var(--purple))"></div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="mono text-sm font-black" style="color:var(--blue)">${done}%</div>
+          ${unlocked?`<input type="range" min="0" max="100" value="${done}" class="w-16 mt-1 accent-blue-500" oninput="updateLevel('${lv.id}',this.value)"/>`:''} 
+        </div>
+      </div>`;
+    container.appendChild(div);
+  });
+  const mastery = Math.round(Object.values(state.pythonLevels).reduce((a,b)=>a+b,0)/(roadmapLevels.length*100)*100);
+  document.getElementById('py-mastery').textContent = mastery;
+  document.getElementById('py-bar').style.width = mastery+'%';
+  document.getElementById('levels-done').textContent = completedLevels;
+  document.getElementById('code-streak').textContent = state.streak;
+}
+
+function updateLevel(id, val){
+  state.pythonLevels[id] = parseInt(val);
+  save(); initRoadmap();
+}
+
+// ============================================================
+// FITNESS
+// ============================================================
+const workoutPlans = {
+  push:['Bench Press 4x8','Incline Press 3x10','Shoulder Press 4x8','Tricep Pushdown 3x12','Chest Flies 3x12'],
+  pull:['Deadlift 4x6','Pull-ups 4x8','Barbell Rows 4x8','Bicep Curls 3x12','Face Pulls 3x15'],
+  legs:['Squats 4x8','Romanian DL 3x10','Leg Press 4x12','Lunges 3x12','Calf Raises 4x15'],
+  full:['Squat 3x8','Push-up 3x15','Pull-up 3x8','OHP 3x10','Romanian DL 3x10'],
+};
+
+function setWorkout(type){
+  const plan = workoutPlans[type]||[];
+  document.getElementById('workout-plan').innerHTML = plan.map(e=>`
+    <div class="flex items-center gap-2 py-1">
+      <div class="w-1.5 h-1.5 rounded-full" style="background:var(--purple)"></div>
+      <span style="color:var(--text2)">${e}</span>
+    </div>`).join('');
+}
+
+function updateWeight(){
+  const w = parseFloat(document.getElementById('weight-input').value)||56;
+  state.weight = w;
+  const pct = Math.max(0,Math.min(100,Math.round((w-56)/(72-56)*100)));
+  document.getElementById('weight-now').textContent = w;
+  document.getElementById('weight-bar').style.width = pct+'%';
+  document.getElementById('weight-pct').textContent = pct;
+  save(); showToast(`Weight logged: ${w}kg 💪`);
+}
+
+function addCals(){
+  const c = parseInt(document.getElementById('cal-input').value)||0;
+  state.calories = Math.min(5000, (state.calories||0)+c);
+  document.getElementById('cal-val').textContent = state.calories;
+  document.getElementById('cal-bar').style.width = Math.min(100,state.calories/3500*100)+'%';
+  document.getElementById('cal-input').value='';
+  save();
+}
+
+function addWater(){
+  state.water = Math.min(8,(state.water||0)+1);
+  document.getElementById('water-val').textContent = state.water;
+  document.getElementById('water-bar').style.width = (state.water/8*100)+'%';
+  save();
+}
+
+function logSleep(){
+  const h = parseFloat(document.getElementById('sleep-input').value)||0;
+  state.sleep = h;
+  document.getElementById('sleep-val').textContent = h;
+  document.getElementById('sleep-bar').style.width = Math.min(100,h/8*100)+'%';
+  save();
+}
+
+function addProtein(){
+  const g = parseInt(document.getElementById('prot-input').value)||0;
+  state.protein = Math.min(200,(state.protein||0)+g);
+  document.getElementById('prot-val').textContent = state.protein;
+  document.getElementById('prot-bar').style.width = Math.min(100,state.protein/100*100)+'%';
+  document.getElementById('prot-input').value='';
+  save();
+}
+
+// ============================================================
+// CONTENT ENGINE
+// ============================================================
+const platforms = [
+  {name:'Instagram',icon:'📸',color:'var(--purple)',handle:'@ashishunlock'},
+  {name:'LinkedIn',icon:'💼',color:'var(--blue)',handle:'ashish-unlock'},
+  {name:'Twitter/X',icon:'🐦',color:'#1DA1F2',handle:'@ashishunlock'},
+  {name:'YouTube',icon:'▶️',color:'var(--red)',handle:'Ashish Unlock'},
+  {name:'Threads',icon:'🧵',color:'var(--text)',handle:'@ashishunlock'},
+];
+
+function initPlatforms(){
+  const grid = document.getElementById('platforms');
+  grid.innerHTML = '';
+  platforms.forEach(p=>{
+    grid.innerHTML += `<div class="platform-card glass rounded-xl p-4" style="border:1px solid rgba(255,255,255,0.05)">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl">${p.icon}</span>
+        <div>
+          <div class="text-sm font-black" style="color:${p.color}">${p.name}</div>
+          <div class="text-xs" style="color:var(--text2)">${p.handle}</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="text-xs" style="color:var(--text2)">Posted today</label>
+        <input type="checkbox" class="accent-blue-500 ml-auto"/>
+      </div>
+    </div>`;
+  });
+}
+
+const hooks = {
+  'AI Tools':['I used AI to do 8 hours of work in 20 minutes. Here\'s how:','3 AI tools that replaced 3 employees for me.','This AI trick made me ₹50,000 last month.'],
+  'Coding Journey':['Day 1 vs Day 22 of my coding journey. The difference is insane.','I didn\'t know what Python was. Now I\'m automating businesses. My story:','5 Python projects that got me clients in 22 days.'],
+  'Discipline':['I eliminated all distractions for 22 days. My life changed forever.','Stop scrolling. Start building. Here\'s my exact routine:','The uncomfortable truth about discipline no one talks about.'],
+  'Transformation':['22 days ago I was broke, distracted, weak. Today I\'m different. Here\'s what changed:','This one mindset shift changed everything.','From ₹0 to ₹2,00,000 in 22 days. The raw truth:'],
+};
+
+function generateContent(){
+  const type = document.getElementById('content-type').value;
+  const arr = hooks[type] || hooks['AI Tools'];
+  const pick = arr[Math.floor(Math.random()*arr.length)];
+  document.getElementById('content-output').innerHTML = `<div class="font-semibold mb-2" style="color:var(--purple)">🔥 VIRAL HOOK:</div><div style="color:var(--text)">"${pick}"</div>`;
+}
+
+// ============================================================
+// POMODORO TIMER
+// ============================================================
+function setMode(mode, work, brk){
+  pomoWork = work; pomoBreak = brk;
+  pomoDuration = work*60; pomoElapsed = 0; pomoPhase='focus';
+  updateTimerDisplay();
+  document.querySelectorAll('.pomo-mode-btn').forEach(b=>b.style.opacity='0.5');
+  document.getElementById('mode-'+mode).style.opacity='1';
+}
+
+function updateTimerDisplay(){
+  const remaining = pomoDuration - pomoElapsed;
+  const m = Math.floor(remaining/60), s = remaining%60;
+  const str = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  document.getElementById('timer-display').textContent = str;
+  document.getElementById('war-timer').textContent = str;
+  const pct = pomoElapsed/pomoDuration;
+  const circumference = 628;
+  document.getElementById('pomo-ring').style.strokeDashoffset = circumference * (1-pct);
+}
+
+function startTimer(){
+  if(timerRunning) return;
+  timerRunning=true;
+  timerInterval = setInterval(()=>{
+    pomoElapsed++;
+    updateTimerDisplay();
+    if(pomoElapsed >= pomoDuration){
+      clearInterval(timerInterval); timerRunning=false;
+      if(pomoPhase==='focus'){
+        state.timerSessions++; state.focusMinutes+=pomoWork;
+        state.totalXP+=50; state.todayXP+=50;
+        document.getElementById('sessions-done').textContent = state.timerSessions;
+        document.getElementById('focus-mins').textContent = state.focusMinutes;
+        document.getElementById('today-sessions').textContent = state.timerSessions;
+        showToast(`Session done! +50 XP 🎯`);
+        pomoPhase='break'; pomoDuration=pomoBreak*60; pomoElapsed=0;
+        document.getElementById('timer-phase').textContent='BREAK';
+        save(); updateGamification();
+      } else {
+        pomoPhase='focus'; pomoDuration=pomoWork*60; pomoElapsed=0;
+        document.getElementById('timer-phase').textContent='FOCUS';
+        showToast('Break over! Back to war ⚔️');
+      }
+      updateTimerDisplay();
+    }
+  },1000);
+}
+
+function pauseTimer(){ clearInterval(timerInterval); timerRunning=false; }
+function resetTimer(){ pauseTimer(); pomoElapsed=0; pomoPhase='focus'; pomoDuration=pomoWork*60; updateTimerDisplay(); }
+
+// ============================================================
+// GAMIFICATION
+// ============================================================
+const ranks = [
+  {name:'DISTRACTED BEGINNER',icon:'😴',minXP:0},
+  {name:'DISCIPLINED BUILDER',icon:'🔨',minXP:500},
+  {name:'FOCUSED OPERATOR',icon:'🎯',minXP:1500},
+  {name:'AI ENTREPRENEUR',icon:'🤖',minXP:3000},
+  {name:'ELITE CREATOR',icon:'⚡',minXP:5000},
+  {name:'BEAST MODE',icon:'🔥',minXP:8000},
+];
+
+const achievements = [
+  {id:'first_task',icon:'✅',name:'First Task',xpReq:1,desc:'Complete your first task'},
+  {id:'streak3',icon:'🔥',name:'3-Day Streak',xpReq:300,desc:'3 days of consistency'},
+  {id:'streak7',icon:'💫',name:'Week Warrior',xpReq:700,desc:'7-day streak'},
+  {id:'etsy10',icon:'🛒',name:'Etsy Starter',xpReq:200,desc:'Upload 10 Etsy listings'},
+  {id:'etsy100',icon:'🏪',name:'Etsy Pro',xpReq:2000,desc:'Upload 100 listings'},
+  {id:'money1k',icon:'💰',name:'First ₹1000',xpReq:500,desc:'Earn ₹1000'},
+  {id:'money10k',icon:'💵',name:'₹10K Club',xpReq:2000,desc:'Earn ₹10,000'},
+  {id:'pomo5',icon:'⏱️',name:'Focus Master',xpReq:500,desc:'5 pomodoro sessions'},
+  {id:'python50',icon:'🐍',name:'Python Dev',xpReq:1000,desc:'50% Python mastery'},
+  {id:'weight1',icon:'💪',name:'Gaining',xpReq:200,desc:'Gain 1kg'},
+  {id:'content7',icon:'📱',name:'Content Week',xpReq:700,desc:'7 days of content'},
+  {id:'xp1000',icon:'⚡',name:'XP Machine',xpReq:1000,desc:'Earn 1000 XP total'},
+];
+
+function updateGamification(){
+  const xp = state.totalXP;
+  let rankIdx = 0;
+  ranks.forEach((r,i)=>{ if(xp>=r.minXP) rankIdx=i; });
+  const rank = ranks[rankIdx];
+  const nextRank = ranks[rankIdx+1];
+  document.getElementById('rank-icon').textContent = rank.icon;
+  document.getElementById('rank-title').textContent = rank.name;
+  document.getElementById('level-num').textContent = rankIdx+1;
+  document.getElementById('level-next').textContent = Math.min(6,rankIdx+2);
+  document.getElementById('total-xp').textContent = xp;
+  document.getElementById('xp-needed').textContent = nextRank?nextRank.minXP:8000;
+  document.getElementById('disp-xp').textContent = xp;
+  document.getElementById('disp-streak').textContent = state.streak;
+  document.getElementById('disp-rank').textContent = rankIdx+1;
+  const xpPct = nextRank ? Math.min(100,Math.round((xp-rank.minXP)/(nextRank.minXP-rank.minXP)*100)) : 100;
+  document.getElementById('main-xp-fill').style.width = xpPct+'%';
+
+  // Render achievements
+  const grid = document.getElementById('achievements');
+  grid.innerHTML = '';
+  let unlockedCount = 0;
+  achievements.forEach(a=>{
+    const unlocked = xp >= a.xpReq;
+    if(unlocked) unlockedCount++;
+    grid.innerHTML += `<div class="achievement glass rounded-xl p-3 text-center ${unlocked?'unlocked':'locked'}" title="${a.desc}">
+      <div class="text-2xl mb-1">${a.icon}</div>
+      <div class="text-xs font-semibold" style="color:${unlocked?'var(--yellow)':'var(--text2)'}">${a.name}</div>
+    </div>`;
+  });
+  document.getElementById('disp-badges').textContent = unlockedCount;
+}
+
+// ============================================================
+// MOTIVATION
+// ============================================================
+const quotes = [
+  "DISCIPLINE CREATES FREEDOM.",
+  "BUILD OR STAY BROKE. YOUR CHOICE.",
+  "NO EXCUSES. JUST RESULTS.",
+  "CONSISTENCY BEATS TALENT EVERY TIME.",
+  "YOUR FUTURE SELF IS WATCHING. DON'T DISAPPOINT HIM.",
+  "THE PAIN OF DISCIPLINE OR THE PAIN OF REGRET.",
+  "EVERY DAY YOU DON'T BUILD, SOMEONE ELSE DOES.",
+  "22 DAYS CAN CHANGE EVERYTHING. TRUST THE PROCESS.",
+  "SUCCESS IS JUST COMPOUND INTEREST ON DISCIPLINE.",
+  "YOU ARE ONE DECISION AWAY FROM A DIFFERENT LIFE.",
+  "STOP CONSUMING. START CREATING.",
+  "RICH OR BROKE — YOU CHOOSE EVERY MORNING.",
+  "HARD WORK BEATS TALENT WHEN TALENT DOESN'T WORK HARD.",
+  "THE ONLY WORKOUT YOU'LL REGRET IS THE ONE YOU SKIP.",
+  "YOUR ENVIRONMENT IS YOUR DESTINY. BUILD IT RIGHT.",
+];
+
+const dailyQuotes = [
+  "BUILD OR STAY BROKE.",
+  "FOCUS IS YOUR SUPERPOWER.",
+  "EXCELLENCE EVERY SINGLE DAY.",
+  "MAKE THE GRIND GLORIFIED.",
+  "PAIN IS TEMPORARY. RESULTS ARE FOREVER.",
+];
+
+let motiIdx = state.motivationIndex || 0;
+function nextMotivation(){
+  motiIdx = (motiIdx+1)%quotes.length;
+  state.motivationIndex = motiIdx;
+  const el = document.getElementById('motive-quote');
+  el.style.opacity='0';
+  setTimeout(()=>{
+    el.textContent = `"${quotes[motiIdx]}"`;
+    el.style.opacity='1';
+    el.style.transition='opacity .5s';
+    save();
+  },300);
+}
+
+function rotateDailyQuote(){
+  const el = document.getElementById('daily-quote');
+  const idx = Math.floor(Date.now()/30000)%dailyQuotes.length;
+  el.classList.remove('quote-anim');
+  el.offsetHeight;
+  el.classList.add('quote-anim');
+  el.textContent = `"${dailyQuotes[idx]}"`;
+}
+
+// ============================================================
+// ANALYTICS CHARTS
+// ============================================================
+function updateAnalytics(){
+  // Earnings Chart
+  const eCtx = document.getElementById('earnings-chart').getContext('2d');
+  if(window.earningsChart) window.earningsChart.destroy();
+  const days = Array.from({length:22},(_, i)=>`D${i+1}`);
+  const earningsData = days.map((_,i)=>state.calendarData[i+1]?.money||0);
+  window.earningsChart = new Chart(eCtx,{
+    type:'bar',
+    data:{labels:days,datasets:[{label:'₹ Earned',data:earningsData,backgroundColor:'rgba(0,255,136,0.3)',borderColor:'var(--green)',borderWidth:1}]},
+    options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8}}},y:{ticks:{color:'#94a3b8',font:{size:9}}}}}
+  });
+
+  // Productivity Chart
+  const pCtx = document.getElementById('productivity-chart').getContext('2d');
+  if(window.prodChart) window.prodChart.destroy();
+  const prodData = days.map((_,i)=>state.calendarData[i+1]?.score||0);
+  window.prodChart = new Chart(pCtx,{
+    type:'line',
+    data:{labels:days,datasets:[{label:'Score %',data:prodData,fill:true,borderColor:'var(--purple)',backgroundColor:'rgba(168,85,247,0.1)',tension:.4,pointBackgroundColor:'var(--purple)'}]},
+    options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8}}},y:{max:100,ticks:{color:'#94a3b8',font:{size:9}}}}}
+  });
+
+  // Weight Chart
+  const wCtx = document.getElementById('weight-chart').getContext('2d');
+  if(window.weightChart) window.weightChart.destroy();
+  const weightData = days.map((_,i)=>state.calendarData[i+1]?.weight||56);
+  window.weightChart = new Chart(wCtx,{
+    type:'line',
+    data:{labels:days,datasets:[{label:'kg',data:weightData,fill:false,borderColor:'var(--blue)',tension:.4,pointBackgroundColor:'var(--blue)'}]},
+    options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8}}},y:{ticks:{color:'#94a3b8',font:{size:9}}}}}
+  });
+
+  // Etsy Chart
+  const etCtx = document.getElementById('etsy-chart').getContext('2d');
+  if(window.etsyGrowthChart) window.etsyGrowthChart.destroy();
+  let cumEtsy = 0;
+  const etsyData = days.map((_,i)=>{ cumEtsy+=(state.calendarData[i+1]?.etsy||0); return cumEtsy; });
+  window.etsyGrowthChart = new Chart(etCtx,{
+    type:'line',
+    data:{labels:days,datasets:[{label:'Listings',data:etsyData,fill:true,borderColor:'var(--orange)',backgroundColor:'rgba(255,107,53,0.1)',tension:.4}]},
+    options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8}}},y:{ticks:{color:'#94a3b8',font:{size:9}}}}}
+  });
+}
+
+// ============================================================
+// NIGHT REVIEW
+// ============================================================
+function setMood(v){
+  state.mood=v;
+  document.querySelectorAll('.mood-btn').forEach((b,i)=>b.style.opacity=(i+1)<=v?'1':'0.4');
+  save();
+}
+
+function saveReview(){
+  const review = {
+    good:document.getElementById('review-good').value,
+    bad:document.getElementById('review-bad').value,
+    distract:document.getElementById('review-distract').value,
+    lesson:document.getElementById('review-lesson').value,
+    tomorrow:document.getElementById('review-tomorrow').value,
+    mood:state.mood,
+    discipline:document.getElementById('discipline-score').value,
+    selfRate:document.getElementById('self-rating').value,
+    date:new Date().toLocaleDateString()
+  };
+  state.reviews[state.currentDay] = review;
+  // Update calendar data for today
+  state.calendarData[state.currentDay] = {
+    ...(state.calendarData[state.currentDay]||{}),
+    score:Math.round(state.tasksCompleted.length/tasks.length*100),
+    xp:state.todayXP,
+    money:state.money,
+    etsy:state.etsyToday,
+    weight:state.weight,
+    status:state.tasksCompleted.length>=10?'complete':state.tasksCompleted.length>=5?'partial':'failed'
+  };
+  save(); showToast('Night review saved! Sleep well warrior 🌙'); initCalendar(); updateAnalytics();
+}
+
+function saveNote(){ state.dailyNote = document.getElementById('daily-note').value; save(); showToast('Note saved!'); }
+
+// ============================================================
+// WAR MODE
+// ============================================================
+function enterWarMode(){
+  const overlay = document.getElementById('war-mode-overlay');
+  overlay.style.display='flex';
+  showToast('⚔️ WAR MODE ACTIVATED. NO MERCY.');
+}
+function exitWarMode(){ document.getElementById('war-mode-overlay').style.display='none'; }
+
+// ============================================================
+// UTILITY
+// ============================================================
+function scrollTo2(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); }
+
+function animateCounter(id, target){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const start = parseInt(el.textContent.replace(/,/g,''))||0;
+  const diff = target - start;
+  const steps = 30;
+  let i=0;
+  const interval = setInterval(()=>{
+    i++;
+    el.textContent = Math.round(start + diff*(i/steps)).toLocaleString();
+    if(i>=steps){ el.textContent=target.toLocaleString(); clearInterval(interval); }
+  },20);
+}
+
+function showToast(msg){
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  toast.style.display='block';
+  setTimeout(()=>toast.style.display='none',3000);
+}
+
+function updateAll(){
+  updateTaskStats(); updateGamification();
+}
+
+// ============================================================
+// LIVE CLOCK & COUNTDOWN
+// ============================================================
+function updateClock(){
+  const now = new Date();
+  document.getElementById('live-time').textContent = now.toLocaleTimeString();
+  const startDate = new Date(state.startDate);
+  const msPerDay = 86400000;
+  const elapsed = Math.floor((now - startDate)/msPerDay);
+  const daysLeft = Math.max(0, 22 - elapsed);
+  state.currentDay = Math.min(22, elapsed+1);
+  document.getElementById('current-day-hero').textContent = state.currentDay;
+  const h = String(Math.floor(daysLeft)).padStart(2,'0');
+  document.getElementById('countdown').textContent = `${daysLeft}d LEFT`;
+  document.getElementById('days-to-goal').textContent = daysLeft;
+}
+
+// ============================================================
+// PARTICLES
+// ============================================================
+function initParticles(){
+  const c = document.getElementById('particles');
+  for(let i=0;i<20;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    const size = Math.random()*4+1;
+    p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;background:${Math.random()>.5?'var(--blue)':'var(--purple)'};animation-duration:${10+Math.random()*20}s;animation-delay:-${Math.random()*20}s`;
+    c.appendChild(p);
+  }
+}
+
+// ============================================================
+// SECTION REVEAL (INTERSECTION OBSERVER)
+// ============================================================
+function initReveal(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:.05});
+  document.querySelectorAll('.section-reveal').forEach(s=>obs.observe(s));
+}
+
+// ============================================================
+// SLIDER LISTENERS
+// ============================================================
+document.getElementById('discipline-score').addEventListener('input',function(){ document.getElementById('disc-val').textContent=this.value; state.disciplineScore=this.value; save(); });
+document.getElementById('self-rating').addEventListener('input',function(){ document.getElementById('self-val').textContent=this.value; state.selfRating=this.value; save(); });
+
+// ============================================================
+// LOADING SCREEN
+// ============================================================
+const loadMessages = ['BOOTING TRANSFORMATION OS...','LOADING WAR PROTOCOLS...','SYNCING DISCIPLINE ENGINE...','INITIALIZING XP SYSTEM...','ALL SYSTEMS ONLINE.'];
+let loadStep=0;
+const loadInterval = setInterval(()=>{
+  loadStep++;
+  document.getElementById('load-bar').style.width = (loadStep*20)+'%';
+  document.getElementById('load-text').textContent = loadMessages[loadStep-1]||'READY.';
+  if(loadStep>=5){
+    clearInterval(loadInterval);
+    setTimeout(()=>{
+      document.getElementById('loader').style.opacity='0';
+      setTimeout(()=>document.getElementById('loader').style.display='none',800);
+    },500);
+  }
+},300);
+
+// ============================================================
+// INIT ALL
+// ============================================================
+function initAll(){
+  initParticles(); initReveal();
+  initTasks(); initCalendar(); initMoney(); initEtsy();
+  initRoadmap(); initPlatforms(); setWorkout('push');
+  updateMoneyDisplay(); updateGamification(); updateAnalytics();
+  document.getElementById('daily-note').value = state.dailyNote||'';
+
+  // Restore fitness
+  document.getElementById('weight-now').textContent = state.weight||56;
+  const wPct = Math.max(0,Math.min(100,Math.round((state.weight-56)/(72-56)*100)));
+  document.getElementById('weight-bar').style.width = wPct+'%';
+  document.getElementById('weight-pct').textContent = wPct;
+  document.getElementById('cal-val').textContent = state.calories||0;
+  document.getElementById('cal-bar').style.width = Math.min(100,(state.calories||0)/3500*100)+'%';
+  document.getElementById('water-val').textContent = state.water||0;
+  document.getElementById('water-bar').style.width = ((state.water||0)/8*100)+'%';
+  document.getElementById('sleep-val').textContent = state.sleep||0;
+  document.getElementById('sleep-bar').style.width = Math.min(100,(state.sleep||0)/8*100)+'%';
+  document.getElementById('prot-val').textContent = state.protein||0;
+  document.getElementById('prot-bar').style.width = Math.min(100,(state.protein||0)/100*100)+'%';
+  document.getElementById('streak-num').textContent = state.streak||0;
+  document.getElementById('disp-streak').textContent = state.streak||0;
+  document.getElementById('sessions-done').textContent = state.timerSessions||0;
+  document.getElementById('focus-mins').textContent = state.focusMinutes||0;
+  document.getElementById('today-sessions').textContent = state.timerSessions||0;
+  document.getElementById('content-streak-num').textContent = state.contentStreak||0;
+  document.getElementById('content-streak-bar').style.width = Math.min(100,(state.contentStreak||0)/22*100)+'%';
+
+  rotateDailyQuote();
+  setInterval(rotateDailyQuote, 30000);
+  updateClock();
+  setInterval(updateClock,1000);
+
+  // Motivation quote
+  document.getElementById('motive-quote').textContent = `"${quotes[motiIdx]}"`;
+}
+
+// Auto-save every 30s
+setInterval(()=>save(),30000);
+
+window.addEventListener('load', initAll);
+</script>
+</body>
+</html>

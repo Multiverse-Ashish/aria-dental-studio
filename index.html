@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexTools — Premium Minimalist Micro-Tools Portal</title>
+  <meta name="description" content="Access a curated collection of ultra-fast developer, designer, and content utilities. Simple, secure, and client-side by design.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <!-- Fixed mesh grid design background -->
+  <div class="bg-grid"></div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo" id="header-logo">
+        <span class="logo-icon">A</span>
+        <span>ApexTools</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#directory">Tools</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faqs">FAQs</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="#pricing" class="btn btn-secondary">Explore</a>
+        <a href="checkout.html" class="btn btn-primary">Get Pass</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        <span>ONE ANNUAL PASS. ALL CURRENT &amp; FUTURE TOOLS.</span>
+      </div>
+      <h1>Supercharge Your Workflow With <br><span class="gradient-text">Premium Micro-Tools</span></h1>
+      <p>A minimalist catalog of highly optimized developer, design, and content utilities. Built for speed. Running entirely secure in your browser.</p>
+      
+      <div class="hero-actions">
+        <a href="checkout.html" class="btn btn-primary">Get All-Access Pass — $99/yr</a>
+        <a href="#directory" class="btn btn-secondary">Explore Directory</a>
+      </div>
+
+      <!-- Stats Panel -->
+      <div class="stats-panel">
+        <div class="stat-item">
+          <div class="stat-number">99.9%</div>
+          <div class="stat-label">Core Uptime</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Planned Utilities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Instant</div>
+          <div class="stat-label">Client Processing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directory Section -->
+  <section class="directory-section" id="directory">
+    <div class="container">
+      <div class="section-header">
+        <h2>Directory of Tools</h2>
+        <p>Choose from our premium stack. Filter by category or search below. The tools will be created according to your requirements.</p>
+      </div>
+
+      <!-- Search & Filters Container -->
+      <div class="controls-bar">
+        <div class="search-box">
+          <input type="text" id="tool-search" placeholder="Search for tools (e.g. SVG, CSV, Parser)...">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+        <div class="filter-tags">
+          <button class="filter-tag active" data-filter="all">All Tools</button>
+          <button class="filter-tag" data-filter="developer">Developer</button>
+          <button class="filter-tag" data-filter="design">Design &amp; Vector</button>
+          <button class="filter-tag" data-filter="content">Content &amp; Writing</button>
+        </div>
+      </div>
+
+      <!-- Tools Catalog Grid -->
+      <div class="tools-grid">
+        
+        <!-- Tool Card 1: Resume Generator -->
+        <a href="tools/resume-generator.html" class="tool-card" data-category="content">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>Professional Resume Builder</h3>
+          <p>Design and export a stunning ATS-ready resume in seconds. Features 12 styled templates and Word/PDF format exports.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 2: Bulk Tee Generator -->
+        <a href="tools/bulk-tee-generator.html" class="tool-card" data-category="design">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.38 3.46L16 2.14 11.62 3.46c-.62.19-1.02.76-1.02 1.41v6.3c0 2.34 1.34 4.47 3.42 5.48L16 17.5l2.02-.85c2.08-1.01 3.42-3.14 3.42-5.48v-6.3c0-.65-.4-1.22-1.02-1.41z"></path>
+                <path d="M12 22h-.01"></path>
+                <path d="M2 8h8"></path>
+                <path d="M6 4v8"></path>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>Bulk Tee Design Generator</h3>
+          <p>Unpack and render custom vector designs in bulk. Optimize layouts and export assets for print-on-demand listings.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 3: Pattern Press -->
+        <a href="tools/pattern-press.html" class="tool-card" data-category="design">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+                <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+                <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+                <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>Pattern Press Graphics Creator</h3>
+          <p>Generate high-quality geometric pattern designs with granular vector controls. Scale, customize, and export standalone assets.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 4: InvoiceForge -->
+        <a href="tools/invoice-forge.html" class="tool-card" data-category="developer">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>InvoiceForge Billing Portal</h3>
+          <p>Construct professional, clean invoices instantly client-side. Manages items, currencies, tax calculations, and logs.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 5: LeadOS CRM -->
+        <a href="tools/lead-os-crm.html" class="tool-card" data-category="developer">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>LeadOS CRM System</h3>
+          <p>Organize client relationships, sales leads pipelines, interactive contact notes, and status indicators in a unified view.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 6: Slogan Generator -->
+        <a href="tools/slogan-generator.html" class="tool-card" data-category="content">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>Smart Slogan Generator</h3>
+          <p>Draft high-impact advertising slogans, company catchphrases, and social media descriptors tailored to any niche.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 7: Sinking Funds Tracker -->
+        <a href="tools/sinking-funds-tracker.html" class="tool-card" data-category="content">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                <line x1="12" y1="4" x2="12" y2="20"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>Sinking Funds Finance Tracker</h3>
+          <p>Track targets, calculate monthly savings quotas, and allocate financial resources across categorized wallets.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Tool Card 8: Ashish Unlock Brutal Transformation System -->
+        <a href="tools/ashish-unlock.html" class="tool-card" data-category="developer">
+          <div class="tool-header">
+            <div class="tool-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <span class="tool-badge">Premium Pass</span>
+          </div>
+          <h3>Ashish Unlock Habit Dashboard</h3>
+          <p>A brutal 22-day productivity tracker. Monitor coding milestones, fitness logs, financial targets, and custom achievements.</p>
+          <div class="tool-footer">
+            <span>Launch Tool</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Search Empty State -->
+        <div class="no-results">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 0 auto 16px auto;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+          <h3 style="margin-bottom: 8px;">No matching tools found</h3>
+          <p>Try refining your search query or choosing another category tag.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple, Transparent Pricing</h2>
+        <p>Get complete, unrestricted access to all utilities with our single premium annual plan.</p>
+      </div>
+
+      <div class="pricing-wrapper">
+        <div class="pricing-card">
+          <span class="pricing-badge">All-Access Pass</span>
+          <h3 class="price-title">Unlimited Annual Access</h3>
+          <p class="price-desc">One pricing plan, no hidden fees, and absolute freedom.</p>
+          
+          <div class="price-value-container">
+            <span class="price-currency">$</span>
+            <span class="price-amount">99</span>
+            <span class="price-period">/ year</span>
+          </div>
+
+          <a href="checkout.html" class="btn btn-primary price-btn">Get All-Access Pass</a>
+
+          <ul class="pricing-features">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Unlimited runs &amp; operations</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Zero advertisements or upsells</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>All future tools added free of charge</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Client-side, private data processing</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>14-day direct refund policy</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+  <section class="directory-section" id="faqs" style="border-bottom: none;">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Have some doubts? We've summarized answers to common inquiries.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 8px;">How does the pass work?</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">Buying the All-Access Pass for $99/year unlocks all premium features across every micro-tool. Any tools we create in the future will automatically be included in your plan at no extra charge.</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Is my data secure?</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">Absolutely. Our tools process inputs directly inside your web browser (client-side). None of your document entries, files, variables, or private invoices are ever sent to our servers.</p>
+        </div>
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 8px;">What is the refund policy?</h4>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">We offer a simple 14-day refund window. If you're not completely satisfied, contact support within 14 days of purchase and we'll process a full refund, no questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">A</span>
+            <span>ApexTools</span>
+          </a>
+          <p>Empowering creators and developers with secure, localized, premium web utilities.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Directory</h4>
+          <ul>
+            <li><a href="#directory">All Utilities</a></li>
+            <li><a href="#directory">Developer Tools</a></li>
+            <li><a href="#directory">Design Tools</a></li>
+            <li><a href="#directory">Content Tools</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#hero">About Portal</a></li>
+            <li><a href="#pricing">Licensing</a></li>
+            <li><a href="mailto:support@apextools.io">Support Channel</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal Policy</h4>
+          <ul>
+            <li><a href="policies/privacy.html">Privacy Policy</a></li>
+            <li><a href="policies/terms.html">Terms of Service</a></li>
+            <li><a href="policies/refund.html">Refund Policy</a></li>
+            <li><a href="policies/cookies.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 ApexTools Inc. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <a href="policies/privacy.html">Privacy</a>
+          <a href="policies/terms.html">Terms</a>
+          <a href="policies/refund.html">Refunds</a>
+          <a href="policies/cookies.html">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Checkout Simulator Modal overlay -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Step 1: Input Checkout Details -->
+      <div id="form-state">
+        <div class="modal-header">
+          <h3>Activate Premium Pass</h3>
+          <p>Get instant access to all micro-tools</p>
+        </div>
+
+        <div class="modal-summary">
+          <div class="summary-details">
+            <h4>ApexTools Annual Pass</h4>
+            <p>Billed annually. Cancel anytime.</p>
+          </div>
+          <div class="summary-price">$99</div>
+        </div>
+
+        <form id="checkout-form">
+          <div class="form-group">
+            <label for="card-email">Email Address</label>
+            <input type="email" id="card-email" required placeholder="name@domain.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" required placeholder="4242 4242 4242 4242" maxlength="19">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-expiry">Expiry Date</label>
+              <input type="text" id="card-expiry" required placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label for="card-cvc">CVC Code</label>
+              <input type="text" id="card-cvc" required placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn">Complete Purchase</button>
+        </form>
+      </div>
+
+      <!-- Step 2: Checkout Success Feedback -->
+      <div id="success-state" class="modal-success-state">
+        <div class="success-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3>Purchase Confirmed!</h3>
+        <p>Your email has been subscribed. All tools are unlocked for you.</p>
+        <button class="btn btn-secondary" onclick="document.getElementById('checkout-modal').classList.remove('active'); document.body.style.overflow = '';">Back to Directory</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

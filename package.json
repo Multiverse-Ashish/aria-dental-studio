@@ -1,0 +1,14 @@
+{
+  "name": "apextools-portal",
+  "version": "1.0.0",
+  "description": "Premium Minimalist Micro-Tools Portal with Dodo Payments integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5"
+  }
+}
