@@ -1,68 +1,32 @@
-# System Specification (SPEC.md) - Premium Tools Portal
+# Specification: Aria Dental Studio (Luxury Light Theme Upgrade)
 
-## 1. Project Goal
-Develop a visually stunning, high-fidelity, responsive tools catalog landing page with matching legal pages. All assets use pure HTML, CSS, and JS (vanilla) to achieve premium dark obsidian aesthetics, micro-animations, and seamless interactions.
+## Overview
+An ultra-premium, multi-page website for "Aria Dental Studio" to showcase premium dental services, interactive features, a before-after smile slider, and a virtual consultation system with photo uploads. The styling is upgraded to a $10,000-tier light minimalist luxury theme.
 
----
+## Pages
+1. **index.html (Home Page)**: Hero header, SVG Interactive Tooth Map, Before/After Transformation Slider, Concierge booking portal, bento-grid patient testimonials.
+2. **about.html (About Us)**: Detailed profile of Dr. Stone, clinic values, credentials list, and technology showcase.
+3. **contact.html (Contact Us)**: Interactive FAQ accordion, contact details, specialized inquiry form, and studio address.
 
-## 2. Design System & Style Guide
-- **Core Theme**: Obsidian minimalist dark mode.
-- **Font Face**:
-  - Headings: `Outfit` (sans-serif)
-  - Body: `Inter` (sans-serif)
-- **Palette**:
-  - Background: `#09090b` (Deep Slate Obsidian)
-  - Card Fill: `rgba(20, 20, 23, 0.6)`
-  - Card Border: `1px solid rgba(255, 255, 255, 0.08)`
-  - Text Primary: `#f4f4f5` (Bright Off-White)
-  - Text Secondary: `#a1a1aa` (Cool Gray)
-  - Accent Color: `#6366f1` to `#a855f7` (Indigo-Violet gradient)
-- **Transitions**: Smooth HSL transformations, hover scale effects, and glass backdrop blurs (`backdrop-filter: blur(12px)`).
-- **Theme Controls**: Global light/dark theme toggle storing user preference in `localStorage`. Automatically styles all headers, cards, footers, and legal prose.
+## Design Tokens (Light Luxury Theme)
+- `--bg-primary`: `#faf9f6` (Warm Alabaster/Champagne White)
+- `--bg-secondary`: `#ffffff` (Pure White)
+- `--bg-tertiary`: `#f3efe6` (Warm Travertine/Sand)
+- `--bg-card`: `rgba(255, 255, 255, 0.7)` (Glassmorphism White)
+- `--text-primary`: `#1e2229` (Deep Slate Bronze)
+- `--text-secondary`: `#4a4f5d` (Muted Warm Grey)
+- `--text-muted`: `#8c92a0` (Soft Travertine Grey)
+- `--color-brand`: `#c5a880` (Champagne Gold Accent)
+- `--color-brand-glow`: `rgba(197, 168, 128, 0.15)`
+- `--color-accent`: `#a8885f` (Deep Gold Accent)
+- `--color-accent-glow`: `rgba(168, 136, 95, 0.15)`
+- `--color-highlight`: `#c9b097` (Sand/Beige Highlight)
+- `--glass-bg`: `rgba(255, 255, 255, 0.8)`
+- `--glass-border`: `rgba(197, 168, 128, 0.15)`
+- `--glass-glow`: `0 8px 32px 0 rgba(197, 168, 128, 0.06)`
 
----
-
-## 3. Page Requirements
-
-### A. Main Landing Page (`index.html`)
-1. **Sticky Glass Header**:
-   - Title/Logo: "ApexTools" or "ToolSuite" (custom gradient logo).
-   - Navigation links: Home, Tools, Pricing, FAQs (which scroll smoothly).
-   - Header button: CTA "All-Access Pass" which triggers the checkout modal.
-   - **Theme Toggle Button**: Visually matches the dark/light mode states.
-2. **Hero Section**:
-   - Gradient badge: "⚡ All Tools Included"
-   - Main H1 tag: "Supercharge Your Workflow With Premium Micro-Tools."
-   - Description: A clean descriptor detailing that it is an all-in-one suite.
-   - Core Action Button (CTA): "Get All-Access Pass".
-   - Stats display: e.g. "20+ Tools coming", "100k+ Runs", "99.9% Uptime".
-3. **Tools Grid**:
-   - Search bar with instant filter logic.
-   - Horizontal category tags (e.g., "All", "Developer", "Design", "Content").
-   - 8 active premium tools linking to clean local HTML files.
-4. **Pricing Section**:
-   - Single-tier plan: **$99/year**.
-   - Benefits checklist (e.g., Unlimited usage, No rate limits, Early access, Premium support).
-   - Checkout button.
-5. **Footer**:
-   - Brand description.
-   - Navigation & Tool categorisation anchors.
-   - Legal Section containing links to the policy pages: Privacy Policy, Terms of Service, Refund Policy, Cookie Policy.
-
-### B. Legal & Policy Pages
-All legal pages should utilize the same style framework (`styles.css`), maintaining a premium reading design and executing the theme manager.
-- **Privacy Policy** (`privacy.html`)
-- **Terms of Service** (`terms.html`)
-- **Refund Policy** (`refund.html`)
-- **Cookie Policy** (`cookies.html`)
-
----
-
-## 4. Full-Stack & Payment Integration
-- **Server** (`server.js`): A Node.js/Express server that serves all static assets, compiles JSX tools, and exposes the webhook receiver.
-- **Dodo Payments Webhook** (`/api/webhook`):
-  - Listens for Dodo Payments events (`payment.succeeded`, `subscription.created`, `subscription.cancelled`).
-  - Verifies payloads using HMAC SHA-256 signature verification.
-  - Configures user states based on active memberships.
-- **Babel & Lucide React**: Loads tools dynamically, implementing robust fallback handlers for third-party CDNs.
-
+## Interactive Features
+1. **SVG Tooth Map**: Clickable tooth arch paths recolored to soft ivory and gold highlights. Clicking displays clinical descriptions and custom estimates.
+2. **Before/After Slider**: Drag comparisons with a polished gold separator handles.
+3. **Concierge Booking Portal**: Dynamic step-by-step form (Service card selection, patient inputs, file upload preview wrapper).
+4. **FAQ Accordions**: Smooth expand/collapse states for clinic FAQs on the contact page.
