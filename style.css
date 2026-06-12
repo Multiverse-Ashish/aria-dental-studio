@@ -1957,8 +1957,9 @@ select.form-input option {
     padding: 70px 0;
   }
 
-  /* Navbar Mobile */
   .navbar-container { height: 75px; }
+  
+  .logo-text { display: none; }
 
   .nav-menu {
     position: fixed;

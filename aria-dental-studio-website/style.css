@@ -1496,6 +1496,9 @@ select.form-input option {
   .navbar-container {
     height: 80px;
   }
+  .logo-text {
+    display: none;
+  }
   .nav-menu {
     position: fixed;
     top: 80px;

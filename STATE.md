@@ -1,7 +1,7 @@
-# Project State: Aria Dental Studio (Concierge Sections & Responsive Fixes)
+# Project State: Aria Dental Studio (Concierge Sections & Client Deployments)
 
 ## Active Phase
-- Completed and Verified (WhatsApp Float, Gallery Filters, Social Grid, FAQs, Styled Maps & Booking Summary Mapping).
+- Completed and Verified (WhatsApp Float, Gallery Filters, Social Grid, FAQs, Styled Maps, Booking Summary Mapping, and client site deployment for Dr. Emmanuel González).
 
 ## Checklist
 - [x] Update SPEC.md with Light Theme specification & multi-page architecture
@@ -25,6 +25,7 @@
 - [x] Package static website files into a clean standalone folder (`aria-dental-studio-website`)
 - [x] Verify all new components and page consistency via browser subagent QA run
 - [x] Record results and document in walkthrough.md
+- [x] Generate and deploy client website for Dr. Emmanuel González (Centro Odontológico Especializado) to GitHub Pages
 
 ## Active Blockers
 - None.
