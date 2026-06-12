@@ -1,427 +1,177 @@
+/* ==========================================
+   ARIA DENTAL STUDIO — app.js
+   ========================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
-  initToothMap();
-  initComparisonSlider();
-  initBookingWizard();
-  initFAQs();
-  initContactForm();
-  initTourCarousel();
-  initGalleryFilters();
+  initNav();
+  initComparison();
+  initBooking();
+  initCarousel();
+  initGallery();
+  initFAQ();
+  initWhatsApp();
+  initScrollReveal();
 });
 
 /* ==========================================
-   1. NAVIGATION & GENERAL INTERACTIVE SCRIPT
+   1. NAVIGATION — Hamburger + Scroll Shrink
    ========================================== */
-function initNavbar() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
+function initNav() {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.nav-menu');
+  const navbar = document.querySelector('.navbar');
 
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navMenu.classList.toggle('active');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     });
 
-    navLinks.forEach(link => {
+    menu.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+        document.body.style.overflow = '';
       });
     });
   }
 
-  // Smooth scroll offsets for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        const offset = 90; // height of navbar
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+  // Scroll shrink
+  window.addEventListener('scroll', () => {
+    if (navbar) {
+      if (window.scrollY > 60) {
+        navbar.style.boxShadow = '0 4px 30px rgba(197,168,128,0.1)';
+      } else {
+        navbar.style.boxShadow = 'none';
       }
-    });
-  });
+    }
+  }, { passive: true });
 }
 
 /* ==========================================
-   2. INTERACTIVE SVG TOOTH MAP
+   2. BEFORE/AFTER COMPARISON SLIDER
    ========================================== */
-const toothData = {
-  'tooth-molar-l': {
-    name: 'Upper Left Molars',
-    type: 'Molar',
-    symptoms: ['Slight sensitivity to cold liquids', 'Mild localized pressure ache'],
-    treatment: 'Composite Dental Filling',
-    description: 'Molars are primary grinding surfaces. Sensitivity usually indicates early enamel decay or a hairline crack that is easily treatable with tooth-colored composite restorations.',
-    duration: '30-40 mins',
-    cost: '$150 - $250'
-  },
-  'tooth-premolar-l': {
-    name: 'Upper Left Premolars',
-    type: 'Premolar',
-    symptoms: ['No active pain', 'Excellent alignment'],
-    treatment: 'Routine Dental Clean & Seal',
-    description: 'This area is healthy. We recommend applying a protective sealant to the deep grooves of premolars during your next clean to protect them from future decay.',
-    duration: '20 mins',
-    cost: '$80 - $120'
-  },
-  'tooth-incisors': {
-    name: 'Anterior Incisors',
-    type: 'Incisor (Front)',
-    symptoms: ['Slight overlapping', 'Minor staining on edges'],
-    treatment: 'Invisalign & Professional Whitening',
-    description: 'Front teeth define your smile. Minor crowding can be corrected quickly with clear aligners. A professional clinical bleaching session will brighten the smile by up to 8 shades.',
-    duration: 'Consultation + 1hr session',
-    cost: 'Varies / Bleaching $399'
-  },
-  'tooth-premolar-r': {
-    name: 'Upper Right Premolars',
-    type: 'Premolar',
-    symptoms: ['Food impaction', 'Gums bleed slightly when flossing'],
-    treatment: 'Interproximal Scaling & Deep Clean',
-    description: 'Premolars are susceptible to plaque build-up between teeth. A targeted scale and polish combined with flossing education will resolve inflammation.',
-    duration: '45 mins',
-    cost: '$120 - $180'
-  },
-  'tooth-molar-r': {
-    name: 'Upper Right Molars',
-    type: 'Molar',
-    symptoms: ['Moderate dull throbbing pain', 'Pain when chewing hard food'],
-    treatment: 'In-depth Diagnostics / Root Canal',
-    description: 'Chewing pain or constant dull ache may indicate deeper decay affecting the tooth nerve. A digital scan will determine if root canal therapy or a protective crown is required.',
-    duration: '60 mins',
-    cost: '$800 - $1,200 (Insurance friendly)'
-  }
-};
+function initComparison() {
+  const wrapper = document.querySelector('.comparison-wrapper');
+  if (!wrapper) return;
 
-function initToothMap() {
-  const toothPaths = document.querySelectorAll('.tooth-path');
-  const emptyCard = document.getElementById('tooth-empty-state');
-  const detailCard = document.getElementById('tooth-active-state');
-  
-  if (toothPaths.length === 0 || !emptyCard || !detailCard) return; // Exit if not on home page
-
-  // Element references in active card
-  const toothName = document.getElementById('tooth-detail-name');
-  const toothType = document.getElementById('tooth-detail-type');
-  const toothDesc = document.getElementById('tooth-detail-desc');
-  const toothSymptoms = document.getElementById('tooth-detail-symptoms');
-  const toothTreatment = document.getElementById('tooth-detail-treatment');
-  const toothDuration = document.getElementById('tooth-detail-duration');
-  const toothCost = document.getElementById('tooth-detail-cost');
-  const bookTreatmentBtn = document.getElementById('tooth-book-treatment');
-
-  toothPaths.forEach(path => {
-    path.addEventListener('click', () => {
-      // Clear active states
-      toothPaths.forEach(p => p.classList.remove('active'));
-      
-      // Add active state to clicked tooth
-      path.classList.add('active');
-      
-      const id = path.id;
-      const data = toothData[id];
-
-      if (data) {
-        // Populating card
-        toothName.textContent = data.name;
-        toothType.textContent = data.type;
-        toothDesc.textContent = data.description;
-        toothTreatment.textContent = data.treatment;
-        toothDuration.textContent = data.duration;
-        toothCost.textContent = data.cost;
-        
-        // Populate symptoms tags
-        toothSymptoms.innerHTML = '';
-        data.symptoms.forEach(symptom => {
-          const span = document.createElement('span');
-          span.className = 'tooth-symptom-tag';
-          span.textContent = symptom;
-          toothSymptoms.appendChild(span);
-        });
-        
-        // Custom CTA update
-        bookTreatmentBtn.onclick = (e) => {
-          e.preventDefault();
-          const selectElement = document.getElementById('booking-service');
-          if (selectElement) {
-            let matchedService = 'general';
-            if (data.treatment.includes('Whitening') || data.treatment.includes('Invisalign')) {
-              matchedService = 'cosmetic';
-            } else if (data.treatment.includes('Root Canal') || data.treatment.includes('Filling')) {
-              matchedService = 'surgical';
-            }
-            selectService(matchedService);
-          }
-          // Scroll to booking
-          const bookingSec = document.getElementById('booking');
-          if (bookingSec) {
-            const offset = 90;
-            const elementPosition = bookingSec.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-          }
-        };
-
-        emptyCard.style.display = 'none';
-        detailCard.classList.add('active');
-      }
-    });
-  });
-}
-
-/* ==========================================
-   3. BEFORE / AFTER SMILE COMPARISON SLIDER
-   ========================================== */
-function initComparisonSlider() {
-  const container = document.querySelector('.comparison-wrapper');
-  const beforeImg = document.querySelector('.comparison-before');
-  const sliderHandle = document.querySelector('.comparison-slider-handle');
-  
-  if (!container || !beforeImg || !sliderHandle) return; // Exit if not on home page
+  const before = wrapper.querySelector('.comparison-before');
+  const handle = wrapper.querySelector('.comparison-slider-handle');
+  if (!before || !handle) return;
 
   let isDragging = false;
+  let startPos = 50;
 
-  const updateContainerWidth = () => {
-    const rect = container.getBoundingClientRect();
-    container.style.setProperty('--container-width', `${rect.width}px`);
+  const setPosition = (pct) => {
+    const clamped = Math.max(5, Math.min(95, pct));
+    before.style.width = `${clamped}%`;
+    handle.style.left = `${clamped}%`;
+    if (before.querySelector('img')) {
+      const totalWidth = wrapper.offsetWidth;
+      before.querySelector('img').style.width = `${totalWidth}px`;
+    }
   };
 
-  // Initialize and bind to resize
-  updateContainerWidth();
-  window.addEventListener('resize', updateContainerWidth);
-
-  const setSliderPosition = (x) => {
-    const rect = container.getBoundingClientRect();
-    let positionX = x - rect.left;
-    
-    if (positionX < 0) positionX = 0;
-    if (positionX > rect.width) positionX = rect.width;
-    
-    const percentage = (positionX / rect.width) * 100;
-    beforeImg.style.width = `${percentage}%`;
-    sliderHandle.style.left = `${percentage}%`;
+  const getPercent = (clientX) => {
+    const rect = wrapper.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
   };
 
-  // Mouse events
-  container.addEventListener('mousedown', (e) => {
+  // Initialize position
+  setPosition(50);
+
+  handle.addEventListener('mousedown', (e) => { isDragging = true; e.preventDefault(); });
+  handle.addEventListener('touchstart', (e) => { isDragging = true; }, { passive: true });
+
+  wrapper.addEventListener('mousedown', (e) => { isDragging = true; setPosition(getPercent(e.clientX)); });
+  wrapper.addEventListener('touchstart', (e) => {
     isDragging = true;
-    setSliderPosition(e.clientX);
-  });
+    setPosition(getPercent(e.touches[0].clientX));
+  }, { passive: true });
 
-  window.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    setSliderPosition(e.clientX);
+    setPosition(getPercent(e.clientX));
   });
 
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-
-  // Touch events for mobile
-  container.addEventListener('touchstart', (e) => {
-    isDragging = true;
-    setSliderPosition(e.touches[0].clientX);
-  });
-
-  window.addEventListener('touchmove', (e) => {
+  document.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
-    setSliderPosition(e.touches[0].clientX);
-  });
+    setPosition(getPercent(e.touches[0].clientX));
+  }, { passive: true });
 
-  window.addEventListener('touchend', () => {
-    isDragging = false;
-  });
+  document.addEventListener('mouseup', () => { isDragging = false; });
+  document.addEventListener('touchend', () => { isDragging = false; });
 }
 
 /* ==========================================
-   4. MULTI-STEP BOOKING WIZARD & IMAGE UPLOAD
+   3. BOOKING FORM — Multi-Step + Popup Modal
    ========================================== */
-let selectedService = 'general'; 
-let uploadedImageBase64 = null; 
-
-function selectService(serviceId) {
-  selectedService = serviceId;
-  const cards = document.querySelectorAll('.service-card');
-  cards.forEach(card => {
-    if (card.dataset.service === serviceId) {
-      card.classList.add('selected');
-    } else {
-      card.classList.remove('selected');
-    }
-  });
-
-  const selectElement = document.getElementById('booking-service');
-  if (selectElement) selectElement.value = serviceId;
-}
-
-function initBookingWizard() {
-  const btnNext = document.getElementById('booking-next');
-  if (!btnNext) return; // Exit if not on page with booking wizard (index.html)
-
-  const serviceCards = document.querySelectorAll('.service-card');
-  serviceCards.forEach(card => {
-    card.addEventListener('click', () => {
-      selectService(card.dataset.service);
-    });
-  });
-
-  const selectElement = document.getElementById('booking-service');
-  if (selectElement) {
-    selectElement.addEventListener('change', () => {
-      selectService(selectElement.value);
-    });
-  }
-
+function initBooking() {
   const steps = [
     document.getElementById('booking-step-1'),
     document.getElementById('booking-step-2'),
-    document.getElementById('booking-step-success')
   ];
-
+  const successView = document.getElementById('booking-step-success');
+  const nextBtn = document.getElementById('booking-next');
+  const prevBtn = document.getElementById('booking-prev');
+  const actionsBar = document.getElementById('booking-actions');
   const stepNodes = [
     document.getElementById('node-1'),
     document.getElementById('node-2'),
-    document.getElementById('node-3')
+    document.getElementById('node-3'),
   ];
+  const lineActive = document.querySelector('.booking-step-line-active');
 
-  const stepLineActive = document.querySelector('.booking-step-line-active');
-  const btnPrev = document.getElementById('booking-prev');
-  let currentStepIdx = 0;
+  let currentStep = 0;
 
-  function updateStepsUI() {
-    steps.forEach((step, idx) => {
-      if (idx === currentStepIdx) {
-        step.classList.add('active');
-      } else {
-        step.classList.remove('active');
-      }
+  const updateUI = () => {
+    steps.forEach((s, i) => s.classList.toggle('active', i === currentStep));
+    if (successView) successView.classList.remove('active');
+
+    stepNodes.forEach((n, i) => {
+      n.classList.toggle('active', i === currentStep);
+      n.classList.toggle('completed', i < currentStep);
     });
 
-    stepNodes.forEach((node, idx) => {
-      if (idx < currentStepIdx) {
-        node.className = 'booking-step-node completed';
-        node.innerHTML = '&#10003;'; 
-      } else if (idx === currentStepIdx) {
-        node.className = 'booking-step-node active';
-        node.textContent = idx + 1;
-      } else {
-        node.className = 'booking-step-node';
-        node.textContent = idx + 1;
-      }
-    });
-
-    const progressPercent = currentStepIdx === 0 ? 0 : currentStepIdx === 1 ? 50 : 100;
-    if (stepLineActive) stepLineActive.style.width = `${progressPercent}%`;
-
-    if (currentStepIdx === 0) {
-      btnPrev.style.visibility = 'hidden';
-      btnNext.textContent = 'Next Step';
-    } else if (currentStepIdx === 1) {
-      btnPrev.style.visibility = 'visible';
-      btnNext.textContent = 'Book Consultation';
-    } else {
-      btnPrev.style.display = 'none';
-      btnNext.style.display = 'none';
-      document.querySelector('.booking-actions').style.display = 'none';
+    if (lineActive) {
+      lineActive.style.width = currentStep === 0 ? '0%' : '50%';
     }
+
+    if (prevBtn) prevBtn.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
+    if (nextBtn) nextBtn.textContent = currentStep === 0 ? 'Next Step' : 'Confirm Booking';
+  };
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateUI();
+      } else {
+        // Trigger success
+        handleBookingSuccess();
+      }
+    });
   }
 
-  btnNext.addEventListener('click', () => {
-    if (currentStepIdx === 0) {
-      currentStepIdx = 1;
-      updateStepsUI();
-    } else if (currentStepIdx === 1) {
-      const name = document.getElementById('booking-name').value.trim();
-      const email = document.getElementById('booking-email').value.trim();
-      const date = document.getElementById('booking-date').value.trim();
-      const notes = document.getElementById('booking-notes').value.trim();
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 0) { currentStep--; updateUI(); }
+    });
+  }
 
-      if (!name || !email || !date) {
-        alert('Please fill out all required fields (Name, Email, and Date).');
-        return;
-      }
-
-      document.getElementById('summary-name').textContent = name;
-      document.getElementById('summary-email').textContent = email;
-      document.getElementById('summary-date').textContent = date;
-      document.getElementById('summary-notes').textContent = notes || 'None';
-      
-      const serviceLabels = {
-        'general': 'General Treatment & Cleaning',
-        'cosmetic': 'Cosmetic Smile Makeover',
-        'surgical': 'Restorative / Surgical Dentistry'
-      };
-      document.getElementById('summary-service').textContent = serviceLabels[selectedService];
-
-      // Premium options mapping
-      const practitionerSelect = document.getElementById('booking-practitioner');
-      const practitionerLabels = {
-        'none': 'No Preference (First Available)',
-        'stone': 'Dr. Evelyn Stone (Chief Cosmetic Surgeon)',
-        'vance': 'Dr. Marcus Vance (Restorative Specialist)'
-      };
-      const practitionerVal = practitionerSelect ? practitionerSelect.value : 'none';
-      const summaryPractitioner = document.getElementById('summary-practitioner');
-      if (summaryPractitioner) {
-        summaryPractitioner.textContent = practitionerLabels[practitionerVal] || practitionerVal;
-      }
-
-      const billingSelect = document.getElementById('booking-billing');
-      const billingLabels = {
-        'private': 'Private Pay / Self-Pay',
-        'insurance': 'PPO Dental Insurance Coordination'
-      };
-      const billingVal = billingSelect ? billingSelect.value : 'private';
-      const summaryBilling = document.getElementById('summary-billing');
-      if (summaryBilling) {
-        summaryBilling.textContent = billingLabels[billingVal] || billingVal;
-      }
-
-      const historyCheckboxes = document.querySelectorAll('input[name="history"]:checked');
-      const historyList = [];
-      historyCheckboxes.forEach(cb => {
-        const labelSpan = cb.nextElementSibling;
-        if (labelSpan) {
-          historyList.push(labelSpan.textContent.trim());
-        }
-      });
-      const summaryHistory = document.getElementById('summary-history');
-      if (summaryHistory) {
-        summaryHistory.textContent = historyList.length > 0 ? historyList.join(', ') : 'None Reported';
-      }
-
-      const summaryPhoto = document.getElementById('summary-photo');
-      if (uploadedImageBase64) {
-        summaryPhoto.src = uploadedImageBase64;
-        summaryPhoto.style.display = 'block';
-      } else {
-        summaryPhoto.style.display = 'none';
-      }
-
-      currentStepIdx = 2;
-      updateStepsUI();
-    }
+  // Service card selection
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const svc = card.dataset.service;
+      const sel = document.getElementById('booking-service');
+      if (sel && svc) sel.value = svc;
+    });
   });
 
-  btnPrev.addEventListener('click', () => {
-    if (currentStepIdx > 0) {
-      currentStepIdx--;
-      updateStepsUI();
-    }
-  });
-
-  // Photo upload widgets
+  // File Upload Preview
   const uploadBox = document.getElementById('upload-box');
   const fileInput = document.getElementById('profile-file-input');
   const previewWrapper = document.getElementById('preview-wrapper');
@@ -429,218 +179,290 @@ function initBookingWizard() {
   const removeBtn = document.getElementById('remove-photo-btn');
 
   if (uploadBox && fileInput) {
-    uploadBox.addEventListener('click', () => {
-      fileInput.click();
+    uploadBox.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        if (previewImg) previewImg.src = ev.target.result;
+        if (previewWrapper) {
+          previewWrapper.style.display = 'block';
+          previewWrapper.classList.add('active');
+        }
+      };
+      reader.readAsDataURL(file);
     });
 
-    uploadBox.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      uploadBox.classList.add('drag-over');
-    });
-
-    uploadBox.addEventListener('dragleave', () => {
-      uploadBox.classList.remove('drag-over');
-    });
-
+    uploadBox.addEventListener('dragover', (e) => { e.preventDefault(); uploadBox.classList.add('drag-over'); });
+    uploadBox.addEventListener('dragleave', () => uploadBox.classList.remove('drag-over'));
     uploadBox.addEventListener('drop', (e) => {
       e.preventDefault();
       uploadBox.classList.remove('drag-over');
-      if (e.dataTransfer.files.length > 0) {
-        handleImageFile(e.dataTransfer.files[0]);
-      }
+      const file = e.dataTransfer.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        if (previewImg) previewImg.src = ev.target.result;
+        if (previewWrapper) {
+          previewWrapper.style.display = 'block';
+          previewWrapper.classList.add('active');
+        }
+      };
+      reader.readAsDataURL(file);
     });
+  }
 
-    fileInput.addEventListener('change', () => {
-      if (fileInput.files.length > 0) {
-        handleImageFile(fileInput.files[0]);
-      }
-    });
-
+  if (removeBtn && previewWrapper && fileInput) {
     removeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      uploadedImageBase64 = null;
-      fileInput.value = '';
+      previewWrapper.style.display = 'none';
       previewWrapper.classList.remove('active');
-      uploadBox.style.display = 'block';
+      fileInput.value = '';
     });
   }
 
-  function handleImageFile(file) {
-    if (!file.type.startsWith('image/')) {
-      alert('Only image files are allowed.');
-      return;
-    }
-    
-    if (file.size > 4 * 1024 * 1024) {
-      alert('File size exceeds the 4MB limit.');
-      return;
-    }
+  function handleBookingSuccess() {
+    const name = document.getElementById('booking-name')?.value?.trim() || '—';
+    const email = document.getElementById('booking-email')?.value?.trim() || '—';
+    const date = document.getElementById('booking-date')?.value || '';
+    const notes = document.getElementById('booking-notes')?.value?.trim() || 'None';
+    const serviceEl = document.getElementById('booking-service');
+    const service = serviceEl ? serviceEl.options[serviceEl.selectedIndex]?.text : '—';
+    const practitionerEl = document.getElementById('booking-practitioner');
+    const practitioner = practitionerEl ? practitionerEl.options[practitionerEl.selectedIndex]?.text : '—';
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      uploadedImageBase64 = e.target.result;
-      previewImg.src = uploadedImageBase64;
-      previewWrapper.classList.add('active');
-      uploadBox.style.display = 'none';
+    const formatDate = (d) => {
+      if (!d) return '—';
+      const [y, m, day] = d.split('-');
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return `${months[parseInt(m)-1]} ${day}, ${y}`;
     };
-    reader.readAsDataURL(file);
+
+    // Inline success view
+    if (document.getElementById('summary-name')) document.getElementById('summary-name').textContent = name;
+    if (document.getElementById('summary-email')) document.getElementById('summary-email').textContent = email;
+    if (document.getElementById('summary-service')) document.getElementById('summary-service').textContent = service;
+    if (document.getElementById('summary-date')) document.getElementById('summary-date').textContent = formatDate(date);
+    if (document.getElementById('summary-notes')) document.getElementById('summary-notes').textContent = notes;
+    if (document.getElementById('summary-practitioner')) document.getElementById('summary-practitioner').textContent = practitioner;
+
+    // Show popup modal
+    const modal = document.getElementById('booking-success-modal');
+    const overlay = document.getElementById('booking-modal-overlay');
+    if (document.getElementById('modal-name')) document.getElementById('modal-name').textContent = name;
+    if (document.getElementById('modal-service')) document.getElementById('modal-service').textContent = service;
+    if (document.getElementById('modal-date')) document.getElementById('modal-date').textContent = formatDate(date);
+
+    if (modal) modal.classList.add('active');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // Also show inline success
+    steps.forEach(s => s.classList.remove('active'));
+    if (successView) successView.classList.add('active');
+    if (actionsBar) actionsBar.style.display = 'none';
+    stepNodes.forEach((n, i) => {
+      n.classList.toggle('active', i === 2);
+      n.classList.remove('completed');
+    });
+    if (lineActive) lineActive.style.width = '100%';
   }
+
+  // Close popup modal
+  const modalClose = document.getElementById('modal-close-btn');
+  const modalOverlay = document.getElementById('booking-modal-overlay');
+  if (modalClose) {
+    modalClose.addEventListener('click', () => {
+      const modal = document.getElementById('booking-success-modal');
+      if (modal) modal.classList.remove('active');
+      if (modalOverlay) modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', () => {
+      const modal = document.getElementById('booking-success-modal');
+      if (modal) modal.classList.remove('active');
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  }
+
+  updateUI();
 }
 
 /* ==========================================
-   5. FAQ ACCORDION HANDLER
+   4. CLINIC TOUR CAROUSEL
    ========================================== */
-function initFAQs() {
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  if (faqQuestions.length === 0) return; // Exit if not on contact.html
+function initCarousel() {
+  const track = document.querySelector('.carousel-track');
+  if (!track) return;
 
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-      const item = question.parentElement;
-      const isActive = item.classList.contains('active');
-      
-      // Close all other items
-      document.querySelectorAll('.faq-item').forEach(faqItem => {
-        faqItem.classList.remove('active');
-      });
+  const slides = track.querySelectorAll('.carousel-slide');
+  const indicators = document.querySelectorAll('.indicator');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let current = 0;
+  let interval;
 
-      // Toggle current
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  });
-}
-
-/* ==========================================
-   6. CONTACT FORM SUBMISSION INTERCEPT
-   ========================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-inquiry-form');
-  const successMsg = document.getElementById('contact-success-msg');
-
-  if (!form || !successMsg) return; // Exit if not on contact.html
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Simulate submission
-    form.style.display = 'none';
-    successMsg.style.display = 'block';
-  });
-}
-
-/* ==========================================
-   7. CLINIC TOUR CAROUSEL
-   ========================================== */
-function initTourCarousel() {
-  const container = document.querySelector('.carousel-container');
-  if (!container) return; // Exit if not on index.html
-
-  const track = container.querySelector('.carousel-track');
-  const slides = container.querySelectorAll('.carousel-slide');
-  const nextBtn = container.querySelector('.next-btn');
-  const prevBtn = container.querySelector('.prev-btn');
-  const indicators = container.querySelectorAll('.indicator');
-
-  let currentIdx = 0;
-  const slideCount = slides.length;
-  let autoSlideInterval;
-
-  const updateCarousel = (idx) => {
-    if (idx < 0) {
-      currentIdx = slideCount - 1;
-    } else if (idx >= slideCount) {
-      currentIdx = 0;
-    } else {
-      currentIdx = idx;
-    }
-
-    const shiftPercent = currentIdx * -33.333;
-    track.style.transform = `translateX(${shiftPercent}%)`;
-
-    slides.forEach((slide, i) => {
-      if (i === currentIdx) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
-      }
-    });
-
-    indicators.forEach((indicator, i) => {
-      if (i === currentIdx) {
-        indicator.classList.add('active');
-      } else {
-        indicator.classList.remove('active');
-      }
-    });
+  const go = (n) => {
+    current = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${(current * 100) / 3}%)`;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    indicators.forEach((dot, i) => dot.classList.toggle('active', i === current));
   };
 
-  nextBtn.addEventListener('click', () => {
-    resetAutoSlide();
-    updateCarousel(currentIdx + 1);
+  const autoPlay = () => { interval = setInterval(() => go(current + 1), 5000); };
+  const resetAuto = () => { clearInterval(interval); autoPlay(); };
+
+  if (prevBtn) prevBtn.addEventListener('click', () => { go(current - 1); resetAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', () => { go(current + 1); resetAuto(); });
+
+  indicators.forEach((dot, i) => {
+    dot.addEventListener('click', () => { go(i); resetAuto(); });
   });
 
-  prevBtn.addEventListener('click', () => {
-    resetAutoSlide();
-    updateCarousel(currentIdx - 1);
-  });
-
-  indicators.forEach(indicator => {
-    indicator.addEventListener('click', () => {
-      resetAutoSlide();
-      const slideIndex = parseInt(indicator.dataset.slide, 10);
-      updateCarousel(slideIndex);
+  // Touch support
+  let touchStartX = 0;
+  const trackWrapper = document.querySelector('.carousel-track-wrapper');
+  if (trackWrapper) {
+    trackWrapper.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    trackWrapper.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) { go(diff > 0 ? current + 1 : current - 1); resetAuto(); }
     });
-  });
+  }
 
-  const startAutoSlide = () => {
-    autoSlideInterval = setInterval(() => {
-      updateCarousel(currentIdx + 1);
-    }, 5000);
-  };
-
-  const resetAutoSlide = () => {
-    clearInterval(autoSlideInterval);
-    startAutoSlide();
-  };
-
-  startAutoSlide();
-
-  container.addEventListener('mouseenter', () => {
-    clearInterval(autoSlideInterval);
-  });
-
-  container.addEventListener('mouseleave', () => {
-    startAutoSlide();
-  });
+  autoPlay();
 }
 
 /* ==========================================
-   8. SMILE GALLERY FILTERING
+   5. GALLERY FILTER
    ========================================== */
-function initGalleryFilters() {
+function initGallery() {
   const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-  const galleryCards = document.querySelectorAll('.gallery-card');
-
-  if (filterBtns.length === 0 || galleryCards.length === 0) return;
+  const cards = document.querySelectorAll('.gallery-card');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active class from all buttons
       filterBtns.forEach(b => b.classList.remove('active'));
-      // Add active class to clicked button
       btn.classList.add('active');
+      const cat = btn.dataset.category;
 
-      const category = btn.dataset.category;
+      cards.forEach(card => {
+        const shouldShow = cat === 'all' || card.dataset.category === cat;
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.97)';
+        card.style.display = shouldShow ? 'block' : 'none';
 
-      galleryCards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
+        if (shouldShow) {
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            }, 20);
+          });
         }
       });
     });
   });
+}
+
+/* ==========================================
+   6. FAQ ACCORDION
+   ========================================== */
+function initFAQ() {
+  const faqs = document.querySelectorAll('.faq-item');
+
+  faqs.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      // Close all
+      faqs.forEach(f => f.classList.remove('active'));
+      // Toggle clicked
+      if (!isActive) item.classList.add('active');
+    });
+  });
+}
+
+/* ==========================================
+   7. WHATSAPP ICON-ONLY + POPUP FORM
+   ========================================== */
+function initWhatsApp() {
+  const btn = document.getElementById('whatsapp-btn');
+  const popup = document.getElementById('whatsapp-popup');
+  const closeBtn = document.getElementById('whatsapp-close');
+  const sendBtn = document.getElementById('wa-send-btn');
+  const nameInput = document.getElementById('wa-name');
+  const msgInput = document.getElementById('wa-msg');
+  const PHONE = '13105550190';
+
+  if (!btn || !popup) return;
+
+  btn.addEventListener('click', () => {
+    popup.classList.toggle('active');
+    if (popup.classList.contains('active') && nameInput) {
+      setTimeout(() => nameInput.focus(), 300);
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => popup.classList.remove('active'));
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener('click', () => {
+      const name = nameInput?.value?.trim();
+      const msg = msgInput?.value?.trim();
+
+      if (!name) {
+        nameInput?.focus();
+        nameInput?.style && (nameInput.style.borderColor = 'red');
+        return;
+      }
+      if (!msg) {
+        msgInput?.focus();
+        msgInput?.style && (msgInput.style.borderColor = 'red');
+        return;
+      }
+
+      const text = encodeURIComponent(`Hi! I'm ${name}.\n\n${msg}`);
+      window.open(`https://wa.me/${PHONE}?text=${text}`, '_blank');
+      popup.classList.remove('active');
+    });
+  }
+
+  // Reset border on input
+  [nameInput, msgInput].forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => { input.style.borderColor = ''; });
+    }
+  });
+}
+
+/* ==========================================
+   8. SCROLL REVEAL ANIMATION
+   ========================================== */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-fade');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
 }

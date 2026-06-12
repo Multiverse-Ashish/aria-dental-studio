@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aria Dental Studio | Premium Cosmetic & Restorative Dentistry</title>
-  <meta name="description" content="Experience high-end clinical dentistry at Aria Dental Studio. Explore our interactive treatment map, view smile transformations, and book your virtual consultation.">
+  <title>Aria Dental Studio | Premium Cosmetic &amp; Restorative Dentistry</title>
+  <meta name="description" content="Experience high-end clinical dentistry at Aria Dental Studio. Real smile transformations, luxury virtual consultations, and Beverly Hills cosmetic expertise.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,8 +30,8 @@
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="about.html" class="nav-link">About Us</a></li>
-          <li><a href="#diagnose" class="nav-link">Interactive Map</a></li>
-          <li><a href="#transformations" class="nav-link">Gallery</a></li>
+          <li><a href="#transformations" class="nav-link">Transformations</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
           <li><a href="#tour" class="nav-link">Tour</a></li>
           <li><a href="contact.html" class="nav-link">Contact Us</a></li>
         </ul>
@@ -54,7 +54,7 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="container hero-grid">
-        <div class="hero-content">
+        <div class="hero-content reveal-up">
           <div class="hero-subtitle">Architecting Beautiful, Healthy Smiles</div>
           <h1 class="hero-title"><span class="gradient-text">Premium Dentistry</span> Redefined.</h1>
           <p class="hero-description">
@@ -68,11 +68,11 @@
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
-            <a href="#diagnose" class="btn btn-secondary">Explore Diagnostic Map</a>
+            <a href="#transformations" class="btn btn-secondary">View Transformations</a>
           </div>
         </div>
         
-        <div class="hero-image-wrapper">
+        <div class="hero-image-wrapper reveal-right">
           <img src="assets/hero_clinic.png" alt="Aria Dental Studio Luxury Clinic Lobby" class="hero-image">
           <div class="hero-glass-card">
             <div class="hero-stat">
@@ -88,276 +88,10 @@
       </div>
     </section>
 
-    <!-- Interactive SVG Tooth Map Section -->
-    <section class="section tooth-map-section" id="diagnose">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Interactive Diagnostics</span>
-          <h2 class="section-title">The Digital Dental Map</h2>
-          <p>
-            Select a region on our clinical tooth arch below to explore common conditions, recommended restorative solutions, and transparent pricing ranges.
-          </p>
-        </div>
-
-        <div class="tooth-map-grid">
-          <!-- Left Column: SVG Map -->
-          <div class="tooth-map-svg-container">
-            <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="200" cy="150" r="110" fill="none" stroke="rgba(197, 168, 128, 0.15)" stroke-width="2" stroke-dasharray="10 5" />
-              
-              <!-- Left Molar -->
-              <path id="tooth-molar-l" class="tooth-path" d="M 60 170 C 50 140, 70 110, 95 110 C 105 110, 110 120, 110 135 C 110 160, 80 180, 60 170 Z" />
-              <text x="65" y="100" class="tooth-label-text">LEFT MOLARS</text>
-              
-              <!-- Left Premolar -->
-              <path id="tooth-premolar-l" class="tooth-path" d="M 110 135 C 110 120, 120 100, 140 100 C 155 100, 160 115, 160 130 C 160 145, 135 155, 110 135 Z" />
-              <text x="110" y="80" class="tooth-label-text">LEFT PREMOLARS</text>
-              
-              <!-- Incisors (Front) -->
-              <path id="tooth-incisors" class="tooth-path" d="M 160 130 C 160 115, 175 90, 200 90 C 225 90, 240 115, 240 130 C 240 145, 215 155, 200 155 C 185 155, 160 145, 160 130 Z" />
-              <text x="180" y="70" class="tooth-label-text">FRONT INCISORS</text>
-              
-              <!-- Right Premolar -->
-              <path id="tooth-premolar-r" class="tooth-path" d="M 240 130 C 240 115, 245 100, 260 100 C 280 100, 290 120, 290 135 C 265 155, 240 145, 240 130 Z" />
-              <text x="240" y="80" class="tooth-label-text">RIGHT PREMOLARS</text>
-              
-              <!-- Right Molar -->
-              <path id="tooth-molar-r" class="tooth-path" d="M 290 135 C 290 120, 295 110, 305 110 C 330 110, 350 140, 340 170 C 320 180, 290 160, 290 135 Z" />
-              <text x="295" y="100" class="tooth-label-text">RIGHT MOLARS</text>
-            </svg>
-          </div>
-
-          <!-- Right Column: Details Output -->
-          <div class="tooth-detail-card">
-            <!-- Empty State -->
-            <div id="tooth-empty-state" class="tooth-detail-empty">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand)" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-              <h3>Interactive Diagnostic Scanner</h3>
-              <p>Select any tooth region on the SVG model to visualize symptoms, understand required treatments, and view immediate cost estimates.</p>
-            </div>
-
-            <!-- Active Card Content (Hydrated via JS) -->
-            <div id="tooth-active-state" class="tooth-detail-content">
-              <div class="tooth-info-header">
-                <h3 class="tooth-info-name" id="tooth-detail-name">Tooth Area Name</h3>
-                <span class="tooth-badge" id="tooth-detail-type">Type</span>
-              </div>
-              
-              <div class="tooth-info-row">
-                <div class="tooth-info-label">Potential Symptoms</div>
-                <div id="tooth-detail-symptoms">
-                  <!-- Injected symptoms tags -->
-                </div>
-              </div>
-
-              <div class="tooth-info-row">
-                <div class="tooth-info-label">Recommended Treatment</div>
-                <div class="tooth-info-value" id="tooth-detail-treatment" style="color: var(--color-accent); font-weight: 500;">Composite Restoration</div>
-              </div>
-
-              <div class="tooth-info-row">
-                <div class="tooth-info-label">Clinical Overview</div>
-                <p id="tooth-detail-desc" style="font-size: 0.9375rem;">Detailed overview of the diagnosis and required procedure will appear here.</p>
-              </div>
-
-              <div class="form-group-grid" style="margin-bottom: 0;">
-                <div class="tooth-info-row">
-                  <div class="tooth-info-label">Approx. Duration</div>
-                  <div class="tooth-info-value" id="tooth-detail-duration">45 mins</div>
-                </div>
-                <div class="tooth-info-row">
-                  <div class="tooth-info-label">Est. Fee Range</div>
-                  <div class="tooth-info-value" id="tooth-detail-cost">$150 - $250</div>
-                </div>
-              </div>
-
-              <button class="btn btn-primary" id="tooth-book-treatment" style="width: 100%; margin-top: 1rem;">
-                Select & Book Service
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Before/After Smile Comparison Slider Section -->
-    <section class="section comparison-section" id="transformations">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Smile Design Gallery</span>
-          <h2 class="section-title">Visual Transformations</h2>
-          <p>
-            Slide the control bar below to compare real clinical results of our state-of-the-art aligner therapies and cosmetic veneers.
-          </p>
-        </div>
-
-        <div class="comparison-wrapper">
-          <!-- Before -->
-          <div class="comparison-before comparison-image">
-            <img src="assets/before_smile.png" alt="Before treatment smile">
-            <div class="comparison-label comparison-label-before">Before Cosmetic Alignment</div>
-          </div>
-          
-          <!-- After -->
-          <div class="comparison-after comparison-image">
-            <img src="assets/after_smile.png" alt="After treatment smile">
-            <div class="comparison-label comparison-label-after">After Treatment</div>
-          </div>
-          
-          <!-- Separator & Interactive Handle -->
-          <div class="comparison-slider-handle">
-            <div class="comparison-slider-button">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="8 18 2 12 8 6"></polyline>
-                <polyline points="16 6 22 12 16 18"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Clinic Gallery Tour Carousel Section -->
-    <section class="section tour-section" id="tour">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Studio Spaces</span>
-          <h2 class="section-title">The Aria Studio Tour</h2>
-          <p>Explore our architect-designed, private clinic spaces equipped with high-end customer lounge areas and state-of-the-art diagnostic theatres.</p>
-        </div>
-
-        <div class="carousel-container">
-          <div class="carousel-track-wrapper">
-            <div class="carousel-track">
-              <!-- Slide 1 -->
-              <div class="carousel-slide active">
-                <img src="assets/hero_clinic.png" alt="Aria Studio Luxury Reception Lobby">
-                <div class="carousel-caption">
-                  <h3>Reception Lounge</h3>
-                  <p>A serene, spa-like entry featuring custom marble textures and soft ambient lighting.</p>
-                </div>
-              </div>
-              <!-- Slide 2 -->
-              <div class="carousel-slide">
-                <img src="assets/clinic_consultation.png" alt="Aria Studio Consultation Suite">
-                <div class="carousel-caption">
-                  <h3>Consultation Suite</h3>
-                  <p>Private discussion suites to preview diagnostic scans and plan smile alignments.</p>
-                </div>
-              </div>
-              <!-- Slide 3 -->
-              <div class="carousel-slide">
-                <img src="assets/clinic_treatment.png" alt="Aria Studio Treatment Suite">
-                <div class="carousel-caption">
-                  <h3>Advanced Treatment Suite</h3>
-                  <p>Hygiene-isolated environments equipped with painless clinical dental lasers.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Carousel Controls -->
-          <button class="carousel-btn prev-btn" aria-label="Previous Slide">&#x2039;</button>
-          <button class="carousel-btn next-btn" aria-label="Next Slide">&#x203A;</button>
-
-          <!-- Carousel Indicators -->
-          <div class="carousel-indicators">
-            <span class="indicator active" data-slide="0"></span>
-            <span class="indicator" data-slide="1"></span>
-            <span class="indicator" data-slide="2"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Smile Gallery Section -->
-    <section class="section gallery-section" id="gallery">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Smile Portfolio</span>
-          <h2 class="section-title">Transformation Gallery</h2>
-          <p>Explore real cosmetic and restorative results delivered by Dr. Stone. Filter by procedure to see before-and-after details.</p>
-        </div>
-
-        <div class="gallery-filters">
-          <button class="gallery-filter-btn active" data-category="all">All Results</button>
-          <button class="gallery-filter-btn" data-category="veneers">Porcelain Veneers</button>
-          <button class="gallery-filter-btn" data-category="aligners">Clear Aligners</button>
-          <button class="gallery-filter-btn" data-category="implants">Implants & Restorations</button>
-        </div>
-
-        <div class="gallery-grid">
-          <!-- Card 1: Veneers -->
-          <div class="gallery-card" data-category="veneers">
-            <img src="assets/gallery_veneers.png" alt="Porcelain Veneers Case 1">
-            <div class="gallery-card-overlay">
-              <span class="gallery-card-category">Veneers</span>
-              <h3 class="gallery-card-title">Porcelain Veneers</h3>
-              <p class="gallery-card-desc">Closed diastema and restored lateral symmetry using 8 ultra-thin feldspathic porcelain veneers.</p>
-            </div>
-          </div>
-
-          <!-- Card 2: Aligners -->
-          <div class="gallery-card" data-category="aligners">
-            <img src="assets/gallery_aligners.png" alt="Clear Aligners Case 1">
-            <div class="gallery-card-overlay">
-              <span class="gallery-card-category">Aligners</span>
-              <h3 class="gallery-card-title">Clear Aligners</h3>
-              <p class="gallery-card-desc">Corrected moderate lower crowding and expanded arch width over a 9-month digital treatment cycle.</p>
-            </div>
-          </div>
-
-          <!-- Card 3: Implants -->
-          <div class="gallery-card" data-category="implants">
-            <img src="assets/gallery_implants.png" alt="Dental Implants Case 1">
-            <div class="gallery-card-overlay">
-              <span class="gallery-card-category">Implants</span>
-              <h3 class="gallery-card-title">Biological Implants</h3>
-              <p class="gallery-card-desc">Replaced fractured upper molar with a bio-compatible ceramic implant and custom zirconia crown.</p>
-            </div>
-          </div>
-
-          <!-- Card 4: Veneers 2 -->
-          <div class="gallery-card" data-category="veneers">
-            <img src="assets/gallery_veneers.png" alt="Porcelain Veneers Case 2">
-            <div class="gallery-card-overlay">
-              <span class="gallery-card-category">Veneers</span>
-              <h3 class="gallery-card-title">Micro-Veneers</h3>
-              <p class="gallery-card-desc">Minimal-prep smile enhancement designed to balance shade variances and align incisal edge lengths.</p>
-            </div>
-          </div>
-
-          <!-- Card 5: Aligners 2 -->
-          <div class="gallery-card" data-category="aligners">
-            <img src="assets/gallery_aligners.png" alt="Clear Aligners Case 2">
-            <div class="gallery-card-overlay">
-              <span class="gallery-card-category">Aligners</span>
-              <h3 class="gallery-card-title">Orthodontic Prep</h3>
-              <p class="gallery-card-desc">Resolved canine rotation and prepped tooth spacing for a perfectly aligned restorative finish.</p>
-            </div>
-          </div>
-
-          <!-- Card 6: Implants 2 -->
-          <div class="gallery-card" data-category="implants">
-            <img src="assets/gallery_implants.png" alt="Dental Implants Case 2">
-            <div class="gallery-card-overlay">
-              <span class="gallery-card-category">Implants</span>
-              <h3 class="gallery-card-title">Full Arch Restoration</h3>
-              <p class="gallery-card-desc">Restored chewing function and structural bone support with multiple ceramic implants and a custom bridge.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Meet the Expert / Dentist Profile Card -->
+    <!-- Clinical Excellence / Doctor Section — BELOW HERO -->
     <section class="section team-section" id="expert">
       <div class="container team-grid">
-        <div class="team-image-card">
+        <div class="team-image-card reveal-left">
           <img src="assets/dentist_portrait.png" alt="Dr. Evelyn Stone - Chief Dental Architect">
           <div class="team-image-overlay">
             <h3 class="team-name">Dr. Evelyn Stone, DDS</h3>
@@ -365,9 +99,9 @@
           </div>
         </div>
 
-        <div class="team-content">
+        <div class="team-content reveal-right">
           <span class="section-tag">Clinical Excellence</span>
-          <h2 class="section-title">The Art & Science of Smiling</h2>
+          <h2 class="section-title">The Art &amp; Science of Smiling</h2>
           <p>
             Dr. Evelyn Stone completed her advanced prosthodontics training at Columbia University. For over 12 years, she has designed custom veneers and alignment solutions that balance jaw mechanics with exquisite visual symmetry.
           </p>
@@ -382,7 +116,7 @@
               </div>
               <div class="team-credential-text">
                 <h4>Columbia School of Dental Medicine</h4>
-                <p>Doctor of Dental Surgery (DDS) & Fellowship in Cosmetic Dentistry</p>
+                <p>Doctor of Dental Surgery (DDS) &amp; Fellowship in Cosmetic Dentistry</p>
               </div>
             </li>
 
@@ -397,15 +131,152 @@
                 <p>Active Board Member of the American Academy of Cosmetic Dentistry</p>
               </div>
             </li>
+
+            <li class="team-credential-item">
+              <div class="team-credential-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 12l2 2 4-4"/>
+                  <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div class="team-credential-text">
+                <h4>12+ Years Clinical Excellence</h4>
+                <p>Specialist in porcelain veneers, aligner therapy, and full-arch restoration</p>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Virtual Consultation Portal (Concierge Style Booking) -->
+    <!-- Before/After Smile Comparison Slider Section -->
+    <section class="section comparison-section" id="transformations">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">Smile Design Gallery</span>
+          <h2 class="section-title">Visual Transformations</h2>
+          <p>
+            Drag the slider to compare real clinical results. See the precision of our state-of-the-art aligner therapies and cosmetic veneer work.
+          </p>
+        </div>
+
+        <div class="comparison-wrapper reveal-up">
+          <!-- After (full background) -->
+          <div class="comparison-after comparison-image">
+            <img src="assets/after_smile.png" alt="After treatment smile">
+          </div>
+          <!-- Before (clipped overlay) -->
+          <div class="comparison-before comparison-image">
+            <img src="assets/before_smile.png" alt="Before treatment smile">
+          </div>
+          <!-- Labels -->
+          <div class="comparison-label comparison-label-before">BEFORE</div>
+          <div class="comparison-label comparison-label-after">AFTER TREATMENT</div>
+          <!-- Separator & Interactive Handle -->
+          <div class="comparison-slider-handle">
+            <div class="comparison-slider-button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="8 18 2 12 8 6"></polyline>
+                <polyline points="16 6 22 12 16 18"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Services Showcase (replaces dental map) -->
+    <section class="section services-showcase-section" id="services">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">Our Expertise</span>
+          <h2 class="section-title">Premium Dental Services</h2>
+          <p>Every smile is a masterpiece. Explore our full range of luxury dental treatments crafted with precision artistry.</p>
+        </div>
+
+        <div class="services-showcase-grid">
+          <div class="service-showcase-card reveal-up" style="--delay: 0s;">
+            <div class="service-showcase-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C8 2 5 5 5 8.5c0 3 1.5 5 3 6.5L12 22l4-7c1.5-1.5 3-3.5 3-6.5C19 5 16 2 12 2z"/>
+              </svg>
+            </div>
+            <div class="service-showcase-number">01</div>
+            <h3 class="service-showcase-title">Porcelain Veneers</h3>
+            <p class="service-showcase-desc">Ultra-thin feldspathic shells crafted for natural light diffusion and perfect shade matching.</p>
+            <div class="service-showcase-tag">From $1,200/tooth</div>
+          </div>
+
+          <div class="service-showcase-card reveal-up" style="--delay: 0.1s;">
+            <div class="service-showcase-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="service-showcase-number">02</div>
+            <h3 class="service-showcase-title">Clear Aligners</h3>
+            <p class="service-showcase-desc">Digitally mapped aligner sequences that move teeth invisibly, comfortably, and precisely.</p>
+            <div class="service-showcase-tag">From $3,500</div>
+          </div>
+
+          <div class="service-showcase-card reveal-up" style="--delay: 0.2s;">
+            <div class="service-showcase-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="11" width="18" height="10" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <div class="service-showcase-number">03</div>
+            <h3 class="service-showcase-title">Ceramic Implants</h3>
+            <p class="service-showcase-desc">Bio-compatible zirconia implants with guided surgery protocols for lifetime structural support.</p>
+            <div class="service-showcase-tag">From $2,800</div>
+          </div>
+
+          <div class="service-showcase-card reveal-up" style="--delay: 0.3s;">
+            <div class="service-showcase-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="service-showcase-number">04</div>
+            <h3 class="service-showcase-title">Teeth Whitening</h3>
+            <p class="service-showcase-desc">Accelerated LED-powered whitening achieving up to 12 shades lighter in a single session.</p>
+            <div class="service-showcase-tag">From $650</div>
+          </div>
+
+          <div class="service-showcase-card reveal-up" style="--delay: 0.4s;">
+            <div class="service-showcase-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>
+              </svg>
+            </div>
+            <div class="service-showcase-number">05</div>
+            <h3 class="service-showcase-title">Composite Bonding</h3>
+            <p class="service-showcase-desc">Sculpted resin artistry to restore chips, reshape teeth, and close gaps in a single appointment.</p>
+            <div class="service-showcase-tag">From $400/tooth</div>
+          </div>
+
+          <div class="service-showcase-card reveal-up" style="--delay: 0.5s;">
+            <div class="service-showcase-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="service-showcase-number">06</div>
+            <h3 class="service-showcase-title">Gum Contouring</h3>
+            <p class="service-showcase-desc">Laser sculpting of the gumline to create symmetrical, proportionate smile framing.</p>
+            <div class="service-showcase-tag">From $800</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Virtual Consultation Booking Section -->
     <section class="section booking-section" id="booking">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-up">
           <span class="section-tag">Concierge Booking</span>
           <h2 class="section-title">Virtual Consultation Portal</h2>
           <p>
@@ -413,7 +284,7 @@
           </p>
         </div>
 
-        <div class="booking-card">
+        <div class="booking-card reveal-up">
           <!-- Steps indicator bar -->
           <div class="booking-steps">
             <div class="booking-step-line-active"></div>
@@ -435,7 +306,7 @@
                   </svg>
                 </div>
                 <h4 class="service-card-title">General Care</h4>
-                <p class="service-card-desc">Cleaning, pain diagnosis, checkups, & fillings.</p>
+                <p class="service-card-desc">Cleaning, pain diagnosis, checkups, &amp; fillings.</p>
               </div>
 
               <div class="service-card" data-service="cosmetic">
@@ -445,26 +316,24 @@
                   </svg>
                 </div>
                 <h4 class="service-card-title">Cosmetic</h4>
-                <p class="service-card-desc">Veneers, whitening, teeth alignment, & Botox.</p>
+                <p class="service-card-desc">Veneers, whitening, teeth alignment, &amp; Botox.</p>
               </div>
 
               <div class="service-card" data-service="surgical">
                 <div class="service-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4.5 16.5L12 9l7.5 7.5"></path>
-                    <path d="M12 9v13"></path>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                   </svg>
                 </div>
                 <h4 class="service-card-title">Restorative</h4>
-                <p class="service-card-desc">Implants, crowns, root canals, & extractions.</p>
+                <p class="service-card-desc">Implants, crowns, root canals, &amp; extractions.</p>
               </div>
             </div>
 
-            <!-- Standard Dropdown Accessibility -->
             <div class="form-group">
               <label for="booking-service" class="form-label">Selected Service Type</label>
               <select id="booking-service" class="form-input">
-                <option value="general">General Care & Diagnostic</option>
+                <option value="general">General Care &amp; Diagnostic</option>
                 <option value="cosmetic">Cosmetic Smile Restoration</option>
                 <option value="surgical">Restorative Surgery / Implantology</option>
               </select>
@@ -473,7 +342,7 @@
 
           <!-- STEP 2: Patient Info & Photo Upload -->
           <div class="booking-form-view" id="booking-step-2">
-            <h3 style="margin-bottom: 2rem; text-align: center; font-family: var(--font-serif);">Personal Credentials & Smile Upload</h3>
+            <h3 style="margin-bottom: 2rem; text-align: center; font-family: var(--font-serif);">Personal Credentials &amp; Smile Upload</h3>
             
             <div class="form-group-grid">
               <div class="form-group">
@@ -492,12 +361,11 @@
                 <input type="date" id="booking-date" class="form-input" required>
               </div>
               <div class="form-group">
-                <label for="booking-notes" class="form-label">Detail Your Clinical Symptoms / Goals</label>
+                <label for="booking-notes" class="form-label">Clinical Symptoms / Goals</label>
                 <input type="text" id="booking-notes" class="form-input" placeholder="E.g., Sensitivity to hot and cold...">
               </div>
             </div>
 
-            <!-- Advanced Booking Options -->
             <div class="form-group-grid">
               <div class="form-group">
                 <label for="booking-practitioner" class="form-label">Preferred Practitioner</label>
@@ -517,7 +385,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Dental History & Indicators (Check all that apply)</label>
+              <label class="form-label">Dental History (Check all that apply)</label>
               <div class="checkbox-grid">
                 <label class="checkbox-label-wrapper">
                   <input type="checkbox" name="history" value="sensitivity" id="history-sensitivity">
@@ -525,7 +393,7 @@
                 </label>
                 <label class="checkbox-label-wrapper">
                   <input type="checkbox" name="history" value="bruxism" id="history-bruxism">
-                  <span>Bruxism (Teeth Grinding / Clenching)</span>
+                  <span>Bruxism (Teeth Grinding)</span>
                 </label>
                 <label class="checkbox-label-wrapper">
                   <input type="checkbox" name="history" value="veneers" id="history-veneers">
@@ -538,9 +406,8 @@
               </div>
             </div>
 
-            <!-- Upload Box -->
             <div class="form-group">
-              <label class="form-label">Profile / Smile Close-Up Photo (Optional)</label>
+              <label class="form-label">Profile / Smile Photo (Optional)</label>
               <div class="upload-container" id="upload-box">
                 <div class="upload-icon">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -549,12 +416,10 @@
                     <polyline points="21 15 16 10 5 21"></polyline>
                   </svg>
                 </div>
-                <div class="upload-text-main">Drag and drop your profile/smile image here</div>
-                <div class="upload-text-sub">or click to browse local files (PNG, JPG up to 4MB)</div>
+                <div class="upload-text-main">Drag and drop your smile image here</div>
+                <div class="upload-text-sub">or click to browse files (PNG, JPG up to 4MB)</div>
                 <input type="file" id="profile-file-input" class="file-input" accept="image/*">
               </div>
-
-              <!-- Preview State Box -->
               <div class="upload-preview-wrapper" id="preview-wrapper">
                 <img src="" alt="Uploaded patient smile photo" class="upload-preview-image" id="preview-img">
                 <div class="upload-crop-guideline"></div>
@@ -563,14 +428,12 @@
             </div>
           </div>
 
-          <!-- STEP 3: Success Screen -->
+          <!-- STEP 3: Confirmation View -->
           <div class="booking-form-view" id="booking-step-success">
             <div class="booking-success-view">
-              <div class="success-icon-box">
-                &#10003;
-              </div>
+              <div class="success-icon-box">&#10003;</div>
               <h2>Concierge Booking Received</h2>
-              <p>Your details and clinical photos have been securely compiled and delivered to Dr. Stone. We will confirm your slots shortly.</p>
+              <p>Your details have been securely delivered to Dr. Stone. We will confirm your appointment slot shortly.</p>
               
               <div class="success-details-card">
                 <div class="success-details-row">
@@ -591,23 +454,11 @@
                 </div>
                 <div class="success-details-row">
                   <span class="success-details-label">Symptom Notes:</span>
-                  <span class="success-details-value" id="summary-notes">Pain in left molar</span>
+                  <span class="success-details-value" id="summary-notes">None</span>
                 </div>
                 <div class="success-details-row">
-                  <span class="success-details-label">Practitioner Preferred:</span>
-                  <span class="success-details-value" id="summary-practitioner">None</span>
-                </div>
-                <div class="success-details-row">
-                  <span class="success-details-label">Billing Option:</span>
-                  <span class="success-details-value" id="summary-billing">Private Pay</span>
-                </div>
-                <div class="success-details-row">
-                  <span class="success-details-label">Dental History:</span>
-                  <span class="success-details-value" id="summary-history">None</span>
-                </div>
-                <div class="success-details-row" style="align-items: center;">
-                  <span class="success-details-label">Profile / Smile Photo:</span>
-                  <img src="" alt="Summary photo thumbnail" class="success-photo-preview" id="summary-photo">
+                  <span class="success-details-label">Practitioner:</span>
+                  <span class="success-details-value" id="summary-practitioner">First Available</span>
                 </div>
               </div>
 
@@ -616,7 +467,7 @@
           </div>
 
           <!-- Step navigation buttons -->
-          <div class="booking-actions">
+          <div class="booking-actions" id="booking-actions">
             <button class="btn btn-secondary" id="booking-prev" style="visibility: hidden;">Back</button>
             <button class="btn btn-primary" id="booking-next">Next Step</button>
           </div>
@@ -627,18 +478,16 @@
     <!-- Reviews / Bento Grid Section -->
     <section class="section reviews-section" id="reviews">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-up">
           <span class="section-tag">Patient Journeys</span>
           <h2 class="section-title">Patient Testimonials</h2>
           <p>Read about patient experiences with our modern clinical treatments and restorations.</p>
         </div>
 
         <div class="reviews-grid">
-          <div class="review-card featured">
+          <div class="review-card featured reveal-left">
             <div>
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
+              <div class="review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
               <p class="review-text">
                 "The aesthetic quality of Dr. Stone's work is unrivaled. She designed micro-veneers that closed my teeth gap while retaining a completely natural, bright color matching my features. The floating lobby and interactive digital consultation software felt incredibly advanced and stress-free."
               </p>
@@ -652,13 +501,11 @@
             </div>
           </div>
 
-          <div class="review-card">
+          <div class="review-card reveal-up" style="--delay: 0.1s;">
             <div>
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
+              <div class="review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
               <p class="review-text" style="font-size: 0.9375rem;">
-                "I was terrified of root canals. The diagnostic map identified the exact tooth issue. Dr. Stone did the filling with zero discomfort. Exceptionally premium!"
+                "I was terrified of root canals. Dr. Stone did the filling with zero discomfort. Exceptionally premium experience!"
               </p>
             </div>
             <div class="review-author">
@@ -670,11 +517,9 @@
             </div>
           </div>
 
-          <div class="review-card">
+          <div class="review-card reveal-up" style="--delay: 0.2s;">
             <div>
-              <div class="review-stars">
-                &#9733; &#9733; &#9733; &#9733; &#9733;
-              </div>
+              <div class="review-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
               <p class="review-text" style="font-size: 0.9375rem;">
                 "Stunning clinic! Invisalign process was completely digital. Highly recommend the virtual pre-consultation flow."
               </p>
@@ -691,23 +536,187 @@
       </div>
     </section>
 
+    <!-- Clinic Gallery Tour Carousel Section — FULL WIDTH -->
+    <section class="section tour-section" id="tour">
+      <div class="section-header reveal-up" style="padding: 0 2rem; max-width: var(--max-width); margin: 0 auto 3rem auto;">
+        <span class="section-tag">Studio Spaces</span>
+        <h2 class="section-title">The Aria Studio Tour</h2>
+        <p>Explore our architect-designed, private clinic spaces equipped with high-end customer lounge areas and state-of-the-art diagnostic theatres.</p>
+      </div>
+
+      <div class="carousel-container-fullwidth">
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+              <img src="assets/hero_clinic.png" alt="Aria Studio Luxury Reception Lobby">
+              <div class="carousel-caption">
+                <h3>Reception Lounge</h3>
+                <p>A serene, spa-like entry featuring custom marble textures and soft ambient lighting.</p>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="assets/clinic_consultation.png" alt="Aria Studio Consultation Suite">
+              <div class="carousel-caption">
+                <h3>Consultation Suite</h3>
+                <p>Private discussion suites to preview diagnostic scans and plan smile alignments.</p>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="assets/clinic_treatment.png" alt="Aria Studio Treatment Suite">
+              <div class="carousel-caption">
+                <h3>Advanced Treatment Suite</h3>
+                <p>Hygiene-isolated environments equipped with painless clinical dental lasers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-btn prev-btn" aria-label="Previous Slide">&#x2039;</button>
+        <button class="carousel-btn next-btn" aria-label="Next Slide">&#x203A;</button>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+          <span class="indicator active" data-slide="0"></span>
+          <span class="indicator" data-slide="1"></span>
+          <span class="indicator" data-slide="2"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Smile Gallery Section -->
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">Smile Portfolio</span>
+          <h2 class="section-title">Transformation Gallery</h2>
+          <p>Explore real cosmetic and restorative results delivered by Dr. Stone. Filter by procedure to discover your ideal treatment path.</p>
+        </div>
+
+        <div class="gallery-filters reveal-up">
+          <button class="gallery-filter-btn active" data-category="all">All Results</button>
+          <button class="gallery-filter-btn" data-category="veneers">Porcelain Veneers</button>
+          <button class="gallery-filter-btn" data-category="aligners">Clear Aligners</button>
+          <button class="gallery-filter-btn" data-category="implants">Implants</button>
+          <button class="gallery-filter-btn" data-category="whitening">Whitening</button>
+          <button class="gallery-filter-btn" data-category="bonding">Bonding</button>
+          <button class="gallery-filter-btn" data-category="makeover">Smile Makeover</button>
+        </div>
+
+        <div class="gallery-grid">
+          <!-- Card 1: Veneers -->
+          <div class="gallery-card reveal-up" data-category="veneers" style="--delay: 0s;">
+            <img src="assets/gallery_veneers.png" alt="Porcelain Veneers Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Veneers</span>
+              <h3 class="gallery-card-title">Porcelain Veneers</h3>
+              <p class="gallery-card-desc">8 ultra-thin feldspathic veneers for perfect shade and symmetry.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Aligners -->
+          <div class="gallery-card reveal-up" data-category="aligners" style="--delay: 0.05s;">
+            <img src="assets/gallery_aligners.png" alt="Clear Aligners Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Aligners</span>
+              <h3 class="gallery-card-title">Clear Aligners</h3>
+              <p class="gallery-card-desc">9-month digital aligner treatment for crowding correction.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Implants -->
+          <div class="gallery-card reveal-up" data-category="implants" style="--delay: 0.1s;">
+            <img src="assets/gallery_implants.png" alt="Dental Implants Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Implants</span>
+              <h3 class="gallery-card-title">Ceramic Implants</h3>
+              <p class="gallery-card-desc">Bio-compatible ceramic implant with custom zirconia crown.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Whitening -->
+          <div class="gallery-card reveal-up" data-category="whitening" style="--delay: 0.15s;">
+            <img src="assets/gallery_whitening.png" alt="Teeth Whitening Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Whitening</span>
+              <h3 class="gallery-card-title">LED Whitening</h3>
+              <p class="gallery-card-desc">12-shade lift achieved in a single 90-minute session.</p>
+            </div>
+          </div>
+
+          <!-- Card 5: Bonding -->
+          <div class="gallery-card reveal-up" data-category="bonding" style="--delay: 0.2s;">
+            <img src="assets/gallery_bonding.png" alt="Composite Bonding Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Bonding</span>
+              <h3 class="gallery-card-title">Composite Bonding</h3>
+              <p class="gallery-card-desc">Sculpted resin artistry to restore chips and close diastema.</p>
+            </div>
+          </div>
+
+          <!-- Card 6: Orthodontics -->
+          <div class="gallery-card reveal-up" data-category="aligners" style="--delay: 0.25s;">
+            <img src="assets/gallery_orthodontics.png" alt="Orthodontic Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Aligners</span>
+              <h3 class="gallery-card-title">Orthodontic Precision</h3>
+              <p class="gallery-card-desc">Canine rotation resolved with targeted digital aligner stages.</p>
+            </div>
+          </div>
+
+          <!-- Card 7: Smile Makeover -->
+          <div class="gallery-card reveal-up" data-category="makeover" style="--delay: 0.3s;">
+            <img src="assets/gallery_smile_makeover.png" alt="Full Smile Makeover">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Smile Makeover</span>
+              <h3 class="gallery-card-title">Hollywood Smile</h3>
+              <p class="gallery-card-desc">Complete full-arch smile design combining veneers and whitening.</p>
+            </div>
+          </div>
+
+          <!-- Card 8: Gum Contouring -->
+          <div class="gallery-card reveal-up" data-category="makeover" style="--delay: 0.35s;">
+            <img src="assets/gallery_gum_contouring.png" alt="Gum Contouring Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Gum Contouring</span>
+              <h3 class="gallery-card-title">Gum Laser Sculpting</h3>
+              <p class="gallery-card-desc">Laser gum contouring for perfect proportional smile framing.</p>
+            </div>
+          </div>
+
+          <!-- Card 9: Veneers 2 -->
+          <div class="gallery-card reveal-up" data-category="veneers" style="--delay: 0.4s;">
+            <img src="assets/gallery_veneers.png" alt="Micro Veneers Case">
+            <div class="gallery-card-overlay">
+              <span class="gallery-card-category">Veneers</span>
+              <h3 class="gallery-card-title">Micro-Veneers</h3>
+              <p class="gallery-card-desc">Minimal-prep enhancement to balance shade and incisal edge lengths.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQs Section -->
     <section class="section faq-section" id="faqs">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-up">
           <span class="section-tag">Studio FAQs</span>
           <h2 class="section-title">Patient Resources</h2>
           <p>Find answers to common questions about treatment plans, booking schedules, and concierge policies.</p>
         </div>
 
-        <div class="faq-container">
+        <div class="faq-container reveal-up">
           <div class="faq-item">
             <button class="faq-question">
               What should I expect at my first visit?
               <span class="faq-icon">&#43;</span>
             </button>
             <div class="faq-answer">
-              Your first visit includes a detailed dental scanning diagnostic, digital photo alignment mapping, and a comprehensive wellness conversation with Dr. Evelyn Stone to map out your long-term smile architecture.
+              Your first visit includes a detailed dental scanning diagnostic, digital photo alignment mapping, and a comprehensive wellness conversation with Dr. Evelyn Stone to map out your long-term smile architecture. Expect 60–90 minutes of unhurried, private consultation.
             </div>
           </div>
 
@@ -717,72 +726,69 @@
               <span class="faq-icon">&#43;</span>
             </button>
             <div class="faq-answer">
-              Absolutely. We provide custom interest-free payment plans and work directly with premium PPO provider networks to optimize patient coverage options.
+              Absolutely. We provide custom interest-free payment plans starting at 0% APR for 12 months. We also work directly with premium PPO provider networks and CareCredit to optimize patient coverage and reduce out-of-pocket costs.
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">
-              How are smile designs previewed?
+              How are smile designs previewed before treatment begins?
               <span class="faq-icon">&#43;</span>
             </button>
             <div class="faq-answer">
-              We compile high-resolution 3D digital simulation models before beginning orthodontic aligners or veneers. This lets you preview alignment changes and tooth contours from every angle.
+              We compile high-resolution 3D digital simulation models before beginning orthodontic aligners or veneers. This lets you preview alignment changes, tooth contours, and shade gradients from every angle — with full revision opportunities before any clinical work starts.
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Studio Location & Directions Section -->
-    <section class="section map-section" id="location">
-      <div class="container team-grid">
-        <!-- Interactive Google Map Styled Embed -->
-        <div class="map-embed-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.7936775618413!2d-118.4027726!3d34.0736204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc0bc12b8ffb%3A0x2a3e0f989c4d9b4c!2sBeverly%20Hills%2C%20CA!5e0!3m2!1sen!2sus!4v1718000000000!5m2!1sen!2sus" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Aria Dental Studio Beverly Hills Location Map">
-          </iframe>
-        </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How long do porcelain veneers last?
+              <span class="faq-icon">&#43;</span>
+            </button>
+            <div class="faq-answer">
+              With proper care and regular maintenance visits, high-quality feldspathic porcelain veneers at Aria Dental Studio typically last 12–20 years. We use only lab-certified, custom-milled porcelain from our partner ceramics studio for each patient's unique tooth profile.
+            </div>
+          </div>
 
-        <!-- Location Access details -->
-        <div class="team-content">
-          <span class="section-tag">Find Us</span>
-          <h2 class="section-title">The Beverly Hills Studio</h2>
-          <p>
-            Aria Dental Studio is located on Plaza Avenue, in the heart of Beverly Hills. Our location is designed to ensure complete privacy, comfort, and direct access for our concierge patient community.
-          </p>
-          
-          <ul class="team-credentials-list">
-            <li class="team-credential-item">
-              <div class="team-credential-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div class="team-credential-text">
-                <h4>Studio Address</h4>
-                <p>120 Plaza Avenue, Suite 400, Beverly Hills, CA 90210</p>
-              </div>
-            </li>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is the virtual consultation binding or is it just a preview?
+              <span class="faq-icon">&#43;</span>
+            </button>
+            <div class="faq-answer">
+              The virtual consultation is a completely non-obligatory, complimentary 20-minute video session. You review your digital smile simulation with Dr. Stone and ask questions. There is no commitment to treatment until you formally sign your personalized care plan.
+            </div>
+          </div>
 
-            <li class="team-credential-item">
-              <div class="team-credential-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                  <path d="M12 18h.01"></path>
-                </svg>
-              </div>
-              <div class="team-credential-text">
-                <h4>Private Valet & Elevator Access</h4>
-                <p>Complimentary secure underground parking with direct private elevator access to Floor 4.</p>
-              </div>
-            </li>
-          </ul>
+          <div class="faq-item">
+            <button class="faq-question">
+              What is the recovery time for dental implants?
+              <span class="faq-icon">&#43;</span>
+            </button>
+            <div class="faq-answer">
+              After guided implant surgery, most patients return to regular daily activity within 2–3 days. Osseointegration (the bone fusing process) takes 3–6 months, during which a temporary restoration is fitted. The final zirconia crown is placed once integration is confirmed via 3D cone beam imaging.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you treat patients with dental anxiety?
+              <span class="faq-icon">&#43;</span>
+            </button>
+            <div class="faq-answer">
+              Yes. Aria Dental Studio is designed specifically to alleviate clinical anxiety. We offer noise-cancelling headphones, aromatherapy protocols, and optional oral sedation administered by our licensed sedation specialist. Our private suites eliminate exposure to other patients, creating a truly spa-like experience throughout your visit.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you accept walk-in appointments?
+              <span class="faq-icon">&#43;</span>
+            </button>
+            <div class="faq-answer">
+              We operate as a boutique concierge studio and kindly require appointments to maintain exceptional service standards. However, dental emergencies are accommodated on the same day when slots are available. Call our studio directly or use WhatsApp for priority emergency booking.
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -790,99 +796,147 @@
     <!-- Instagram/Social Grid Section -->
     <section class="section social-section" id="social">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-up">
           <span class="section-tag">Social Journal</span>
           <h2 class="section-title">Dr. Evelyn's Smile Design</h2>
           <p>Follow our journey at @AriaDentalStudio for daily cosmetic inspirations, clinical tech insights, and patient journeys.</p>
         </div>
 
-        <div class="social-grid">
-          <!-- Post 1 -->
+        <div class="social-grid reveal-up">
           <div class="social-card">
             <img src="assets/hero_clinic.png" alt="Aria Studio Social Post 1">
             <div class="social-card-overlay">
               <span class="social-card-handle">@AriaDentalStudio</span>
               <div class="social-card-stats">
                 <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                   <span>1.4k</span>
                 </div>
                 <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                   <span>34</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Post 2 -->
           <div class="social-card">
             <img src="assets/dentist_portrait.png" alt="Aria Studio Social Post 2">
             <div class="social-card-overlay">
               <span class="social-card-handle">@AriaDentalStudio</span>
               <div class="social-card-stats">
                 <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                   <span>2.1k</span>
-                </div>
-                <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  <span>56</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Post 3 -->
           <div class="social-card">
             <img src="assets/clinic_consultation.png" alt="Aria Studio Social Post 3">
             <div class="social-card-overlay">
               <span class="social-card-handle">@AriaDentalStudio</span>
               <div class="social-card-stats">
                 <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                   <span>958</span>
-                </div>
-                <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  <span>19</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Post 4 -->
           <div class="social-card">
             <img src="assets/clinic_treatment.png" alt="Aria Studio Social Post 4">
             <div class="social-card-overlay">
               <span class="social-card-handle">@AriaDentalStudio</span>
               <div class="social-card-stats">
                 <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                   <span>1.8k</span>
-                </div>
-                <div class="social-card-stat-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                  <span>42</span>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Location Map Section — ABOVE FOOTER -->
+    <section class="section map-section" id="location">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <span class="section-tag">Find Us</span>
+          <h2 class="section-title">The Beverly Hills Studio</h2>
+          <p>Located in the heart of Beverly Hills. Designed for complete privacy, comfort, and direct concierge access.</p>
+        </div>
+
+        <div class="map-location-grid reveal-up">
+          <div class="map-embed-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.7936775618413!2d-118.4027726!3d34.0736204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc0bc12b8ffb%3A0x2a3e0f989c4d9b4c!2sBeverly%20Hills%2C%20CA!5e0!3m2!1sen!2sus!4v1718000000000!5m2!1sen!2sus" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Aria Dental Studio Beverly Hills Location Map">
+            </iframe>
+          </div>
+
+          <div class="map-info-panel">
+            <ul class="team-credentials-list">
+              <li class="team-credential-item">
+                <div class="team-credential-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div class="team-credential-text">
+                  <h4>Studio Address</h4>
+                  <p>120 Plaza Avenue, Suite 400, Beverly Hills, CA 90210</p>
+                </div>
+              </li>
+
+              <li class="team-credential-item">
+                <div class="team-credential-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div class="team-credential-text">
+                  <h4>Studio Hours</h4>
+                  <p>Mon – Fri: 8:00 AM – 6:00 PM | Sat: 9:00 AM – 3:00 PM</p>
+                </div>
+              </li>
+
+              <li class="team-credential-item">
+                <div class="team-credential-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 8.48 8.48l.74-.74a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <div class="team-credential-text">
+                  <h4>Call or WhatsApp</h4>
+                  <p>+1 (310) 555-0190</p>
+                </div>
+              </li>
+
+              <li class="team-credential-item">
+                <div class="team-credential-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13"/>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                    <circle cx="5.5" cy="18.5" r="2.5"/>
+                    <circle cx="18.5" cy="18.5" r="2.5"/>
+                  </svg>
+                </div>
+                <div class="team-credential-text">
+                  <h4>Private Valet Access</h4>
+                  <p>Complimentary underground valet with direct elevator to Floor 4.</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -895,13 +949,28 @@
       <div class="footer-col">
         <a href="index.html" class="footer-logo" style="text-decoration: none;">ARIA <span>STUDIO</span></a>
         <p>Combining artistic visualization with advanced diagnostics for high-end dental architecture.</p>
+        <div class="footer-socials" style="margin-top: 0.5rem;">
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Twitter / X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://wa.me/13105550190" class="footer-social-link" aria-label="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24z"/></svg>
+          </a>
+        </div>
       </div>
       
       <div class="footer-col">
         <h4 class="footer-title">Practice Areas</h4>
         <ul class="footer-links">
-          <li><a href="#diagnose" class="footer-link">Symptom Checker</a></li>
           <li><a href="#transformations" class="footer-link">Cosmetic Dentistry</a></li>
+          <li><a href="#services" class="footer-link">Our Services</a></li>
+          <li><a href="#gallery" class="footer-link">Gallery</a></li>
           <li><a href="about.html" class="footer-link">Studio Philosophy</a></li>
         </ul>
       </div>
@@ -917,53 +986,90 @@
 
       <div class="footer-col">
         <h4 class="footer-title">Studio Location</h4>
-        <p>120 Plaza Avenue, Suite 400<br>Beverly Hills, CA 90210</p>
-        <p style="color: var(--color-brand); font-weight: 500;">consult@ariadental.studio</p>
+        <ul class="footer-links">
+          <li style="color: #b3a99c; font-size: 0.9375rem;">120 Plaza Avenue, Suite 400</li>
+          <li style="color: #b3a99c; font-size: 0.9375rem;">Beverly Hills, CA 90210</li>
+          <li style="color: #b3a99c; font-size: 0.9375rem;">+1 (310) 555-0190</li>
+          <li><a href="contact.html" class="footer-link">Get Directions</a></li>
+        </ul>
       </div>
     </div>
 
-    <div class="container footer-bottom">
-      <div class="footer-copyright">
-        &copy; 2026 Aria Dental Studio. All rights reserved. Secure patient records compliance.
-      </div>
-      <div class="footer-socials">
-        <a href="#" class="footer-social-link" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-        <a href="#" class="footer-social-link" aria-label="Facebook">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-          </svg>
-        </a>
-        <a href="#" class="footer-social-link" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-        </a>
-        <a href="#" class="footer-social-link" aria-label="YouTube">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
-            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
-          </svg>
-        </a>
+    <div class="container">
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 Aria Dental Studio, Beverly Hills. All Rights Reserved.</span>
+        <div style="display: flex; gap: 2rem;">
+          <a href="#" class="footer-link" style="font-size: 0.875rem;">Privacy Policy</a>
+          <a href="#" class="footer-link" style="font-size: 0.875rem;">Terms of Service</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Widget -->
-  <a href="https://wa.me/13105550190" target="_blank" class="whatsapp-float" aria-label="Chat with Aria Concierge on WhatsApp">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <!-- Floating WhatsApp Widget — ICON ONLY with popup form -->
+  <button class="whatsapp-float" id="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.498 1.456 5.44 1.457 5.432 0 9.85-4.416 9.853-9.848.002-2.63-1.023-5.101-2.885-6.963C17.193 1.98 14.729 1.05 12.016 1.05c-5.436 0-9.853 4.417-9.857 9.85-.001 1.914.5 3.784 1.453 5.41l-.953 3.483 3.578-.938zm11.168-7.534c-.303-.151-1.793-.884-2.071-.984-.279-.1-.483-.151-.687.151-.204.302-.79.984-.969 1.186-.18.201-.359.227-.662.076-.303-.151-1.278-.471-2.434-1.503-.9-.803-1.507-1.795-1.684-2.1-.178-.302-.019-.466.132-.616.136-.135.303-.353.454-.529.152-.176.202-.302.303-.503.101-.2.05-.378-.025-.529-.076-.151-.687-1.66-.942-2.266-.249-.593-.501-.512-.687-.512-.178-.002-.382-.002-.587-.002-.204 0-.536.076-.817.378-.28.302-1.071 1.047-1.071 2.553s1.097 2.97 1.25 3.171c.153.201 2.158 3.302 5.228 4.629.731.315 1.301.503 1.745.644.733.233 1.4.2 1.928.121.588-.088 1.793-.73 2.048-1.436.256-.706.256-1.31.18-1.437-.077-.127-.279-.202-.581-.353z"/>
     </svg>
-    <span>Chat with Concierge</span>
-  </a>
+  </button>
 
-  <script src="app.js"></script>
+  <!-- WhatsApp Contact Popup -->
+  <div class="whatsapp-popup" id="whatsapp-popup" role="dialog" aria-modal="true" aria-label="Contact via WhatsApp">
+    <div class="whatsapp-popup-header">
+      <div class="whatsapp-popup-avatar">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="whatsapp-popup-title">Aria Dental Studio</div>
+        <div class="whatsapp-popup-status">Online — Typically replies in minutes</div>
+      </div>
+      <button class="whatsapp-popup-close" id="whatsapp-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="whatsapp-popup-body">
+      <p class="whatsapp-popup-msg">👋 Hi there! Let us know your name and how we can help you today. We'll connect you directly on WhatsApp!</p>
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label for="wa-name" class="form-label">Your Name *</label>
+        <input type="text" id="wa-name" class="form-input" placeholder="Jane Doe">
+      </div>
+      <div class="form-group" style="margin-bottom: 1.5rem;">
+        <label for="wa-msg" class="form-label">Your Inquiry *</label>
+        <textarea id="wa-msg" class="form-input" rows="3" placeholder="I'd like to book a veneer consultation..."></textarea>
+      </div>
+      <button class="btn btn-primary" id="wa-send-btn" style="width: 100%; gap: 0.75rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24z"/></svg>
+        Open WhatsApp Chat
+      </button>
+    </div>
+  </div>
+  <div class="whatsapp-popup-overlay" id="whatsapp-overlay"></div>
+
+  <!-- Booking Success Popup Modal -->
+  <div class="booking-success-modal" id="booking-success-modal" role="dialog" aria-modal="true">
+    <div class="booking-success-modal-content">
+      <div class="success-icon-box" style="margin: 0 auto 1.5rem;">&#10003;</div>
+      <h2 style="font-family: var(--font-serif); margin-bottom: 1rem;">Booking Confirmed!</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Your consultation has been received by Dr. Stone's team. We'll confirm your appointment within 24 hours via email.</p>
+      <div class="success-details-card" id="modal-summary-card" style="margin: 0 0 2rem; text-align: left;">
+        <div class="success-details-row">
+          <span class="success-details-label">Name:</span>
+          <span class="success-details-value" id="modal-name">—</span>
+        </div>
+        <div class="success-details-row">
+          <span class="success-details-label">Service:</span>
+          <span class="success-details-value" id="modal-service">—</span>
+        </div>
+        <div class="success-details-row" style="border-bottom: none; padding-bottom: 0;">
+          <span class="success-details-label">Date:</span>
+          <span class="success-details-value" id="modal-date">—</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="modal-close-btn" style="width: 100%;">Close</button>
+    </div>
+  </div>
+  <div class="booking-modal-overlay" id="booking-modal-overlay"></div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

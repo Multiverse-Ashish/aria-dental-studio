@@ -22,6 +22,7 @@
 - [x] Fix Before/After slider image alignment drift on mobile viewports using dynamic width binding
 - [x] Add styled interactive Google Maps embeds with custom grayscale/sepia color filters to homepage and contact page
 - [x] Add directions & access details section to index.html
+- [x] Package static website files into a clean standalone folder (`aria-dental-studio-website`)
 - [x] Verify all new components and page consistency via browser subagent QA run
 - [x] Record results and document in walkthrough.md
 
